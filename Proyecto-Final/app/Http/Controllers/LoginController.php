@@ -29,5 +29,13 @@ class LoginController extends Controller
     {
         return view('index');
     }
+    public function rates()
+    {
+        return view('rates');
+    }
+    public function rooms()
+    {
+        return view('rooms');
+    }
 }
 
