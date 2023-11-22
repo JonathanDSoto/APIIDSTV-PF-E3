@@ -26,7 +26,6 @@
 <body class=" font-inter dashcode-app" id="body_class">
     <!-- [if IE]> <p class="browserupgrade"> You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security. </p> <![endif] -->
     <main class="app-wrapper">
-
         <!-- BEGIN: Sidebar -->
         <div class="sidebar-wrapper group w-0 hidden xl:w-[248px] xl:block">
             <div id="bodyOverlay"
@@ -53,7 +52,7 @@
             </div>
             <div id="nav_shadow"
                 class="nav_shadow h-[60px] absolute top-[80px] nav-shadow z-[1] w-full transition-all duration-200 pointer-events-none
-                opacity-0">
+        opacity-0">
             </div>
             <div class="sidebar-menus bg-white dark:bg-slate-800 py-2 px-4 h-[calc(100%-80px)] z-50" id="sidebar_menus">
                 <ul class="sidebar-menu">
@@ -281,7 +280,7 @@
                         <div class=" space-y-5">
                             <div class="card">
                                 <header class=" card-header noborder">
-                                    <h4 class="card-title">Tabla tarifa
+                                    <h4 class="card-title">Tabla clientes
                                     </h4>
                                 </header>
                                 <div class="card-body px-6 pb-6">
@@ -294,19 +293,23 @@
                                                         <tr>
 
                                                             <th class=" table-th ">
-                                                                Nombre de la tarifa
+                                                                Nombre del cliente
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Precio por día
+                                                                Dirección
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Precio por hora
+                                                                RFC
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Tipo de tarifa
+                                                                TELÉFONO
+                                                            </th>
+
+                                                            <th class=" table-th ">
+                                                                EMAIL
                                                             </th>
 
                                                             <th class=" table-th ">
@@ -318,10 +321,11 @@
                                                         class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
 
                                                         <tr>
-                                                            <td class="table-td">Tarifa sencilla</td>
-                                                            <td class="table-td">$895.36</td>
-                                                            <td class="table-td ">$37.30</td>
-                                                            <td class="table-td ">Día</td>
+                                                            <td class="table-td">Víctor Alejandro Medellín Meza</td>
+                                                            <td class="table-td">Camino Real Num.#123</td>
+                                                            <td class="table-td ">XYZA010101ABC</td>
+                                                            <td class="table-td ">612456884</td>
+                                                            <td class="table-td ">ejemplo@gmail.com</td>
                                                             <td class="table-td ">
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                                                                     <button data-bs-toggle="modal"
@@ -352,12 +356,12 @@
                                 <span class="flex items-center">
                                     <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
                                         icon="heroicons-outline:newspaper"></iconify-icon>
-                                    <span>Agregar tarifa</span>
+                                    <span>Agregar cliente</span>
                                 </span>
                             </button>
                         </div>
 
-                        <!-- Modal agregar tarifa -->
+                        <!-- Modal agregar client -->
                         <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
                             id="modalAgregar" tabindex="-1" aria-labelledby="blackModalLabel" aria-hidden="true">
                             <div class="modal-dialog relative w-auto pointer-events-none">
@@ -369,7 +373,7 @@
                                         <div
                                             class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
                                             <h3 class="text-base font-medium text-white dark:text-white capitalize">
-                                                Agregar tarifa
+                                                Agregar cliente
                                             </h3>
                                             <button type="button"
                                                 class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
@@ -395,33 +399,33 @@
                                                                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput" class="form-label">Nombre
-                                                                        de la tarifa</label>
+                                                                        del cliente</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Nombre tarifa">
+                                                                        placeholder="Ingrese nombre">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por día</label>
-                                                                    <input type="email" class="form-control"
-                                                                        placeholder="Ingrese precio">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Dirección</label>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Ingrese dirección">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por hora</label>
+                                                                    <label for="largeInput"
+                                                                        class="form-label">RFC</label>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Ingrese RFC">
+                                                                </div>
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Teléfono</label>
                                                                     <input type="tel" class="form-control"
-                                                                        placeholder="Ingrese precio">
+                                                                        placeholder="Ingrese teléfono">
                                                                 </div>
-                                                                <div class="input-area">
-                                                                    <label for="select" class="form-label">Tipo
-                                                                        tarifa</label>
-                                                                    <select id="select" class="form-control">
-                                                                        <option value="option1"
-                                                                            class="dark:bg-slate-700">Día
-                                                                        </option>
-                                                                        <option value="option2"
-                                                                            class="dark:bg-slate-700">Hora
-                                                                        </option>
-                                                                    </select>
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Email</label>
+                                                                    <input type="email" class="form-control"
+                                                                        placeholder="Ingrese email">
                                                                 </div>
                                                             </div>
                                                         </form>
@@ -440,7 +444,7 @@
                             </div>
                         </div>
 
-                        <!-- Modal editar tarifa -->
+                        <!-- Modal editar cliente -->
                         <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
                             id="modalEditar" tabindex="-1" aria-labelledby="blackModalLabel" aria-hidden="true">
                             <div class="modal-dialog relative w-auto pointer-events-none">
@@ -452,7 +456,7 @@
                                         <div
                                             class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
                                             <h3 class="text-base font-medium text-white dark:text-white capitalize">
-                                                Editar tarifa
+                                                Editar cliente
                                             </h3>
                                             <button type="button"
                                                 class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
@@ -478,33 +482,33 @@
                                                                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput" class="form-label">Nombre
-                                                                        de la tarifa</label>
+                                                                        del cliente</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="Sencilla">
+                                                                        value="Víctor Alejandro Medellín Meza">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por día</label>
-                                                                    <input type="text" class="form-control"
-                                                                        value="895.36">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Dirección</label>
+                                                                    <input type="email" class="form-control"
+                                                                        value="Camino Real Num.#123">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por hora</label>
+                                                                    <label for="largeInput"
+                                                                        class="form-label">RFC</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="37.70">
+                                                                        value="XYZA010101ABC">
                                                                 </div>
-                                                                <div class="input-area">
-                                                                    <label for="select" class="form-label">Tipo
-                                                                        tarifa</label>
-                                                                    <select id="select" class="form-control">
-                                                                        <option value="option1"
-                                                                            class="dark:bg-slate-700">Día
-                                                                        </option>
-                                                                        <option value="option2"
-                                                                            class="dark:bg-slate-700">Hora
-                                                                        </option>
-                                                                    </select>
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Teléfono</label>
+                                                                    <input type="tel" class="form-control"
+                                                                        value="612456884">
+                                                                </div>
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Email</label>
+                                                                    <input type="email" class="form-control"
+                                                                        value="ejemplo@gmail.com">
                                                                 </div>
                                                             </div>
                                                         </form>

@@ -27,7 +27,6 @@
     <!-- [if IE]> <p class="browserupgrade"> You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security. </p> <![endif] -->
     <main class="app-wrapper">
         <!-- BEGIN: Sidebar -->
-        <!-- BEGIN: Sidebar -->
         <div class="sidebar-wrapper group w-0 hidden xl:w-[248px] xl:block">
             <div id="bodyOverlay"
                 class="w-screen h-screen fixed top-0 bg-slate-900 bg-opacity-50 backdrop-blur-sm z-10 hidden"></div>
@@ -53,7 +52,7 @@
             </div>
             <div id="nav_shadow"
                 class="nav_shadow h-[60px] absolute top-[80px] nav-shadow z-[1] w-full transition-all duration-200 pointer-events-none
-                opacity-0">
+        opacity-0">
             </div>
             <div class="sidebar-menus bg-white dark:bg-slate-800 py-2 px-4 h-[calc(100%-80px)] z-50" id="sidebar_menus">
                 <ul class="sidebar-menu">
@@ -69,21 +68,12 @@
                         </a>
                     </li>
                     <li class="">
-                        <a href="javascript:void(0)" class="navItem">
+                        <a href="#" class="navItem">
                             <span class="flex items-center">
                                 <iconify-icon class=" nav-icon" icon="heroicons-outline:user-group"></iconify-icon>
                                 <span>Clientes</span>
                             </span>
-                            <iconify-icon class="icon-arrow" icon="heroicons-outline:chevron-right"></iconify-icon>
                         </a>
-                        <ul class="sidebar-submenu">
-                            <li>
-                                <a href="#">Consultar cliente</a>
-                            </li>
-                            <li>
-                                <a href="#">Agregar cliente</a>
-                            </li>
-                        </ul>
                     </li>
 
                     <li class="">
@@ -98,7 +88,6 @@
                             <li>
                                 <a href="#">Habitaciones</a>
                             </li>
-
                             <li>
                                 <a href="#">Tarifas</a>
                             </li>
@@ -114,6 +103,22 @@
                             </span>
                         </a>
                     </li>
+                    <li class="">
+                        <a href="#" class="navItem">
+                            <span class="flex items-center">
+                                <iconify-icon class=" nav-icon" icon="octicon:people-24"></iconify-icon>
+                                <span>Usuarios</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="#" class="navItem">
+                            <span class="flex items-center">
+                                <iconify-icon class=" nav-icon" icon="octicon:organization-24"></iconify-icon>
+                                <span>Hoteles</span>
+                            </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -126,7 +131,8 @@
                         <div class="flex justify-between items-center h-full">
                             <div class="flex items-center md:space-x-4 space-x-4 rtl:space-x-reverse vertical-box">
                                 <a href="index.html" class="mobile-logo xl:hidden inline-block">
-                                    <img src="{{ asset('/images/logo/logo-c.svg') }}" class="black_logo" alt="logo">
+                                    <img src="{{ asset('/images/logo/logo-c.svg') }}" class="black_logo"
+                                        alt="logo">
                                     <img src="{{ asset('/images/logo/logo-c-white.svg') }}" class="white_logo"
                                         alt="logo">
                                 </a>
@@ -369,8 +375,8 @@
                         </div>
 
                         <div class="mb-4">
-                            <button data-bs-toggle="modal"
-                            data-bs-target="#modalAgregar" class="btn inline-flex justify-center btn-primary">
+                            <button data-bs-toggle="modal" data-bs-target="#modalAgregar"
+                                class="btn inline-flex justify-center btn-primary">
                                 <span class="flex items-center">
                                     <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
                                         icon="heroicons-outline:newspaper"></iconify-icon>
@@ -380,7 +386,7 @@
                         </div>
 
 
-                        <!-- Modal editar tarifa -->
+                        <!-- Modal editar habitación -->
                         <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
                             id="modalEditar" tabindex="-1" aria-labelledby="blackModalLabel" aria-hidden="true">
                             <div class="modal-dialog relative w-auto pointer-events-none">
@@ -428,11 +434,20 @@
                                                                     <input type="text" class="form-control"
                                                                         value="Está Habitación Cuenta Con Una Sola Cama Matrimonial, Un Baño Y Vista Al Mar">
                                                                 </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Tipo de
-                                                                        habitación</label>
-                                                                    <input type="text" class="form-control"
-                                                                        value="Habitación Estándar">
+                                                                <div class="input-area">
+                                                                    <label for="select"
+                                                                        class="form-label">Tipo de habitación</label>
+                                                                    <select id="select" class="form-control">
+                                                                        <option value="option1"
+                                                                            class="dark:bg-slate-700">Habitación estandar
+                                                                        </option>
+                                                                        <option value="option2"
+                                                                            class="dark:bg-slate-700">Suite Ejecutiva
+                                                                        </option>
+                                                                        <option value="option3"
+                                                                            class="dark:bg-slate-700">Panorámica
+                                                                        </option>
+                                                                    </select>
                                                                 </div>
                                                                 <div class="input-area">
                                                                     <label for="select"
@@ -452,15 +467,15 @@
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Tarifa</label>
-                                                                    <input type="tel" class="form-control"
+                                                                    <input type="number" class="form-control"
                                                                         value="895.36">
                                                                 </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">Imagen</label>
-                                                                    <button
-                                                                        class="btn inline-flex justify-center btn-light">Seleccionar
-                                                                        archivo</button>
+                                                                <div class="input-area">
+                                                                    <label for="defaultInput"
+                                                                        class="form-label">Ingrese una imagen</label>
+                                                                    <input id="defaultInput" type="text"
+                                                                        class="form-control"
+                                                                        value="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbeach.palaceresorts.com%2Fes%2Fhabitaciones&psig=AOvVaw0HhArL-XwVaoMoi73SrHKW&ust=1700705416685000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPiIuM_D1oIDFQAAAAAdAAAAABAE">
                                                                 </div>
                                                             </div>
                                                         </form>
@@ -478,7 +493,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Modal editar tarifa -->
+                        <!-- Modal Agregar tarifa -->
                         <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
                             id="modalAgregar" tabindex="-1" aria-labelledby="blackModalLabel" aria-hidden="true">
                             <div class="modal-dialog relative w-auto pointer-events-none">
@@ -517,12 +532,14 @@
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput" class="form-label">Nombre
                                                                         de la habitación</label>
-                                                                    <input type="text" class="form-control">
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Ingrese nombre">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Descripción</label>
-                                                                    <input type="text" class="form-control">
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Ingrese descripción">
                                                                 </div>
                                                                 <div class="input-area">
                                                                     <label for="select" class="form-label">Tipo
@@ -555,7 +572,8 @@
                                                                     </select>
                                                                 </div>
                                                                 <div class="input-area">
-                                                                    <label for="select" class="form-label">Tarifa</label>
+                                                                    <label for="select"
+                                                                        class="form-label">Tarifa</label>
                                                                     <select id="select" class="form-control">
                                                                         <option value="option1"
                                                                             class="dark:bg-slate-700">Tarifa sencilla
@@ -568,12 +586,12 @@
                                                                         </option>
                                                                     </select>
                                                                 </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">Imagen de la habitación</label>
-                                                                    <button
-                                                                        class="btn inline-flex justify-center btn-light">Seleccionar
-                                                                        archivo</button>
+                                                                <div class="input-area">
+                                                                    <label for="defaultInput"
+                                                                        class="form-label">Ingrese una imagen</label>
+                                                                    <input id="defaultInput" type="url"
+                                                                        class="form-control"
+                                                                        placeholder="Ingrese URL">
                                                                 </div>
                                                             </div>
                                                         </form>

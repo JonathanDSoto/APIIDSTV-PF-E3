@@ -27,7 +27,6 @@
     <!-- [if IE]> <p class="browserupgrade"> You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security. </p> <![endif] -->
     <main class="app-wrapper">
         <!-- BEGIN: Sidebar -->
-        <!-- BEGIN: Sidebar -->
         <div class="sidebar-wrapper group w-0 hidden xl:w-[248px] xl:block">
             <div id="bodyOverlay"
                 class="w-screen h-screen fixed top-0 bg-slate-900 bg-opacity-50 backdrop-blur-sm z-10 hidden"></div>
@@ -36,7 +35,8 @@
                     <img src="{{ asset('/images/logo/logo-c.svg') }}" class="black_logo" alt="logo">
                     <img src="{{ asset('/images/logo/logo-c-white.svg') }}" class="white_logo" alt="logo">
                     <span
-                        class="ltr:ml-3 rtl:mr-3 text-xl font-Inter font-bold text-slate-900 dark:text-white">AlojaBaja Store</span>
+                        class="ltr:ml-3 rtl:mr-3 text-xl font-Inter font-bold text-slate-900 dark:text-white">AlojaBaja
+                        Store</span>
                 </a>
                 <!-- Sidebar Type Button -->
                 <div id="sidebar_type" class="cursor-pointer text-slate-900 dark:text-white text-lg">
@@ -52,70 +52,87 @@
             </div>
             <div id="nav_shadow"
                 class="nav_shadow h-[60px] absolute top-[80px] nav-shadow z-[1] w-full transition-all duration-200 pointer-events-none
-      opacity-0">
+        opacity-0">
             </div>
-            <div class="sidebar-menus bg-white dark:bg-slate-800 py-2 px-4 h-[calc(100%-80px)] z-50" id="sidebar_menus">
-                <ul class="sidebar-menu">
-                    <li class="sidebar-menu-title"></li>
-                    <!-- Apps Area -->
-                    <li class="sidebar-menu-title">PUNTO DE VENTA</li>
-                    <li>
-                        <a href="#" class="navItem">
-                            <span class="flex items-center">
-                                <iconify-icon class="nav-icon" icon="heroicons-outline:computer-desktop"></iconify-icon>
-                                <span>Venta</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="javascript:void(0)" class="navItem">
-                            <span class="flex items-center">
-                                <iconify-icon class=" nav-icon" icon="heroicons-outline:user-group"></iconify-icon>
-                                <span>Clientes</span>
-                            </span>
-                            <iconify-icon class="icon-arrow" icon="heroicons-outline:chevron-right"></iconify-icon>
-                        </a>
-                        <ul class="sidebar-submenu">
-                            <li>
-                                <a href="#">Consultar cliente</a>
-                            </li>
-                            <li>
-                                <a href="#">Agregar cliente</a>
-                            </li>
-                        </ul>
-                    </li>
 
-                    <li class="">
-                        <a href="javascript:void(0)" class="navItem">
-                            <span class="flex items-center">
-                                <iconify-icon class=" nav-icon" icon="heroicons-outline:key"></iconify-icon>
-                                <span>Habitaciones</span>
-                            </span>
-                            <iconify-icon class="icon-arrow" icon="heroicons-outline:chevron-right"></iconify-icon>
-                        </a>
-                        <ul class="sidebar-submenu">
-                            <li>
-                                <a href="#">Agregar habitación</a>
-                            </li>
-                            <li>
-                                <a href="#">Consultar habitación</a>
-                            </li>
-                            <li>
-                                <a href="#">Tarifas</a>
-                            </li>
-                        </ul>
-                    </li>
+        <div class="sidebar-menus bg-white dark:bg-slate-800 py-2 px-4 h-[calc(100%-80px)] z-50" id="sidebar_menus">
+            <ul class="sidebar-menu">
+                <li class="sidebar-menu-title"></li>
+                <!-- Apps Area -->
+                <li class="sidebar-menu-title">PUNTO DE VENTA</li>
+                <li>
+                    <a href="#" class="navItem">
+                        <span class="flex items-center">
+                            <iconify-icon class="nav-icon" icon="heroicons-outline:computer-desktop"></iconify-icon>
+                            <span>Venta</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="javascript:void(0)" class="navItem">
+                        <span class="flex items-center">
+                            <iconify-icon class=" nav-icon" icon="heroicons-outline:user-group"></iconify-icon>
+                            <span>Clientes</span>
+                        </span>
+                        <iconify-icon class="icon-arrow" icon="heroicons-outline:chevron-right"></iconify-icon>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a href="#">Consultar cliente</a>
+                        </li>
+                        <li>
+                            <a href="#">Agregar cliente</a>
+                        </li>
+                    </ul>
+                </li>
 
-                    <li class="">
-                        <a href="#" class="navItem">
-                            <span class="flex items-center">
-                                <iconify-icon class=" nav-icon" icon="heroicons-outline:calendar"></iconify-icon>
-                                <span>Reservaciones</span>
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                <li class="">
+                    <a href="javascript:void(0)" class="navItem">
+                        <span class="flex items-center">
+                            <iconify-icon class=" nav-icon" icon="heroicons-outline:key"></iconify-icon>
+                            <span>Habitaciones</span>
+                        </span>
+                        <iconify-icon class="icon-arrow" icon="heroicons-outline:chevron-right"></iconify-icon>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a href="#">Agregar habitación</a>
+                        </li>
+                        <li>
+                            <a href="#">Consultar habitación</a>
+                        </li>
+                        <li>
+                            <a href="#">Tarifas</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="#" class="navItem">
+                        <span class="flex items-center">
+                            <iconify-icon class=" nav-icon" icon="heroicons-outline:calendar"></iconify-icon>
+                            <span>Reservaciones</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="#" class="navItem">
+                        <span class="flex items-center">
+                            <iconify-icon class=" nav-icon" icon="octicon:people-24"></iconify-icon>
+                            <span>Usuarios</span>
+                        </span>
+                    </a>
+                </li>
+                <li class="">
+                    <a href="#" class="navItem">
+                        <span class="flex items-center">
+                            <iconify-icon class=" nav-icon" icon="octicon:organization-24"></iconify-icon>
+                            <span>Hoteles</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
         </div>
 
         <div class="flex flex-col justify-between min-h-screen">
@@ -326,36 +343,113 @@
                                 <div class="max-w-[160px] mx-auto mt-6">
                                     <div class="widget-title">Habitación 1</div>
                                 </div>
-                                <ul class="sidebar-menu">
-                                    <li class="bg-white">
-                                        <a href="javascript:void(0)" class="navItem">
-                                            <span class="flex items-center">
-                                                <span>Estado</span>
-                                            </span>
-                                            <iconify-icon class="icon-arrow"
-                                                icon="heroicons-outline:chevron-right"></iconify-icon>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li>
-                                                <a href="#">Mantenimiento</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Libre</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Limpieza</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                                <div class="input-area">
+                                    <select id="select" class="form-control">
+                                        <option value="option1" class="dark:bg-slate-700">
+                                            Libre
+                                        </option>
+                                        <option value="option2" class="dark:bg-slate-700">
+                                            Mantenimiento
+                                        </option>
+                                        <option value="option2" class="dark:bg-slate-700">
+                                            Limpieza
+                                        </option>
+                                    </select>
+                                </div>
                                 <div class="mt-6">
                                     <button class="btn inline-flex justify-center btn-warning">Cambiar</button>
-                                    <button class="btn inline-flex justify-center btn-success">Asignar</button>
+                                    <button href="#"
+                                        class="btn inline-flex justify-center btn-success">Asignar</button>
                                 </div>
 
                             </div>
                         </div>
                     </div>
+
+                    <!-- Modal asignar habitación -->
+                    <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+                        id="modalAsignar" tabindex="-1" aria-labelledby="blackModalLabel" aria-hidden="true">
+                        <div class="modal-dialog relative w-auto pointer-events-none">
+                            <div
+                                class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding
+                                    rounded-md outline-none text-current">
+                                <div class="relative bg-white rounded-lg shadow dark:bg-slate-700">
+                                    <!-- Modal header -->
+                                    <div
+                                        class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
+                                        <h3 class="text-base font-medium text-white dark:text-white capitalize">
+                                            Asignar habitación
+                                        </h3>
+                                        <button type="button"
+                                            class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
+                                                dark:hover:bg-slate-600 dark:hover:text-white"
+                                            data-bs-dismiss="modal">
+                                            <svg aria-hidden="true" class="w-5 h-5" fill="#ffffff"
+                                                viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd"
+                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10
+                                                        11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd"></path>
+                                            </svg>
+                                            <span class="sr-only">Close modal</span>
+                                        </button>
+                                    </div>
+                                    <!-- Modal body -->
+                                    <div class="p-6 space-y-4">
+                                        <div class="card xl:col-span-2">
+                                            <div class="card-body flex flex-col p-6">
+                                                <div class="card-text h-full ">
+                                                    <form class="space-y-4">
+                                                        <div
+                                                            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
+                                                            <div class="input-area relative">
+                                                                <label for="largeInput" class="form-label">Nombre
+                                                                    del cliente</label>
+                                                                <select id="select" class="form-control">
+                                                                    <option value="option1" class="dark:bg-slate-700">
+                                                                        Josua Jacinta Almaguar
+                                                                    </option>
+                                                                    <option value="option2" class="dark:bg-slate-700">
+                                                                        Luisa Meza Nuñaz
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="input-area relative">
+                                                                <label for="largeInput"
+                                                                    class="form-label">Estadia</label>
+                                                                <input type="number" class="form-control"
+                                                                    placeholder="Ingrese la estadia">
+                                                            </div>
+                                                            <div class="input-area relative">
+                                                                <label for="largeInput"
+                                                                    class="form-label">Cupón</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="XYZA010101ABC">
+                                                            </div>
+                                                            <div></div>
+                                                            <div class="input-area">
+                                                                <label class="form-label">PRECIO POR DÍA</label>
+                                                            </div>
+                                                            <div class="input-area">
+                                                                <label class="form-label">TOTAL</label>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modal footer -->
+                                    <div
+                                        class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                                        <button data-bs-dismiss="modal"
+                                            class="btn inline-flex justify-center text-white bg-black-500">Asignar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <!-- END CONTENT -->

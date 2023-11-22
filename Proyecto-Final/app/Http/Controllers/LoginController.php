@@ -37,5 +37,21 @@ class LoginController extends Controller
     {
         return view('rooms');
     }
+    public function clients()
+    {
+        return view('clients');
+    }
+    public function reservations()
+    {
+        return view('reservations');
+    }
+    public function users()
+    {
+        return view('users');
+    }
+    public function hotels()
+    {
+        return view('hotels');
+    }
 }
 

@@ -26,7 +26,6 @@
 <body class=" font-inter dashcode-app" id="body_class">
     <!-- [if IE]> <p class="browserupgrade"> You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security. </p> <![endif] -->
     <main class="app-wrapper">
-
         <!-- BEGIN: Sidebar -->
         <div class="sidebar-wrapper group w-0 hidden xl:w-[248px] xl:block">
             <div id="bodyOverlay"
@@ -53,7 +52,7 @@
             </div>
             <div id="nav_shadow"
                 class="nav_shadow h-[60px] absolute top-[80px] nav-shadow z-[1] w-full transition-all duration-200 pointer-events-none
-                opacity-0">
+        opacity-0">
             </div>
             <div class="sidebar-menus bg-white dark:bg-slate-800 py-2 px-4 h-[calc(100%-80px)] z-50" id="sidebar_menus">
                 <ul class="sidebar-menu">
@@ -277,11 +276,11 @@
                     id="content_wrapper">
                     <div class="page-content">
 
-                        <!--TABLA TARIFAS POR HABITACIÓN -->
+                        <!--TABLA HOTELES -->
                         <div class=" space-y-5">
                             <div class="card">
                                 <header class=" card-header noborder">
-                                    <h4 class="card-title">Tabla tarifa
+                                    <h4 class="card-title">Tabla hoteles
                                     </h4>
                                 </header>
                                 <div class="card-body px-6 pb-6">
@@ -294,21 +293,20 @@
                                                         <tr>
 
                                                             <th class=" table-th ">
-                                                                Nombre de la tarifa
+                                                                Imagen
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Precio por día
+                                                                Nombre del hotel
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Precio por hora
+                                                                Dirección
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Tipo de tarifa
+                                                                Descripción
                                                             </th>
-
                                                             <th class=" table-th ">
                                                                 Acción
                                                             </th>
@@ -318,10 +316,17 @@
                                                         class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
 
                                                         <tr>
-                                                            <td class="table-td">Tarifa sencilla</td>
-                                                            <td class="table-td">$895.36</td>
-                                                            <td class="table-td ">$37.30</td>
-                                                            <td class="table-td ">Día</td>
+                                                            <td class="table-td">
+                                                                <span class="flex">
+                                                                    <span class="custom-image-container">
+                                                                        <img src="{{ asset('/images/all-img/hotel.jpg') }}"
+                                                                            alt="1" class="custom-image">
+                                                                    </span>
+                                                                </span>
+                                                            </td>
+                                                            <td class="table-td">Bahia Dorada</td>
+                                                            <td class="table-td ">Blvd. Forjadores, Diana Laura, 23084 La Paz, B.C.S.</td>
+                                                            <td class="table-td ">Hotel con picisina grande, mediana y chica, cuanta con 215 habitaciones </td>
                                                             <td class="table-td ">
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                                                                     <button data-bs-toggle="modal"
@@ -352,7 +357,7 @@
                                 <span class="flex items-center">
                                     <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
                                         icon="heroicons-outline:newspaper"></iconify-icon>
-                                    <span>Agregar tarifa</span>
+                                    <span>Agregar hotel</span>
                                 </span>
                             </button>
                         </div>
@@ -369,7 +374,7 @@
                                         <div
                                             class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
                                             <h3 class="text-base font-medium text-white dark:text-white capitalize">
-                                                Agregar tarifa
+                                                Agregar usuario
                                             </h3>
                                             <button type="button"
                                                 class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
@@ -394,34 +399,28 @@
                                                             <div
                                                                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Nombre
-                                                                        de la tarifa</label>
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Nombre del hotel</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Nombre tarifa">
+                                                                        placeholder="Nombre hotel">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por día</label>
-                                                                    <input type="email" class="form-control"
-                                                                        placeholder="Ingrese precio">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Dirección</label>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Agrege dirección">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por hora</label>
-                                                                    <input type="tel" class="form-control"
-                                                                        placeholder="Ingrese precio">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Descripción</label>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Ingrese descripción">
                                                                 </div>
-                                                                <div class="input-area">
-                                                                    <label for="select" class="form-label">Tipo
-                                                                        tarifa</label>
-                                                                    <select id="select" class="form-control">
-                                                                        <option value="option1"
-                                                                            class="dark:bg-slate-700">Día
-                                                                        </option>
-                                                                        <option value="option2"
-                                                                            class="dark:bg-slate-700">Hora
-                                                                        </option>
-                                                                    </select>
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Imagen del hotel</label>
+                                                                    <input type="url" class="form-control"
+                                                                        placeholder="Ingrese URL de la imagen">
                                                                 </div>
                                                             </div>
                                                         </form>
@@ -440,7 +439,7 @@
                             </div>
                         </div>
 
-                        <!-- Modal editar tarifa -->
+                        <!-- Modal editar hotel -->
                         <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
                             id="modalEditar" tabindex="-1" aria-labelledby="blackModalLabel" aria-hidden="true">
                             <div class="modal-dialog relative w-auto pointer-events-none">
@@ -452,7 +451,7 @@
                                         <div
                                             class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
                                             <h3 class="text-base font-medium text-white dark:text-white capitalize">
-                                                Editar tarifa
+                                                Editar hotel
                                             </h3>
                                             <button type="button"
                                                 class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
@@ -477,34 +476,28 @@
                                                             <div
                                                                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Nombre
-                                                                        de la tarifa</label>
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Nombre</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="Sencilla">
+                                                                        value="Bahia Dorada">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por día</label>
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Dirección</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="895.36">
+                                                                        value="Blvd. Forjadores, Diana Laura, 23084 La Paz, B.C.S.">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por hora</label>
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Descripción</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="37.70">
+                                                                        value="Hotel con picisina grande, mediana y chica, cuanta con 215 habitaciones">
                                                                 </div>
-                                                                <div class="input-area">
-                                                                    <label for="select" class="form-label">Tipo
-                                                                        tarifa</label>
-                                                                    <select id="select" class="form-control">
-                                                                        <option value="option1"
-                                                                            class="dark:bg-slate-700">Día
-                                                                        </option>
-                                                                        <option value="option2"
-                                                                            class="dark:bg-slate-700">Hora
-                                                                        </option>
-                                                                    </select>
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Imagen</label>
+                                                                    <input type="url" class="form-control"
+                                                                        value="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbahia-dorada.hoteleslapazciudad.com%2Fes%2F&psig=AOvVaw2nPovm0MEmh_QVNiToH30t&ust=1700715729242000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIiumIXq1oIDFQAAAAAdAAAAABAn">
                                                                 </div>
                                                             </div>
                                                         </form>

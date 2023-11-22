@@ -9911,7 +9911,6 @@ ul.custom-list ul li{
   font-size: 0.875rem;
   line-height: 1.25rem;
   font-weight: 400;
-  text-transform: capitalize;
   --tw-text-opacity: 1;
   color: rgb(71 85 105 / var(--tw-text-opacity));
 }

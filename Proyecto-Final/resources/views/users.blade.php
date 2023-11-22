@@ -26,7 +26,6 @@
 <body class=" font-inter dashcode-app" id="body_class">
     <!-- [if IE]> <p class="browserupgrade"> You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security. </p> <![endif] -->
     <main class="app-wrapper">
-
         <!-- BEGIN: Sidebar -->
         <div class="sidebar-wrapper group w-0 hidden xl:w-[248px] xl:block">
             <div id="bodyOverlay"
@@ -53,7 +52,7 @@
             </div>
             <div id="nav_shadow"
                 class="nav_shadow h-[60px] absolute top-[80px] nav-shadow z-[1] w-full transition-all duration-200 pointer-events-none
-                opacity-0">
+        opacity-0">
             </div>
             <div class="sidebar-menus bg-white dark:bg-slate-800 py-2 px-4 h-[calc(100%-80px)] z-50" id="sidebar_menus">
                 <ul class="sidebar-menu">
@@ -277,11 +276,11 @@
                     id="content_wrapper">
                     <div class="page-content">
 
-                        <!--TABLA TARIFAS POR HABITACIÓN -->
+                        <!--TABLA USUARIOS -->
                         <div class=" space-y-5">
                             <div class="card">
                                 <header class=" card-header noborder">
-                                    <h4 class="card-title">Tabla tarifa
+                                    <h4 class="card-title">Tabla usuarios
                                     </h4>
                                 </header>
                                 <div class="card-body px-6 pb-6">
@@ -294,19 +293,27 @@
                                                         <tr>
 
                                                             <th class=" table-th ">
-                                                                Nombre de la tarifa
+                                                                Nombre del usuario
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Precio por día
+                                                                Apellido del usuario
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Precio por hora
+                                                                Email
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Tipo de tarifa
+                                                                Contraseña
+                                                            </th>
+
+                                                            <th class=" table-th ">
+                                                                Rol
+                                                            </th>
+
+                                                            <th class=" table-th ">
+                                                                Curp
                                                             </th>
 
                                                             <th class=" table-th ">
@@ -318,10 +325,13 @@
                                                         class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
 
                                                         <tr>
-                                                            <td class="table-td">Tarifa sencilla</td>
-                                                            <td class="table-td">$895.36</td>
-                                                            <td class="table-td ">$37.30</td>
-                                                            <td class="table-td ">Día</td>
+                                                            <td class="table-td">Víctor Alejandro</td>
+                                                            <td class="table-td">Medellín Meza</td>
+                                                            <td class="table-td ">medellin@gmail.com</td>
+                                                            <td class="table-td ">************</td>
+                                                            <td class="table-td ">admin</td>
+                                                            <td class="table-td ">ABCD010101HDFXYZ00
+                                                            </td>
                                                             <td class="table-td ">
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                                                                     <button data-bs-toggle="modal"
@@ -352,7 +362,7 @@
                                 <span class="flex items-center">
                                     <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
                                         icon="heroicons-outline:newspaper"></iconify-icon>
-                                    <span>Agregar tarifa</span>
+                                    <span>Agregar usuario</span>
                                 </span>
                             </button>
                         </div>
@@ -369,7 +379,7 @@
                                         <div
                                             class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
                                             <h3 class="text-base font-medium text-white dark:text-white capitalize">
-                                                Agregar tarifa
+                                                Agregar usuario
                                             </h3>
                                             <button type="button"
                                                 class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
@@ -394,34 +404,48 @@
                                                             <div
                                                                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Nombre
-                                                                        de la tarifa</label>
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Nombre</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Nombre tarifa">
+                                                                        placeholder="Nombre usuario">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por día</label>
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Apellido</label>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Apellido precio">
+                                                                </div>
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Email</label>
                                                                     <input type="email" class="form-control"
                                                                         placeholder="Ingrese precio">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por hora</label>
-                                                                    <input type="tel" class="form-control"
-                                                                        placeholder="Ingrese precio">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Password</label>
+                                                                    <input type="password" class="form-control"
+                                                                        placeholder="Ingrese contraseña">
                                                                 </div>
-                                                                <div class="input-area">
-                                                                    <label for="select" class="form-label">Tipo
-                                                                        tarifa</label>
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Rol</label>
                                                                     <select id="select" class="form-control">
                                                                         <option value="option1"
-                                                                            class="dark:bg-slate-700">Día
+                                                                            class="dark:bg-slate-700">
+                                                                            User
                                                                         </option>
                                                                         <option value="option2"
-                                                                            class="dark:bg-slate-700">Hora
+                                                                            class="dark:bg-slate-700">
+                                                                            Root
                                                                         </option>
                                                                     </select>
+                                                                </div>
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">CURP</label>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Ingrese curp">
                                                                 </div>
                                                             </div>
                                                         </form>
@@ -440,7 +464,7 @@
                             </div>
                         </div>
 
-                        <!-- Modal editar tarifa -->
+                        <!-- Modal editar usuario -->
                         <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
                             id="modalEditar" tabindex="-1" aria-labelledby="blackModalLabel" aria-hidden="true">
                             <div class="modal-dialog relative w-auto pointer-events-none">
@@ -452,7 +476,7 @@
                                         <div
                                             class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
                                             <h3 class="text-base font-medium text-white dark:text-white capitalize">
-                                                Editar tarifa
+                                                Editar usuario
                                             </h3>
                                             <button type="button"
                                                 class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
@@ -477,34 +501,40 @@
                                                             <div
                                                                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Nombre
-                                                                        de la tarifa</label>
+                                                                    <label for="largeInput" class="form-label">Nombre</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="Sencilla">
+                                                                        value="Víctor Alejandro">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por día</label>
+                                                                    <label for="largeInput" class="form-label">Apellido</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="895.36">
+                                                                        value="Medellín Meza">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por hora</label>
-                                                                    <input type="text" class="form-control"
-                                                                        value="37.70">
+                                                                    <label for="largeInput" class="form-label">Email</label>
+                                                                    <input type="email" class="form-control"
+                                                                        value="medellin@gmail.com">
+                                                                </div>
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput" class="form-label">Contraseña</label>
+                                                                    <input type="password" class="form-control"
+                                                                        value="123123123">
                                                                 </div>
                                                                 <div class="input-area">
-                                                                    <label for="select" class="form-label">Tipo
-                                                                        tarifa</label>
+                                                                    <label for="select" class="form-label">Rol</label>
                                                                     <select id="select" class="form-control">
                                                                         <option value="option1"
-                                                                            class="dark:bg-slate-700">Día
+                                                                            class="dark:bg-slate-700">User
                                                                         </option>
                                                                         <option value="option2"
-                                                                            class="dark:bg-slate-700">Hora
+                                                                            class="dark:bg-slate-700">Root
                                                                         </option>
                                                                     </select>
+                                                                </div>
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput" class="form-label">CURP</label>
+                                                                    <input type="text" class="form-control"
+                                                                        value="ABCD010101HDFXYZ00">
                                                                 </div>
                                                             </div>
                                                         </form>
