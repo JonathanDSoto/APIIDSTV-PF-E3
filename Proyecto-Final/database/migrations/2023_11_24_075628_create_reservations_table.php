@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('client');
 
             $table->unsignedBigInteger('room_id')->nullable(); // Clave foránea a la tabla 'rooms'
-
             
             $table->foreign('room_id')->references('idrooms')->on('rooms');
 

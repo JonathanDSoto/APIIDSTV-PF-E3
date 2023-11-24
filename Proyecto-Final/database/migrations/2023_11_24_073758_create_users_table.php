@@ -21,9 +21,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('role');
             $table->string('curp');
-            $table->unsignedBigInteger('hotels'); // Clave foránea a la tabla 'hotels'
+            $table->unsignedBigInteger('hotels'); 
 
-            // Definiendo la relación con la tabla 'hotels'
             $table->foreign('hotels')->references('idhotels')->on('hotels');
 
 

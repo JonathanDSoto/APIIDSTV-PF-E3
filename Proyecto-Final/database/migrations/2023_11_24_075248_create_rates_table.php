@@ -18,11 +18,10 @@ return new class extends Migration
             $table->string('type_room');
             $table->date('check_in');
             $table->date('check_out');
-            $table->decimal('price_day', 8, 2); // Decimal para almacenar precios
+            $table->decimal('price_day', 8, 2); 
 
-            $table->unsignedBigInteger('room_id'); // Clave foránea a la tabla 'rooms'
-
-            // Definiendo la relación con la tabla 'rooms'
+            $table->unsignedBigInteger('room_id'); 
+            
             $table->foreign('room_id')->references('idrooms')->on('rooms');
 
             $table->timestamps();

@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -20,9 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone');
 
-            $table->unsignedBigInteger('reservation_id'); // Clave foránea a la tabla 'reservations'
+            $table->unsignedBigInteger('reservation_id');
 
-            // Definiendo la relación con la tabla 'reservations'
             $table->foreign('reservation_id')->references('idreservation')->on('reservations');
 
             $table->timestamps();

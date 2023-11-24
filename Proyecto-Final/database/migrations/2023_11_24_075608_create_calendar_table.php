@@ -17,11 +17,9 @@ return new class extends Migration
             $table->id('idcalendar');
             $table->date('date');
             $table->integer('available_room');
-            $table->decimal('rates', 8, 2); // Puedes almacenar aquí el precio promedio de las tarifas para ese día
+            $table->decimal('rates', 8, 2); 
+            $table->unsignedBigInteger('hotel_id'); 
 
-            $table->unsignedBigInteger('hotel_id'); // Clave foránea a la tabla 'hotels'
-
-            // Definiendo la relación con la tabla 'hotels'
             $table->foreign('hotel_id')->references('idhotels')->on('hotels');
 
             $table->timestamps();

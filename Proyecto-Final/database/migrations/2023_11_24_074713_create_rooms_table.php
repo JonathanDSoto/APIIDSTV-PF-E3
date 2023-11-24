@@ -18,9 +18,8 @@ return new class extends Migration
             $table->string('type_room');
             $table->integer('available_room_number');
             $table->string('state');
-            $table->unsignedBigInteger('hotels'); // Clave foránea a la tabla 'hotels'
-
-            // Definiendo la relación con la tabla 'hotels'
+            $table->unsignedBigInteger('hotels'); 
+           
             $table->foreign('hotels')->references('idhotels')->on('hotels');
 
             $table->timestamps();

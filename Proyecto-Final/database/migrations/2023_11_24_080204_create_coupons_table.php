@@ -19,9 +19,8 @@ return new class extends Migration
             $table->decimal('discount', 8, 2);
             $table->date('expiration_date');
 
-            $table->unsignedBigInteger('reservation_id'); // Clave foránea a la tabla 'reservations'
+            $table->unsignedBigInteger('reservation_id'); 
 
-            // Definiendo la relación con la tabla 'reservations'
             $table->foreign('reservation_id')->references('idreservation')->on('reservations');
 
             $table->timestamps();
