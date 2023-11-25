@@ -8,6 +8,17 @@
                     id="content_wrapper">
                     <div class="page-content">
 
+                        <div class="mb-4">
+                            <button data-bs-toggle="modal" data-bs-target="#modalAgregar"
+                                class="btn inline-flex justify-center btn-primary">
+                                <span class="flex items-center">
+                                    <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
+                                        icon="heroicons-outline:newspaper"></iconify-icon>
+                                    <span>Agregar usuario</span>
+                                </span>
+                            </button>
+                        </div>
+
                         <!--TABLA USUARIOS -->
                         <div class=" space-y-5">
                             <div class="card">
@@ -86,17 +97,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <button data-bs-toggle="modal" data-bs-target="#modalAgregar"
-                                class="btn inline-flex justify-center btn-primary">
-                                <span class="flex items-center">
-                                    <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
-                                        icon="heroicons-outline:newspaper"></iconify-icon>
-                                    <span>Agregar usuario</span>
-                                </span>
-                            </button>
                         </div>
 
                         <!-- Modal agregar tarifa -->

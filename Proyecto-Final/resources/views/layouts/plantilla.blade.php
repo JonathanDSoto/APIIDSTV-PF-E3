@@ -33,7 +33,7 @@
           <div id="bodyOverlay"
               class="w-screen h-screen fixed top-0 bg-slate-900 bg-opacity-50 backdrop-blur-sm z-10 hidden"></div>
           <div class="logo-segment">
-              <a class="flex items-center" href="index.html">
+              <a class="flex items-center" href="{{ route('index') }}">
                   <img src="{{ asset('/images/logo/logo-c.svg') }}" class="black_logo" alt="logo">
                   <img src="{{ asset('/images/logo/logo-c-white.svg') }}" class="white_logo" alt="logo">
                   <span
@@ -62,7 +62,7 @@
                   <!-- Apps Area -->
                   <li class="sidebar-menu-title">PUNTO DE VENTA</li>
                   <li>
-                      <a href="#" class="navItem">
+                      <a href="{{ route('index') }}" class="navItem">
                           <span class="flex items-center">
                               <iconify-icon class="nav-icon" icon="heroicons-outline:computer-desktop"></iconify-icon>
                               <span>Venta</span>
@@ -70,7 +70,7 @@
                       </a>
                   </li>
                   <li class="">
-                      <a href="#" class="navItem">
+                      <a href="{{ route('clients') }}" class="navItem">
                           <span class="flex items-center">
                               <iconify-icon class=" nav-icon" icon="heroicons-outline:user-group"></iconify-icon>
                               <span>Clientes</span>
@@ -88,17 +88,17 @@
                       </a>
                       <ul class="sidebar-submenu">
                           <li>
-                              <a href="#">Habitaciones</a>
+                              <a href="{{ route('rooms') }}">Habitaciones</a>
                           </li>
                           <li>
-                              <a href="#">Tarifas</a>
+                              <a href="{{ route('rates') }}">Tarifas</a>
                           </li>
                       </ul>
                   </li>
 
 
                   <li class="">
-                      <a href="#" class="navItem">
+                      <a href="{{ route('reservations') }}" class="navItem">
                           <span class="flex items-center">
                               <iconify-icon class=" nav-icon" icon="heroicons-outline:calendar"></iconify-icon>
                               <span>Reservaciones</span>
@@ -106,7 +106,7 @@
                       </a>
                   </li>
                   <li class="">
-                      <a href="#" class="navItem">
+                      <a href="{{ route('users') }}" class="navItem">
                           <span class="flex items-center">
                               <iconify-icon class=" nav-icon" icon="octicon:people-24"></iconify-icon>
                               <span>Usuarios</span>
@@ -114,7 +114,7 @@
                       </a>
                   </li>
                   <li class="">
-                      <a href="#" class="navItem">
+                      <a href="{{ route('hotels') }}" class="navItem">
                           <span class="flex items-center">
                               <iconify-icon class=" nav-icon" icon="octicon:organization-24"></iconify-icon>
                               <span>Hoteles</span>
@@ -192,11 +192,6 @@
                                       class="text-slate-800 dark:text-white focus:ring-0 focus:outline-none font-medium rounded-lg text-sm text-center
                                       inline-flex items-center"
                                       type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                      <div
-                                          class="lg:h-8 lg:w-8 h-7 w-7 rounded-full flex-1 ltr:mr-[10px] rtl:ml-[10px]">
-                                          <img src="{{ asset('/images/all-img/user.png') }}" alt="user"
-                                              class="block w-full h-full object-cover rounded-full">
-                                      </div>
                                       <span
                                           class="flex-none text-slate-600 dark:text-white text-sm font-normal items-center lg:flex hidden overflow-hidden text-ellipsis whitespace-nowrap">Víctor
                                           Medellín</span>
@@ -212,26 +207,6 @@
                                       class="dropdown-menu z-10 hidden bg-white divide-y divide-slate-100 shadow w-44 dark:bg-slate-800 border dark:border-slate-700 !top-[23px] rounded-md
                                       overflow-hidden">
                                       <ul class="py-1 text-sm text-slate-800 dark:text-slate-200">
-                                          <li>
-                                              <a href="#"
-                                                  class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
-                                                  dark:text-white font-normal">
-                                                  <iconify-icon icon="heroicons-outline:chat"
-                                                      class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1"></iconify-icon>
-                                                  <span class="font-Inter">Perfil</span>
-                                              </a>
-                                          </li>
-
-                                          <li>
-                                              <a href="#"
-                                                  class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
-                                                  dark:text-white font-normal">
-                                                  <iconify-icon icon="heroicons-outline:cog"
-                                                      class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1"></iconify-icon>
-                                                  <span class="font-Inter">Configuración</span>
-                                              </a>
-                                          </li>
-
                                           <li>
                                               <a href="#"
                                                   class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
@@ -284,6 +259,7 @@
           <script src="{{ asset('/js/jquery-3.6.0.min.js') }}"></script>
           <script src="{{ asset('/js/rt-plugins.js') }}"></script>
           <script src="{{ asset('/js/app.js') }}"></script>
+          <script src="{{ asset('/js/alojaBaja.js') }}"></script>
 </body>
       
 </html>

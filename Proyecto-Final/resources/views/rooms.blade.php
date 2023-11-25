@@ -7,6 +7,17 @@
                 <div class="content-wrapper transition-all duration-150 xl:ltr:ml-[248px] xl:rtl:mr-[248px]"
                     id="content_wrapper">
                     <div class="page-content">
+                    
+                        <div class="mb-4">
+                            <button data-bs-toggle="modal" data-bs-target="#modalAgregar"
+                                class="btn inline-flex justify-center btn-primary">
+                                <span class="flex items-center">
+                                    <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
+                                        icon="heroicons-outline:newspaper"></iconify-icon>
+                                    <span>Agregar habitación</span>
+                                </span>
+                            </button>
+                        </div>
 
                         <!--TABLA TARIFAS POR HABITACIÓN -->
                         <div class="card">
@@ -106,18 +117,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="mb-4">
-                            <button data-bs-toggle="modal" data-bs-target="#modalAgregar"
-                                class="btn inline-flex justify-center btn-primary">
-                                <span class="flex items-center">
-                                    <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
-                                        icon="heroicons-outline:newspaper"></iconify-icon>
-                                    <span>Agregar habitación</span>
-                                </span>
-                            </button>
-                        </div>
-
 
                         <!-- Modal editar habitación -->
                         <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"

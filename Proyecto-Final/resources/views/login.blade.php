@@ -35,18 +35,31 @@
                             <h4 class="font-medium">Iniciar sesión</h4>
                         </div>
                         <!-- BEGIN: Login Form -->
-                        <form class="space-y-4" action="{{ route('login') }}" method="POST">
+                        <form class="space-y-4" action="{{ route('index') }}" method="post">
+                            @csrf
+
                             <div class="fromGroup">
                                 <label class="block capitalize form-label">Correo electronico</label>
                                 <div class="relative ">
                                     <input type="email" name="email" class="form-control py-2"
-                                        placeholder="Add placeholder" value="dashcode@gmail.com">
+                                    placeholder="Correo electronico"  value="{{old('email')}}">
+                                    @error('email')
+                                        <div>
+                                            {{$message}}
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="fromGroup">
                                 <label class="block capitalize form-label">Contraseña</label>
-                                <div class="relative "><input type="password" name="password"
-                                        class="  form-control py-2" placeholder="Add placeholder" value="dashcode">
+                                <div class="relative ">
+                                    <input type="password" name="password"
+                                        class="  form-control py-2" placeholder="Contraseña">
+                                    @error('password')
+                                        <div>
+                                            {{$message}}
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                             <button class="btn btn-dark block w-full text-center" type="submit">Iniciar sesión</button>

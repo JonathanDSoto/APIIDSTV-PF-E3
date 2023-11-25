@@ -35,7 +35,7 @@
                             <div class="flex min-h-full justify-center text-center p-6 items-start ">
                                 <div
                                     class="w-full transform overflow-hidden rounded-md bg-white dark:bg-slate-800 text-left align-middle shadow-xl
-                                    transition-alll max-w-xl opacity-100 scale-100">
+                                    transition-alll max-w-xl opacity-100 scale-100" id="modal">
                                     <div
                                         class="relative overflow-hidden py-4 px-5 text-white flex justify-between bg-slate-900 dark:bg-slate-800 dark:border-b
                                         dark:border-slate-700">

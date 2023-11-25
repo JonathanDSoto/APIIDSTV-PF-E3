@@ -9,6 +9,17 @@
                     id="content_wrapper">
                     <div class="page-content">
 
+                        <div class="mb-4">
+                            <button data-bs-toggle="modal" data-bs-target="#modalAgregar"
+                                class="btn inline-flex justify-center btn-primary">
+                                <span class="flex items-center">
+                                    <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
+                                        icon="heroicons-outline:newspaper"></iconify-icon>
+                                    <span>Agregar hotel</span>
+                                </span>
+                            </button>
+                        </div>
+
                         <!--TABLA HOTELES -->
                         <div class=" space-y-5">
                             <div class="card">
@@ -84,17 +95,6 @@
                             </div>
                         </div>
 
-                        <div class="mb-4">
-                            <button data-bs-toggle="modal" data-bs-target="#modalAgregar"
-                                class="btn inline-flex justify-center btn-primary">
-                                <span class="flex items-center">
-                                    <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
-                                        icon="heroicons-outline:newspaper"></iconify-icon>
-                                    <span>Agregar hotel</span>
-                                </span>
-                            </button>
-                        </div>
-
                         <!-- Modal agregar tarifa -->
                         <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
                             id="modalAgregar" tabindex="-1" aria-labelledby="blackModalLabel" aria-hidden="true">
@@ -128,44 +128,47 @@
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
                                                     <div class="card-text h-full ">
-                                                        <form class="space-y-4">
+                                                        <form class="space-y-4" action="{{ route('hotels') }}" method="post">
+                                                            @csrf
+
                                                             <div
                                                                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Nombre del hotel</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Nombre hotel">
+                                                                        placeholder="Nombre hotel" name="addHotelName" value="{{old('addHotelName')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Dirección</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Agrege dirección">
+                                                                        placeholder="Ingrese dirección" name="addAddress" value="{{old('addAddress')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Descripción</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Ingrese descripción">
+                                                                        placeholder="Ingrese descripción" name="addDescription" value="{{old('addDescription')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Imagen del hotel</label>
                                                                     <input type="url" class="form-control"
-                                                                        placeholder="Ingrese URL de la imagen">
+                                                                        placeholder="Ingrese URL de la imagen" name="addImage" value="{{old('addImage')}}">
                                                                 </div>
+                                                            </div>
+
+                                                            <!-- Modal footer -->
+                                                            <div
+                                                            class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                                                            <button data-bs-dismiss="modal"
+                                                                class="btn inline-flex justify-center text-white bg-black-500">Agregar</button>
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- Modal footer -->
-                                        <div
-                                            class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                            <button data-bs-dismiss="modal"
-                                                class="btn inline-flex justify-center text-white bg-black-500">Agregar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -205,44 +208,47 @@
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
                                                     <div class="card-text h-full ">
-                                                        <form class="space-y-4">
+                                                        <form class="space-y-4" action="{{ route('hotels') }}" method="post">
+                                                            @csrf
+
                                                             <div
                                                                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
-                                                                        class="form-label">Nombre</label>
+                                                                        class="form-label">Nombre del hotel</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="Bahia Dorada">
+                                                                        placeholder="Nombre hotel" name="editHotelName" value="{{old('editHotelName')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Dirección</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="Blvd. Forjadores, Diana Laura, 23084 La Paz, B.C.S.">
+                                                                        placeholder="Ingrese dirección" name="editAddress" value="{{old('editAddress')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Descripción</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="Hotel con picisina grande, mediana y chica, cuanta con 215 habitaciones">
+                                                                        placeholder="Ingrese descripción" name="editDescription" value="{{old('editDescription')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
-                                                                        class="form-label">Imagen</label>
+                                                                        class="form-label">Imagen del hotel</label>
                                                                     <input type="url" class="form-control"
-                                                                        value="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbahia-dorada.hoteleslapazciudad.com%2Fes%2F&psig=AOvVaw2nPovm0MEmh_QVNiToH30t&ust=1700715729242000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIiumIXq1oIDFQAAAAAdAAAAABAn">
+                                                                        placeholder="Ingrese URL de la imagen" name="editImage" value="{{old('editImage')}}">
                                                                 </div>
+                                                            </div>
+
+                                                            <!-- Modal footer -->
+                                                            <div
+                                                            class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                                                            <button data-bs-dismiss="modal"
+                                                                class="btn inline-flex justify-center text-white bg-black-500">Guardar</button>
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- Modal footer -->
-                                        <div
-                                            class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                            <button data-bs-dismiss="modal"
-                                                class="btn inline-flex justify-center text-white bg-black-500">Guardar</button>
                                         </div>
                                     </div>
                                 </div>

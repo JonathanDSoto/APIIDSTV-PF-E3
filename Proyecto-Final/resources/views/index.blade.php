@@ -9,7 +9,7 @@
                     <div class="page-content">
 
                         <!--BOTÓN TIPOS DE HABITACIONES -->
-                        <div class="dropdown relative ">
+                        <div class="dropdown relative">
                             <button
                                 class="btn inline-flex justify-center btn-outline-light items-center cursor-default relative !pr-14"
                                 type="button" id="lightsplitOutlineDropdownMenuButton" data-bs-toggle="dropdown"
@@ -47,7 +47,7 @@
                         </div>
 
                         <!--GRIDS DE LAS HABITACIONES -->
-                        <div class="grid lg:grid-cols-6 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
+                        <div class="grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5">
                             <div
                                 class="bg-slate-900 dark:bg-slate-800 mb-10 mt-7 p-4 relative text-center rounded-2xl text-white">
                                 <img src="{{ asset('/images/all-img/habitacion-1.jpg') }}" alt="Habitación 1"
@@ -68,10 +68,10 @@
                                         </option>
                                     </select>
                                 </div>
-                                <div class="mt-6">
-                                    <button class="btn inline-flex justify-center btn-warning">Cambiar</button>
-                                    <button href="#"
-                                        class="btn inline-flex justify-center btn-success">Asignar</button>
+                                <div class="mt-1">
+                                    <button class="btn btn-lg btn-block btn-warning" style="width: 100%">Cambiar</button>
+                                    <a href="{{ route('reservations') }}?addeventModal=true"><button
+                                        class="mt-5 btn btn-lg btn-block btn-success" style="width: 100%">Reservar Habitación</button></a>
                                 </div>
 
                             </div>
@@ -105,57 +105,6 @@
                                             </svg>
                                             <span class="sr-only">Close modal</span>
                                         </button>
-                                    </div>
-                                    <!-- Modal body -->
-                                    <div class="p-6 space-y-4">
-                                        <div class="card xl:col-span-2">
-                                            <div class="card-body flex flex-col p-6">
-                                                <div class="card-text h-full ">
-                                                    <form class="space-y-4">
-                                                        <div
-                                                            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
-                                                            <div class="input-area relative">
-                                                                <label for="largeInput" class="form-label">Nombre
-                                                                    del cliente</label>
-                                                                <select id="select" class="form-control">
-                                                                    <option value="option1" class="dark:bg-slate-700">
-                                                                        Josua Jacinta Almaguar
-                                                                    </option>
-                                                                    <option value="option2" class="dark:bg-slate-700">
-                                                                        Luisa Meza Nuñaz
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="input-area relative">
-                                                                <label for="largeInput"
-                                                                    class="form-label">Estadia</label>
-                                                                <input type="number" class="form-control"
-                                                                    placeholder="Ingrese la estadia">
-                                                            </div>
-                                                            <div class="input-area relative">
-                                                                <label for="largeInput"
-                                                                    class="form-label">Cupón</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="XYZA010101ABC">
-                                                            </div>
-                                                            <div></div>
-                                                            <div class="input-area">
-                                                                <label class="form-label">PRECIO POR DÍA</label>
-                                                            </div>
-                                                            <div class="input-area">
-                                                                <label class="form-label">TOTAL</label>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Modal footer -->
-                                    <div
-                                        class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                        <button data-bs-dismiss="modal"
-                                            class="btn inline-flex justify-center text-white bg-black-500">Asignar</button>
                                     </div>
                                 </div>
                             </div>

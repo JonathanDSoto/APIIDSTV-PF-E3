@@ -3,11 +3,21 @@
 @section('title','Clientes')
 
 @section('content')
-
                 <!--CONTENT -->
                 <div class="content-wrapper transition-all duration-150 xl:ltr:ml-[248px] xl:rtl:mr-[248px]"
                     id="content_wrapper">
                     <div class="page-content">
+
+                        <div class="mb-4">
+                            <button data-bs-toggle="modal" data-bs-target="#modalAgregar"
+                                class="btn inline-flex justify-center btn-primary">
+                                <span class="flex items-center">
+                                    <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
+                                        icon="heroicons-outline:newspaper"></iconify-icon>
+                                    <span>Agregar cliente</span>
+                                </span>
+                            </button>
+                        </div>
 
                         <!--TABLA TARIFAS POR HABITACIÓN -->
                         <div class=" space-y-5">
@@ -30,19 +40,15 @@
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Dirección
-                                                            </th>
-
-                                                            <th class=" table-th ">
-                                                                RFC
-                                                            </th>
-
-                                                            <th class=" table-th ">
-                                                                TELÉFONO
+                                                                Apellido del cliente
                                                             </th>
 
                                                             <th class=" table-th ">
                                                                 EMAIL
+                                                            </th>
+
+                                                            <th class=" table-th ">
+                                                                TELÉFONO
                                                             </th>
 
                                                             <th class=" table-th ">
@@ -54,11 +60,10 @@
                                                         class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
 
                                                         <tr>
-                                                            <td class="table-td">Víctor Alejandro Medellín Meza</td>
-                                                            <td class="table-td">Camino Real Num.#123</td>
-                                                            <td class="table-td ">XYZA010101ABC</td>
-                                                            <td class="table-td ">612456884</td>
+                                                            <td class="table-td">Víctor Alejandro</td>
+                                                            <td class="table-td">Medellín Meza</td>
                                                             <td class="table-td ">ejemplo@gmail.com</td>
+                                                            <td class="table-td ">612456884</td>
                                                             <td class="table-td ">
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                                                                     <button data-bs-toggle="modal"
@@ -81,17 +86,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="mb-4">
-                            <button data-bs-toggle="modal" data-bs-target="#modalAgregar"
-                                class="btn inline-flex justify-center btn-primary">
-                                <span class="flex items-center">
-                                    <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
-                                        icon="heroicons-outline:newspaper"></iconify-icon>
-                                    <span>Agregar cliente</span>
-                                </span>
-                            </button>
                         </div>
 
                         <!-- Modal agregar client -->
@@ -127,50 +121,47 @@
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
                                                     <div class="card-text h-full ">
-                                                        <form class="space-y-4">
+                                                        <form class="space-y-4" action="{{ route('clients') }}" method="post">
+                                                            @csrf
+
                                                             <div
                                                                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput" class="form-label">Nombre
                                                                         del cliente</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Ingrese nombre">
+                                                                        placeholder="Ingrese nombre" name="addName" value="{{old('addName')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">Dirección</label>
+                                                                    <label for="largeInput" class="form-label">Apellido
+                                                                        del cliente</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Ingrese dirección">
-                                                                </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">RFC</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Ingrese RFC">
-                                                                </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">Teléfono</label>
-                                                                    <input type="tel" class="form-control"
-                                                                        placeholder="Ingrese teléfono">
+                                                                        placeholder="Ingrese Apellido" name="addLastName" value="{{old('addLastName')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Email</label>
                                                                     <input type="email" class="form-control"
-                                                                        placeholder="Ingrese email">
+                                                                        placeholder="Ingrese email" name="addEmail" value="{{old('addEmail')}}">
                                                                 </div>
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Teléfono</label>
+                                                                    <input type="tel" class="form-control"
+                                                                        placeholder="Ingrese teléfono" name="addPhone" value="{{old('addPhone')}}">
+                                                                </div>
+                                                            </div>
+
+                                                             <!-- Modal footer -->
+                                                                <div
+                                                                class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                                                                <button type="submit" data-bs-dismiss="modal"
+                                                                    class="btn inline-flex justify-center text-white bg-black-500">Agregar</button>
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- Modal footer -->
-                                        <div
-                                            class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                            <button data-bs-dismiss="modal"
-                                                class="btn inline-flex justify-center text-white bg-black-500">Agregar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -210,50 +201,47 @@
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
                                                     <div class="card-text h-full ">
-                                                        <form class="space-y-4">
+                                                        <form class="space-y-4" action="{{ route('clients') }}" method="post">
+                                                            @csrf
+
                                                             <div
                                                                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput" class="form-label">Nombre
                                                                         del cliente</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="Víctor Alejandro Medellín Meza">
+                                                                        placeholder="Ingrese nombre" name="editName" value="{{old('editName')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">Dirección</label>
-                                                                    <input type="email" class="form-control"
-                                                                        value="Camino Real Num.#123">
-                                                                </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">RFC</label>
+                                                                    <label for="largeInput" class="form-label">Apellido
+                                                                        del cliente</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="XYZA010101ABC">
-                                                                </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">Teléfono</label>
-                                                                    <input type="tel" class="form-control"
-                                                                        value="612456884">
+                                                                        placeholder="Ingrese Apellido" name="editLastName" value="{{old('editLastName')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Email</label>
                                                                     <input type="email" class="form-control"
-                                                                        value="ejemplo@gmail.com">
+                                                                        placeholder="Ingrese email" name="editEmail" value="{{old('editEmail')}}">
                                                                 </div>
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Teléfono</label>
+                                                                    <input type="tel" class="form-control"
+                                                                        placeholder="Ingrese teléfono" name="editPhone" value="{{old('editPhone')}}">
+                                                                </div>
+                                                            </div>
+
+                                                             <!-- Modal footer -->
+                                                                <div
+                                                                class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                                                                <button type="submit" data-bs-dismiss="modal"
+                                                                    class="btn inline-flex justify-center text-white bg-black-500">Guardar</button>
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- Modal footer -->
-                                        <div
-                                            class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                            <button data-bs-dismiss="modal"
-                                                class="btn inline-flex justify-center text-white bg-black-500">Guardar</button>
                                         </div>
                                     </div>
                                 </div>
