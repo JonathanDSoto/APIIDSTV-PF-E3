@@ -44,14 +44,6 @@
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Precio por hora
-                                                            </th>
-
-                                                            <th class=" table-th ">
-                                                                Tipo de tarifa
-                                                            </th>
-
-                                                            <th class=" table-th ">
                                                                 Acción
                                                             </th>
                                                         </tr>
@@ -62,8 +54,6 @@
                                                         <tr>
                                                             <td class="table-td">Tarifa sencilla</td>
                                                             <td class="table-td">$895.36</td>
-                                                            <td class="table-td ">$37.30</td>
-                                                            <td class="table-td ">Día</td>
                                                             <td class="table-td ">
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                                                                     <button data-bs-toggle="modal"
@@ -121,50 +111,47 @@
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
                                                     <div class="card-text h-full ">
-                                                        <form class="space-y-4">
-                                                            <div
-                                                                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
+                                                        <form class="space-y-4" action="{{ route('rates') }}" method="post">
+                                                            @csrf
+
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput" class="form-label">Nombre
                                                                         de la tarifa</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Nombre tarifa">
-                                                                </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por día</label>
-                                                                    <input type="email" class="form-control"
-                                                                        placeholder="Ingrese precio">
-                                                                </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por hora</label>
-                                                                    <input type="tel" class="form-control"
-                                                                        placeholder="Ingrese precio">
-                                                                </div>
                                                                 <div class="input-area">
-                                                                    <label for="select" class="form-label">Tipo
-                                                                        tarifa</label>
+                                                                    <label for="select"
+                                                                        class="form-label" name="addNameRate" value="{{old('addNameRate')}}">Tipo de habitación</label>
                                                                     <select id="select" class="form-control">
                                                                         <option value="option1"
-                                                                            class="dark:bg-slate-700">Día
+                                                                            class="dark:bg-slate-700">Estandar
                                                                         </option>
                                                                         <option value="option2"
-                                                                            class="dark:bg-slate-700">Hora
+                                                                            class="dark:bg-slate-700">Lujo
                                                                         </option>
                                                                     </select>
                                                                 </div>
+                                                            </div>
+
+                                                            <div
+                                                                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
+                                                                
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput" class="form-label">Precio
+                                                                        por día</label>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Ingrese precio" name="addPriceDay" value="{{old('addPriceDay')}}">
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Modal footer -->
+                                                            <div
+                                                                class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                                                                <button type="submit" name="addRates" data-bs-dismiss="modal"
+                                                                    class="btn inline-flex justify-center text-white bg-black-500">Agregar</button>
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- Modal footer -->
-                                        <div
-                                            class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                            <button data-bs-dismiss="modal"
-                                                class="btn inline-flex justify-center text-white bg-black-500">Agregar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -204,50 +191,47 @@
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
                                                     <div class="card-text h-full ">
-                                                        <form class="space-y-4">
+                                                        <form class="space-y-4" action="{{ route('rates') }}" method="post">
+                                                            @csrf
+
+                                                            <div class="input-area relative">
+                                                                <label for="largeInput" class="form-label">Nombre
+                                                                    de la tarifa</label>
+                                                            <div class="input-area">
+                                                                <label for="select"
+                                                                    class="form-label" name="editNameRate" value="{{old('editNameRate')}}">Tipo de habitación</label>
+                                                                <select id="select" class="form-control">
+                                                                    <option value="option1"
+                                                                        class="dark:bg-slate-700">Estandar
+                                                                    </option>
+                                                                    <option value="option2"
+                                                                        class="dark:bg-slate-700">Lujo
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                        <div
+                                                            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
+                                                            
+                                                            <div class="input-area relative">
+                                                                <label for="largeInput" class="form-label">Precio
+                                                                    por día</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Ingrese precio" name="editPriceDay" value="{{old('editPriceDay')}}">
+                                                            </div>
+                                                        </div>
+
+                                                            <!-- Modal footer -->
                                                             <div
-                                                                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Nombre
-                                                                        de la tarifa</label>
-                                                                    <input type="text" class="form-control"
-                                                                        value="Sencilla">
-                                                                </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por día</label>
-                                                                    <input type="text" class="form-control"
-                                                                        value="895.36">
-                                                                </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Precio
-                                                                        por hora</label>
-                                                                    <input type="text" class="form-control"
-                                                                        value="37.70">
-                                                                </div>
-                                                                <div class="input-area">
-                                                                    <label for="select" class="form-label">Tipo
-                                                                        tarifa</label>
-                                                                    <select id="select" class="form-control">
-                                                                        <option value="option1"
-                                                                            class="dark:bg-slate-700">Día
-                                                                        </option>
-                                                                        <option value="option2"
-                                                                            class="dark:bg-slate-700">Hora
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
+                                                                class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                                                                <button type="submit" name="editRates" data-bs-dismiss="modal"
+                                                                    class="btn inline-flex justify-center text-white bg-black-500">Agregar</button>
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- Modal footer -->
-                                        <div
-                                            class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                            <button data-bs-dismiss="modal"
-                                                class="btn inline-flex justify-center text-white bg-black-500">Guardar</button>
                                         </div>
                                     </div>
                                 </div>

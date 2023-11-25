@@ -132,37 +132,39 @@
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
                                                     <div class="card-text h-full ">
-                                                        <form class="space-y-4">
+                                                        <form class="space-y-4" action="{{ route('users') }}" method="post">
+                                                            @csrf
+
                                                             <div
                                                                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Nombre</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Nombre usuario">
+                                                                        placeholder="Nombre usuario" name="addNmae" value="{{old('addNmae')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Apellido</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Apellido precio">
+                                                                        placeholder="Apellido" name="addApellido" value="{{old('addApellido')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Email</label>
                                                                     <input type="email" class="form-control"
-                                                                        placeholder="Ingrese precio">
+                                                                        placeholder="Email" name="addEmail" value="{{old('addEmail')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Password</label>
                                                                     <input type="password" class="form-control"
-                                                                        placeholder="Ingrese contraseña">
+                                                                        placeholder="Ingrese contraseña" name="addPassword" value="{{old('addPassword')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Rol</label>
-                                                                    <select id="select" class="form-control">
+                                                                    <select id="select" class="form-control" name="addRol" value="{{old('addRol')}}">
                                                                         <option value="option1"
                                                                             class="dark:bg-slate-700">
                                                                             User
@@ -177,19 +179,19 @@
                                                                     <label for="largeInput"
                                                                         class="form-label">CURP</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Ingrese curp">
+                                                                        placeholder="Ingrese curp" name="addCURP" value="{{old('addCURP')}}">
                                                                 </div>
+                                                            </div>
+                                                            <!-- Modal footer -->
+                                                            <div
+                                                                class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                                                                <button type="submit" name="addUsers" data-bs-dismiss="modal"
+                                                                    class="btn inline-flex justify-center text-white bg-black-500">Agregar</button>
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- Modal footer -->
-                                        <div
-                                            class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                            <button data-bs-dismiss="modal"
-                                                class="btn inline-flex justify-center text-white bg-black-500">Agregar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -229,56 +231,66 @@
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
                                                     <div class="card-text h-full ">
-                                                        <form class="space-y-4">
+                                                        <form class="space-y-4" action="{{ route('users') }}" method="post">
+                                                            @csrf
+
                                                             <div
                                                                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Nombre</label>
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Nombre</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="Víctor Alejandro">
+                                                                        placeholder="Nombre usuario" name="editNmae" value="{{old('editNmae')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Apellido</label>
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Apellido</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="Medellín Meza">
+                                                                        placeholder="Apellido" name="editApellido" value="{{old('editApellido')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Email</label>
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Email</label>
                                                                     <input type="email" class="form-control"
-                                                                        value="medellin@gmail.com">
+                                                                        placeholder="Email" name="editEmail" value="{{old('editEmail')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">Contraseña</label>
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Password</label>
                                                                     <input type="password" class="form-control"
-                                                                        value="123123123">
+                                                                        placeholder="Ingrese contraseña" name="editPassword" value="{{old('editPassword')}}">
                                                                 </div>
-                                                                <div class="input-area">
-                                                                    <label for="select" class="form-label">Rol</label>
-                                                                    <select id="select" class="form-control">
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Rol</label>
+                                                                    <select id="select" class="form-control" name="editRol" value="{{old('editRol')}}">
                                                                         <option value="option1"
-                                                                            class="dark:bg-slate-700">User
+                                                                            class="dark:bg-slate-700">
+                                                                            User
                                                                         </option>
                                                                         <option value="option2"
-                                                                            class="dark:bg-slate-700">Root
+                                                                            class="dark:bg-slate-700">
+                                                                            Root
                                                                         </option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="input-area relative">
-                                                                    <label for="largeInput" class="form-label">CURP</label>
+                                                                    <label for="largeInput"
+                                                                        class="form-label">CURP</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="ABCD010101HDFXYZ00">
+                                                                        placeholder="Ingrese curp" name="editCURP" value="{{old('editCURP')}}">
                                                                 </div>
+                                                            </div>
+                                                            <!-- Modal footer -->
+                                                            <div
+                                                                class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                                                                <button type="submit" name="editUsers" data-bs-dismiss="modal"
+                                                                    class="btn inline-flex justify-center text-white bg-black-500">Agregar</button>
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- Modal footer -->
-                                        <div
-                                            class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                            <button data-bs-dismiss="modal"
-                                                class="btn inline-flex justify-center text-white bg-black-500">Guardar</button>
                                         </div>
                                     </div>
                                 </div>

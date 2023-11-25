@@ -48,11 +48,13 @@
                                     </div>
                                     <!-- end modal header -->
                                     <div class="px-6 py-8">
-                                        <form id="add-event-form" class="space-y-5">
+                                        <form id="add-event-form" class="space-y-5" action="{{ route('reservations') }}" method="post">
+                                            @csrf
+
                                             <div class="input-area relative">
                                                 <label for="largeInput" class="form-label">Nombre
                                                     del cliente</label>
-                                                <select id="select" class="form-control">
+                                                <select class="form-control" name="addNameClient" value="{{old('addNameClient')}}">
                                                     <option value="option1" class="dark:bg-slate-700">
                                                         Josua Jacinta Almaguar
                                                     </option>
@@ -61,31 +63,41 @@
                                                     </option>
                                                 </select>
                                             </div>
+                                            <div class="input-area relative">
+                                                <label for="largeInput" class="form-label">Tarifa</label>
+                                                <select id="select" class="form-control" name="addRate" value="{{old('addRate')}}">
+                                                    <option value="option1" class="dark:bg-slate-700">
+                                                        Tarifa 1
+                                                    </option>
+                                                    <option value="option2" class="dark:bg-slate-700">
+                                                        Tarifa 2
+                                                    </option>
+                                                </select>
+                                            </div>
                                             <div class="fromGroup">
                                                 <label for="event-start-date" class=" form-label">Fecha de
                                                     entrada</label>
                                                 <input class="form-control py-2 startdate" id="event-start-date"
-                                                    type="text">
+                                                    type="date" name="addCheckIn" value="{{old('addCheckIn')}}">
                                             </div>
                                             <div class="fromGroup">
                                                 <label for="event-end-date" class=" form-label">Fecha de
                                                     salida</label>
                                                 <input class="form-control py-2 enddate" id="event-end-date"
-                                                    type="text">
+                                                    type="date" name="addCheckOut" value="{{old('addCheckOut')}}">
                                             </div>
                                             <div class="input-area relative">
                                                 <label for="largeInput" class="form-label">Cupón</label>
                                                 <input type="text" class="form-control"
-                                                    placeholder="XYZA010101ABC">
-                                            </div>
-                                            <div class="input-area">
-                                                <label class="form-label">PRECIO POR DÍA:</label>
+                                                    placeholder="Número del cupón" name="addCupon" value="{{old('addCupon')}}">
                                             </div>
                                             <div class="input-area">
                                                 <label class="form-label">TOTAL:</label>
+                                                <input type="text" class="form-control"
+                                                    placeholder="Total" name="addTotal" value="{{old('addTotal')}}">
                                             </div>
                                             <div class="text-right">
-                                                <button type="submit" id="submit-button"
+                                                <button type="submit" name="addReservations" id="submit-button"
                                                     class="btn btn-dark">Agregar reservación</button>
                                             </div>
                                         </form>

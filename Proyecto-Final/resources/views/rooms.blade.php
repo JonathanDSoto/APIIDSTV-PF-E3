@@ -50,15 +50,11 @@
                                                         </th>
 
                                                         <th scope="col" class=" table-th ">
-                                                            Tipo habitación
-                                                        </th>
-
-                                                        <th scope="col" class=" table-th ">
                                                             Estado
                                                         </th>
 
                                                         <th scope="col" class=" table-th ">
-                                                            Tarifa
+                                                            Costo
                                                         </th>
 
                                                         <th scope="col" class=" table-th ">
@@ -84,7 +80,6 @@
                                                             Está habitación cuenta con una sola
                                                             cama matrimonial, un baño y vista al mar
                                                         </td>
-                                                        <td class="table-td ">Habitación estándar</td>
                                                         <td class="table-td ">
                                                             <div>
                                                                 Libre
@@ -151,40 +146,27 @@
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
                                                     <div class="card-text h-full ">
-                                                        <form class="space-y-4">
+                                                        <form class="space-y-4" action="{{ route('rooms') }}" method="post">
+                                                            @csrf
+
                                                             <div
                                                                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput" class="form-label">Nombre
                                                                         de la habitación</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="habitación 115">
+                                                                        name="editNameRoom" value="{{old('editNameRoom')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Descripción</label>
                                                                     <input type="text" class="form-control"
-                                                                        value="Está Habitación Cuenta Con Una Sola Cama Matrimonial, Un Baño Y Vista Al Mar">
-                                                                </div>
-                                                                <div class="input-area">
-                                                                    <label for="select"
-                                                                        class="form-label">Tipo de habitación</label>
-                                                                    <select id="select" class="form-control">
-                                                                        <option value="option1"
-                                                                            class="dark:bg-slate-700">Habitación estandar
-                                                                        </option>
-                                                                        <option value="option2"
-                                                                            class="dark:bg-slate-700">Suite Ejecutiva
-                                                                        </option>
-                                                                        <option value="option3"
-                                                                            class="dark:bg-slate-700">Panorámica
-                                                                        </option>
-                                                                    </select>
+                                                                        value="Está Habitación Cuenta Con Una Sola Cama Matrimonial, Un Baño Y Vista Al Mar" name="editDescription" value="{{old('editDescription')}}">
                                                                 </div>
                                                                 <div class="input-area">
                                                                     <label for="select"
                                                                         class="form-label">Estado</label>
-                                                                    <select id="select" class="form-control">
+                                                                    <select id="select" class="form-control" name="editState" value="{{old('editState')}}">
                                                                         <option value="option1"
                                                                             class="dark:bg-slate-700">Libre
                                                                         </option>
@@ -198,28 +180,30 @@
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
-                                                                        class="form-label">Tarifa</label>
+                                                                        class="form-label">Costo Habitación</label>
                                                                     <input type="number" class="form-control"
-                                                                        value="895.36">
+                                                                        value="895.36" name="editRateRoom" value="{{old('editRateRoom')}}">
                                                                 </div>
-                                                                <div class="input-area">
+                                                            </div>
+                                                                                                                            <div class="input-area">
                                                                     <label for="defaultInput"
                                                                         class="form-label">Ingrese una imagen</label>
                                                                     <input id="defaultInput" type="text"
                                                                         class="form-control"
-                                                                        value="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbeach.palaceresorts.com%2Fes%2Fhabitaciones&psig=AOvVaw0HhArL-XwVaoMoi73SrHKW&ust=1700705416685000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPiIuM_D1oIDFQAAAAAdAAAAABAE">
+                                                                        value="https://www.google.com/url?sa=i&url=https%3A%2F%2Fbeach.palaceresorts.com%2Fes%2Fhabitaciones&psig=AOvVaw0HhArL-XwVaoMoi73SrHKW&ust=1700705416685000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPiIuM_D1oIDFQAAAAAdAAAAABAE"
+                                                                        name="editImage" value="{{old('editImage')}}">
                                                                 </div>
-                                                            </div>
+
+                                                                <!-- Modal footer -->
+                                                                <div
+                                                                    class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                                                                    <button type="submit" name="editRooms" data-bs-dismiss="modal"
+                                                                        class="btn inline-flex justify-center text-white bg-black-500">Aceptar</button>
+                                                                </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- Modal footer -->
-                                        <div
-                                            class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                            <button data-bs-dismiss="modal"
-                                                class="btn inline-flex justify-center text-white bg-black-500">Aceptar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -258,40 +242,27 @@
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
                                                     <div class="card-text h-full ">
-                                                        <form class="space-y-4">
+                                                        <form class="space-y-4"action="{{ route('rooms') }}" method="post">
+                                                            @csrf
+
                                                             <div
                                                                 class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput" class="form-label">Nombre
                                                                         de la habitación</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Ingrese nombre">
+                                                                        placeholder="Nombre" name="addNameRoom" value="{{old('addNameRoom')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Descripción</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Ingrese descripción">
-                                                                </div>
-                                                                <div class="input-area">
-                                                                    <label for="select" class="form-label">Tipo
-                                                                        de habitación</label>
-                                                                    <select id="select" class="form-control">
-                                                                        <option value="option1"
-                                                                            class="dark:bg-slate-700">Estándar
-                                                                        </option>
-                                                                        <option value="option2"
-                                                                            class="dark:bg-slate-700">Suite Ejecutiva
-                                                                        </option>
-                                                                        <option value="option2"
-                                                                            class="dark:bg-slate-700">Panorámica
-                                                                        </option>
-                                                                    </select>
+                                                                        placeholder="Descripción" name="addDescription" value="{{old('addDescription')}}">
                                                                 </div>
                                                                 <div class="input-area">
                                                                     <label for="select"
                                                                         class="form-label">Estado</label>
-                                                                    <select id="select" class="form-control">
+                                                                    <select id="select" class="form-control" name="addState" value="{{old('addState')}}">
                                                                         <option value="option1"
                                                                             class="dark:bg-slate-700">Libre
                                                                         </option>
@@ -303,39 +274,32 @@
                                                                         </option>
                                                                     </select>
                                                                 </div>
-                                                                <div class="input-area">
-                                                                    <label for="select"
-                                                                        class="form-label">Tarifa</label>
-                                                                    <select id="select" class="form-control">
-                                                                        <option value="option1"
-                                                                            class="dark:bg-slate-700">Tarifa sencilla
-                                                                        </option>
-                                                                        <option value="option2"
-                                                                            class="dark:bg-slate-700">Tarifa doble
-                                                                        </option>
-                                                                        <option value="option2"
-                                                                            class="dark:bg-slate-700">King size
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="input-area">
-                                                                    <label for="defaultInput"
-                                                                        class="form-label">Ingrese una imagen</label>
-                                                                    <input id="defaultInput" type="url"
-                                                                        class="form-control"
-                                                                        placeholder="Ingrese URL">
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Costo Habitación</label>
+                                                                    <input type="number" class="form-control"
+                                                                        placeholder="Costo" name="addRateRoom" value="{{old('addRateRoom')}}">
                                                                 </div>
                                                             </div>
+                                                                                                                            <div class="input-area">
+                                                                    <label for="defaultInput"
+                                                                        class="form-label">Ingrese una imagen</label>
+                                                                    <input id="defaultInput" type="text"
+                                                                        class="form-control"
+                                                                        placeholder="URL"
+                                                                        name="addImage" value="{{old('addImage')}}">
+                                                                </div>
+
+                                                                <!-- Modal footer -->
+                                                                <div
+                                                                    class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                                                                    <button type="submit" name="addRooms" data-bs-dismiss="modal"
+                                                                        class="btn inline-flex justify-center text-white bg-black-500">Aceptar</button>
+                                                                </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- Modal footer -->
-                                        <div
-                                            class="flex items-center p-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                            <button data-bs-dismiss="modal"
-                                                class="btn inline-flex justify-center text-white bg-black-500">Aceptar</button>
                                         </div>
                                     </div>
                                 </div>
