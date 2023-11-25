@@ -25,33 +25,5 @@ class LoginController extends Controller
         return redirect()->route('login')->with('error', 'Invalid credentials');
     }
 
-    public function index()
-    {
-        return view('index');
-    }
-    public function rates()
-    {
-        return view('rates');
-    }
-    public function rooms()
-    {
-        return view('rooms');
-    }
-    public function clients()
-    {
-        return view('clients');
-    }
-    public function reservations()
-    {
-        return view('reservations');
-    }
-    public function users()
-    {
-        return view('users');
-    }
-    public function hotels()
-    {
-        return view('hotels');
-    }
 }
 

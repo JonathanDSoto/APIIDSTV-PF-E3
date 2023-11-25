@@ -1,14 +1,21 @@
 <?php
 
+use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\HotelsController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\RatesController;
+use App\Http\Controllers\ReservationsController;
+use App\Http\Controllers\RoomsController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 
 Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/', [LoginController::class, 'login']);
-Route::get('/venta', [LoginController::class, 'index'])->name('index');
-Route::get('/tarifas', [LoginController::class, 'rates'])->name('rates');
-Route::get('/habitaciones', [LoginController::class, 'rooms'])->name('rooms');
-Route::get('/clientes', [LoginController::class, 'clients'])->name('clients');
-Route::get('/reservaciones', [LoginController::class, 'reservations'])->name('reservations');
-Route::get('/usuarios', [LoginController::class, 'users'])->name('users');
-Route::get('/hoteles', [LoginController::class, 'hotels'])->name('hotels');
+Route::get('/index', [IndexController::class, 'index'])->name('index');
+Route::get('/rates', [RatesController::class, 'rates'])->name('rates');
+Route::get('/rooms', [RoomsController::class, 'rooms'])->name('rooms');
+Route::get('/clients', [ClientsController::class, 'clients'])->name('clients');
+Route::get('/reservations', [ReservationsController::class, 'reservations'])->name('reservations');
+Route::get('/users', [UsersController::class, 'users'])->name('users');
+Route::get('/hotels', [HotelsController::class, 'hotels'])->name('hotels');
