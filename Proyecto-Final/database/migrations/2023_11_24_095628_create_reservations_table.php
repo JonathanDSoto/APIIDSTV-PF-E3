@@ -15,15 +15,24 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id('idreservation');
+            $table->string('name_client');
+            $table->string('rate');
+            $table->string('room');
+            $table->integer('coupon');
             $table->date('check_in');
             $table->date('check_out');
             $table->string('status');
             $table->decimal('total_price', 8, 2);
-            $table->string('client');
 
-            $table->unsignedBigInteger('room_id')->nullable(); // Clave foránea a la tabla 'rooms'
-            
+            $table->unsignedBigInteger('room_id')->nullable(); 
+            $table->unsignedBigInteger('client_id')->nullable();
+            $table->unsignedBigInteger('coupon_id')->nullable();
+            $table->unsignedBigInteger('rates_id')->nullable();
+
             $table->foreign('room_id')->references('idrooms')->on('rooms');
+            $table->foreign('client_id')->references('idclient')->on('clients');
+            $table->foreign('coupon_id')->references('idcoupons')->on('coupons');
+            $table->foreign('rates_id')->references('idrates')->on('rates');
 
             $table->timestamps();
         });

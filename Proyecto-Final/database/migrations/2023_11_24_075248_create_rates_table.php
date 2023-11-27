@@ -15,15 +15,8 @@ return new class extends Migration
     {
         Schema::create('rates', function (Blueprint $table) {
             $table->id('idrates');
-            $table->string('type_room');
-            $table->date('check_in');
-            $table->date('check_out');
-            $table->decimal('price_day', 8, 2); 
-
-            $table->unsignedBigInteger('room_id'); 
-            
-            $table->foreign('room_id')->references('idrooms')->on('rooms');
-
+            $table->string('name_rate');
+            $table->double('price_day', 8, 2);
             $table->timestamps();
         });
     }

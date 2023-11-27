@@ -18,11 +18,6 @@ return new class extends Migration
             $table->string('coupon_code');
             $table->decimal('discount', 8, 2);
             $table->date('expiration_date');
-
-            $table->unsignedBigInteger('reservation_id'); 
-
-            $table->foreign('reservation_id')->references('idreservation')->on('reservations');
-
             $table->timestamps();
         });
     }
