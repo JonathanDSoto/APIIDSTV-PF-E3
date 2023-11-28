@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Hotel;
 
 class UsersController extends Controller
 {
@@ -11,9 +12,10 @@ class UsersController extends Controller
     {
         //Recoge todos los elementos de la tabla users
         $users = User::all();
+        $hotels =  Hotel::all();
 
         //Los manda al front con el compact('users')
-        return view('users', compact('users'));
+        return view('users', compact('users', 'hotels'));
     }
 
     public function store(Request $request)
@@ -22,13 +24,13 @@ class UsersController extends Controller
         $user = new User();
 
          //insert con los nombres de los inputs del modal agregar
-        $user->name = $request->editName;
-        $user->last_name = $request->editLastName;
-        $user->email = $request->editEmail;
-        $user->password = bcrypt($request->editPassword); 
-        $user->role = $request->editRole;
-        $user->curp = $request->editCurp;
-        $user->hotels = $request->editHotels;
+        $user->name = $request->addName;
+        $user->last_name = $request->addLastName;
+        $user->email = $request->addEmail;
+        $user->password = bcrypt($request->addPassword); 
+        $user->role = $request->addRole;
+        $user->curp = $request->addCurp;
+        $user->hotels = $request->addHotels;
 
         $user->save();
 
@@ -49,12 +51,12 @@ class UsersController extends Controller
         $user = User::find($id);
 
         //Actualiza los dataos del usuario
-        $user->name = $request->input('name');
-        $user->last_name = $request->input('last_name');
-        $user->email = $request->input('email');
-        $user->role = $request->input('role');
-        $user->curp = $request->input('curp');
-        $user->hotels = $request->input('hotels');
+        $user->name = $request->editName;
+        $user->last_name = $request->editLastName;
+        $user->email = $request->editEmail;
+        $user->role = $request->editRole;
+        $user->curp = $request->editCurp;
+        $user->hotels = $request->editHotels;
 
         //Guarda los registros
         $user->save();
