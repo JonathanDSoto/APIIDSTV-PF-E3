@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('rates', function (Blueprint $table) {
-            $table->id('idrates');
+            $table->id();
             $table->string('name_rate');
             $table->double('price_day', 8, 2);
             $table->timestamps();
