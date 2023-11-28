@@ -23,7 +23,7 @@
                         <div class=" space-y-5">
                             <div class="card">
                                 <header class=" card-header noborder">
-                                    <h4 class="card-title">Tabla usuarios
+                                    <h4 class="card-title">Usuarios
                                     </h4>
                                 </header>
                                 <div class="card-body px-6 pb-6">
@@ -60,6 +60,10 @@
                                                             </th>
 
                                                             <th class=" table-th ">
+                                                                Hotel
+                                                            </th>
+
+                                                            <th class=" table-th ">
                                                                 Acción
                                                             </th>
                                                         </tr>
@@ -67,29 +71,161 @@
                                                     <tbody
                                                         class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
 
+                                                        @foreach ($users as $user)
                                                         <tr>
-                                                            <td class="table-td">Víctor Alejandro</td>
-                                                            <td class="table-td">Medellín Meza</td>
-                                                            <td class="table-td ">medellin@gmail.com</td>
-                                                            <td class="table-td ">************</td>
-                                                            <td class="table-td ">admin</td>
-                                                            <td class="table-td ">ABCD010101HDFXYZ00
-                                                            </td>
+                                                            <td class="table-td">{{ $user->name }}</td>
+                                                            <td class="table-td">{{ $user->last_name }}</td>
+                                                            <td class="table-td ">{{ $user->email }}</td>
+                                                            <td class="table-td ">{{ $user->password }}</td>
+                                                            <td class="table-td ">{{ $user->role }}</td>
+                                                            <td class="table-td ">{{ $user->curp }}</td>
+                                                            <td class="table-td ">{{ $user->hotels }}</td>
                                                             <td class="table-td ">
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
-                                                                    <button data-bs-toggle="modal"
-                                                                        data-bs-target="#modalEditar"
-                                                                        class="action-btn" type="button">
-                                                                        <iconify-icon
-                                                                            icon="heroicons:pencil-square"></iconify-icon>
+                                                                    <button
+                                                                        data-user-id="{{ $user->id }}"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#modalEditar{{ $user->id }}"
+                                                                        class="action-btn"
+                                                                        type="button"
+                                                                    >
+                                                                        <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                                                     </button>
-                                                                    <button class="action-btn" type="button">
-                                                                        <iconify-icon
-                                                                            icon="heroicons:trash"></iconify-icon>
-                                                                    </button>
+
+                                                                    <!-- Modal editar usuario -->
+                                                                    <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+                                                                        id="modalEditar{{ $user->id }}"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="blackModalLabel"
+                                                                        aria-hidden="true">
+                                                                        <div class="modal-dialog relative w-auto pointer-events-none">
+                                                                            <div
+                                                                                class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding
+                                                                                        rounded-md outline-none text-current">
+                                                                                <div class="relative bg-white rounded-lg shadow dark:bg-slate-700">
+                                                                                    <!-- Modal header -->
+                                                                                    <div
+                                                                                        class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
+                                                                                        <h3 class="text-base font-medium text-white dark:text-white capitalize">
+                                                                                            Editar usuario
+                                                                                        </h3>
+                                                                                        <button type="button"
+                                                                                            class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
+                                                                                                    dark:hover:bg-slate-600 dark:hover:text-white"
+                                                                                            data-bs-dismiss="modal">
+                                                                                            <svg aria-hidden="true" class="w-5 h-5" fill="#ffffff"
+                                                                                                viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                                                <path fill-rule="evenodd"
+                                                                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10
+                                                                                                            11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                                                                    clip-rule="evenodd"></path>
+                                                                                            </svg>
+                                                                                            <span class="sr-only">Close modal</span>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                    <!-- Modal body -->
+                                                                                    <div class="p-6 space-y-4">
+                                                                                        <div class="card xl:col-span-2">
+                                                                                            <div class="card-body flex flex-col p-6">
+                                                                                                <div class="card-text h-full ">
+                                                                                                    <form class="space-y-4" action="{{ route('users.update', ['user' => $user->id]) }}" method="post">
+                                                                                                        @csrf
+                                                                                                        @method('PUT')
+    
+                                                                                                        <input type="hidden" name="id" value="{{ $user->id }}">
+
+                                                                                                        <div
+                                                                                                            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
+                                                                                                            <div class="input-area relative">
+                                                                                                                <label for="largeInput"
+                                                                                                                    class="form-label">Nombre</label>
+                                                                                                                <input type="text" class="form-control"
+                                                                                                                    placeholder="Nombre usuario" name="editName" value="{{ $user->name }}">
+                                                                                                            </div>
+                                                                                                            <div class="input-area relative">
+                                                                                                                <label for="largeInput"
+                                                                                                                    class="form-label">Apellido</label>
+                                                                                                                <input type="text" class="form-control"
+                                                                                                                    placeholder="Apellido" name="editLastName" value="{{ $user->last_name }}">
+                                                                                                            </div>
+                                                                                                            <div class="input-area relative">
+                                                                                                                <label for="largeInput"
+                                                                                                                    class="form-label">Email</label>
+                                                                                                                <input type="email" class="form-control"
+                                                                                                                    placeholder="Email" name="editEmail" value="{{ $user->email }}">
+                                                                                                                    @error('editEmail')
+                                                                                                                        <div>
+                                                                                                                            {{$message}}
+                                                                                                                        </div>
+                                                                                                                    @enderror
+                                                                                                            </div>
+                                                                                                            <div class="input-area relative">
+                                                                                                                <label for="largeInput"
+                                                                                                                    class="form-label">Password</label>
+                                                                                                                <input type="password" class="form-control"
+                                                                                                                    placeholder="Ingrese contraseña" name="editPassword" value="{{ $user->password }}">
+                                                                                                            </div>
+                                                                                                            <div class="input-area relative">
+                                                                                                                <label for="largeInput"
+                                                                                                                    class="form-label">Rol</label>
+                                                                                                                <select id="select" class="form-control" name="editRole" value="{{ $user->role }}">
+                                                                                                                    <option value="User"
+                                                                                                                        class="dark:bg-slate-700">
+                                                                                                                        User
+                                                                                                                    </option>
+                                                                                                                    <option value="Root"
+                                                                                                                        class="dark:bg-slate-700">
+                                                                                                                        Root
+                                                                                                                    </option>
+                                                                                                                </select>
+                                                                                                            </div>
+                                                                                                            <div class="input-area relative">
+                                                                                                                <label for="largeInput"
+                                                                                                                    class="form-label">CURP</label>
+                                                                                                                <input type="text" class="form-control"
+                                                                                                                    placeholder="Ingrese curp" name="editCurp" value="{{ $user->curp }}">
+                                                                                                            </div>
+                                                                                                            <div class="input-area relative">
+                                                                                                                <label for="largeInput"
+                                                                                                                    class="form-label">Hotel</label>
+                                                                                                                <select id="select" class="form-control" name="editHotels" value="{{ $user->hotels }}">
+                                                                                                                    @foreach ($hotels as $hotel)
+                                                                                                                    <option value="{{$hotel->id}}"
+                                                                                                                        class="dark:bg-slate-700">
+                                                                                                                        {{$hotel->id}}._ {{$hotel->name}}
+                                                                                                                    </option> 
+                                                                                                                    @endforeach
+                                                                                                                </select>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <!-- Modal footer -->
+                                                                                                        <div
+                                                                                                            class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
+                                                                                                            <button type="submit" name="editUsers" data-bs-dismiss="modal"
+                                                                                                                class="btn inline-flex justify-center text-white bg-black-500">Guardar</button>
+                                                                                                        </div>
+                                                                                                    </form>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <form action="{{ route('users.destroy', ['user' => $user->id]) }}" method="POST">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                    
+                                                                        <button onclick="return confirm('¿Seguro que deseas eliminar este registro?')" type="submit" class="action-btn">
+                                                                            <iconify-icon icon="heroicons:trash"></iconify-icon>
+                                                                        </button>
+                                                                    </form>
                                                                 </div>
                                                             </td>
                                                         </tr>
+                                                        @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -132,7 +268,7 @@
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
                                                     <div class="card-text h-full ">
-                                                        <form class="space-y-4" action="{{ route('users') }}" method="post">
+                                                        <form class="space-y-4" action="{{ route('users.store') }}" method="post">
                                                             @csrf
 
                                                             <div
@@ -141,19 +277,24 @@
                                                                     <label for="largeInput"
                                                                         class="form-label">Nombre</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Nombre usuario" name="addNmae" value="{{old('addNmae')}}">
+                                                                        placeholder="Nombre usuario" name="addName" value="{{old('addName')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Apellido</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Apellido" name="addApellido" value="{{old('addApellido')}}">
+                                                                        placeholder="Apellido" name="addLastName" value="{{old('addLastName')}}">
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Email</label>
                                                                     <input type="email" class="form-control"
                                                                         placeholder="Email" name="addEmail" value="{{old('addEmail')}}">
+                                                                        @error('addEmail')
+                                                                            <div>
+                                                                                {{$message}}
+                                                                            </div>
+                                                                        @enderror
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
@@ -164,12 +305,12 @@
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Rol</label>
-                                                                    <select id="select" class="form-control" name="addRol" value="{{old('addRol')}}">
-                                                                        <option value="option1"
+                                                                    <select id="select" class="form-control" name="addRole" value="{{old('addRole')}}">
+                                                                        <option value="User"
                                                                             class="dark:bg-slate-700">
                                                                             User
                                                                         </option>
-                                                                        <option value="option2"
+                                                                        <option value="Root"
                                                                             class="dark:bg-slate-700">
                                                                             Root
                                                                         </option>
@@ -179,112 +320,25 @@
                                                                     <label for="largeInput"
                                                                         class="form-label">CURP</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Ingrese curp" name="addCURP" value="{{old('addCURP')}}">
+                                                                        placeholder="Ingrese curp" name="addCurp" value="{{old('addCurp')}}">
+                                                                </div>
+                                                                <div class="input-area relative">
+                                                                    <label for="largeInput"
+                                                                        class="form-label">Hotel</label>
+                                                                    <select id="select" class="form-control" name="addHotels">
+                                                                        @foreach ($hotels as $hotel)
+                                                                        <option value="{{$hotel->id}}"
+                                                                            class="dark:bg-slate-700">
+                                                                            {{$hotel->id}}._ {{$hotel->name}}
+                                                                        </option> 
+                                                                        @endforeach
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                             <!-- Modal footer -->
                                                             <div
                                                                 class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
                                                                 <button type="submit" name="addUsers" data-bs-dismiss="modal"
-                                                                    class="btn inline-flex justify-center text-white bg-black-500">Agregar</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal editar usuario -->
-                        <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-                            id="modalEditar" tabindex="-1" aria-labelledby="blackModalLabel" aria-hidden="true">
-                            <div class="modal-dialog relative w-auto pointer-events-none">
-                                <div
-                                    class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding
-                                            rounded-md outline-none text-current">
-                                    <div class="relative bg-white rounded-lg shadow dark:bg-slate-700">
-                                        <!-- Modal header -->
-                                        <div
-                                            class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
-                                            <h3 class="text-base font-medium text-white dark:text-white capitalize">
-                                                Editar usuario
-                                            </h3>
-                                            <button type="button"
-                                                class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
-                                                        dark:hover:bg-slate-600 dark:hover:text-white"
-                                                data-bs-dismiss="modal">
-                                                <svg aria-hidden="true" class="w-5 h-5" fill="#ffffff"
-                                                    viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10
-                                                                11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                        clip-rule="evenodd"></path>
-                                                </svg>
-                                                <span class="sr-only">Close modal</span>
-                                            </button>
-                                        </div>
-                                        <!-- Modal body -->
-                                        <div class="p-6 space-y-4">
-                                            <div class="card xl:col-span-2">
-                                                <div class="card-body flex flex-col p-6">
-                                                    <div class="card-text h-full ">
-                                                        <form class="space-y-4" action="{{ route('users') }}" method="post">
-                                                            @csrf
-
-                                                            <div
-                                                                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">Nombre</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Nombre usuario" name="editNmae" value="{{old('editNmae')}}">
-                                                                </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">Apellido</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Apellido" name="editApellido" value="{{old('editApellido')}}">
-                                                                </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">Email</label>
-                                                                    <input type="email" class="form-control"
-                                                                        placeholder="Email" name="editEmail" value="{{old('editEmail')}}">
-                                                                </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">Password</label>
-                                                                    <input type="password" class="form-control"
-                                                                        placeholder="Ingrese contraseña" name="editPassword" value="{{old('editPassword')}}">
-                                                                </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">Rol</label>
-                                                                    <select id="select" class="form-control" name="editRol" value="{{old('editRol')}}">
-                                                                        <option value="option1"
-                                                                            class="dark:bg-slate-700">
-                                                                            User
-                                                                        </option>
-                                                                        <option value="option2"
-                                                                            class="dark:bg-slate-700">
-                                                                            Root
-                                                                        </option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">CURP</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Ingrese curp" name="editCURP" value="{{old('editCURP')}}">
-                                                                </div>
-                                                            </div>
-                                                            <!-- Modal footer -->
-                                                            <div
-                                                                class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                                                <button type="submit" name="editUsers" data-bs-dismiss="modal"
                                                                     class="btn inline-flex justify-center text-white bg-black-500">Agregar</button>
                                                             </div>
                                                         </form>

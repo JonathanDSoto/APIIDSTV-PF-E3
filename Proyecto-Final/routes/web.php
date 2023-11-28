@@ -32,5 +32,5 @@ Route::delete('/hotels/{hotel}', [HotelsController::class, 'destroy'])->name('ho
 Route::get('/users', [UsersController::class, 'users'])->name('users');
 Route::post('/users', [UsersController::class, 'store'])->name('users.store');
 Route::get('/users/{id}/edit', [UsersController::class, 'edit'])->name('users.edit');
-Route::put('/users/{id}', [UsersController::class, 'update'])->name('users.update');
-Route::delete('/users/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
+Route::put('/users/{user}', [UsersController::class, 'update'])->name('users.update');
+Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');

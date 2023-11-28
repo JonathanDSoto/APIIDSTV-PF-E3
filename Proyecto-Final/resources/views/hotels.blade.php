@@ -258,7 +258,7 @@
                                                             <!-- Modal footer -->
                                                             <div
                                                             class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                                            <button data-bs-dismiss="modal"
+                                                            <button type="submit" data-bs-dismiss="modal"
                                                                 class="btn inline-flex justify-center text-white bg-black-500">Agregar</button>
                                                             </div>
                                                         </form>
