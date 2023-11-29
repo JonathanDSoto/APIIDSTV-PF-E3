@@ -25,7 +25,7 @@ class UsersController extends Controller
             'addLastName'=> 'required|string|max:255',
             'addEmail'=> 'required|email|unique:users,email',
             'addPassword'=> 'required|string|min:8|max:100',
-            'addRole'=> 'required|in:User,root',
+            'addRole'=> 'required|string',
             'addCurp'=> 'required|string|size:18',
             'addHotels'=> 'required|exists:hotels,id',
         ]);
@@ -60,8 +60,8 @@ class UsersController extends Controller
         $request->validate([
             'editName'=> 'required|string|max:255',
             'editLastName'=> 'required|string|max:255',
-            'editEmail'=> 'required|email|unique:users,email' . $id,
-            'editRole'=> 'required|in:User,root',
+            'editEmail'=> 'required|email|unique:users,email,' . $id,
+            'editRole'=> 'required|string',
             'editCurp'=> 'required|string|size:18',
             'editHotels'=> 'required|exists:hotels,id',
         ]);
