@@ -51,10 +51,10 @@ class HotelsController extends Controller
     {
         //validacion de datos
         $request->validate([
-            'addName'=> 'required|string|max:255',
-            'addAddress'=> 'required|string|max:255',
-            'addDescription'=> 'required|string',
-            'addImage'=> 'required|url',
+            'editName'=> 'required|string|max:255',
+            'editAddress'=> 'required|string|max:255',
+            'editDescription'=> 'required|string',
+            'editImage'=> 'required|url',
         ]);
 
         //busca en la base de datos el id que coincide con el registro seleccionado

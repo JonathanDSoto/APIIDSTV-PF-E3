@@ -58,12 +58,12 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'addName'=> 'required|string|max:255',
-            'addLastName'=> 'required|string|max:255',
-            'addEmail'=> 'required|email|unique:users,email',
-            'addRole'=> 'required|in:User,root',
-            'addCurp'=> 'required|string|size:18',
-            'addHotels'=> 'required|exists:hotels,id',
+            'editName'=> 'required|string|max:255',
+            'editLastName'=> 'required|string|max:255',
+            'editEmail'=> 'required|email|unique:users,email' . $id,
+            'editRole'=> 'required|in:User,root',
+            'editCurp'=> 'required|string|size:18',
+            'editHotels'=> 'required|exists:hotels,id',
         ]);
 
         //Busca el usuario por ID
