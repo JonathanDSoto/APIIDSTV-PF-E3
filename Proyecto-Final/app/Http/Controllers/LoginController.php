@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -14,16 +15,14 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $user = User::where('email', $request->email)->first();
 
-        if (Auth::attempt($credentials)) {
-            // Autenticación exitosa
+        if ($user) {
             return redirect()->route('index');
         }
 
-        // Autenticación fallida
-        return redirect()->route('login')->with('error', 'Invalid credentials');
+        // El usuario no existe
+        return redirect()->route('login')->with('error', 'User not found.');
     }
-
 }
 
