@@ -3,11 +3,15 @@
 @section('title','Hoteles')
 
 @section('content')
-
                 <!--CONTENT -->
                 <div class="content-wrapper transition-all duration-150 xl:ltr:ml-[248px] xl:rtl:mr-[248px]"
                     id="content_wrapper">
                     <div class="page-content">
+                        @if(session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
 
                         <div class="mb-4">
                             <button data-bs-toggle="modal" data-bs-target="#modalAgregar"
