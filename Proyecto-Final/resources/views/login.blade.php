@@ -35,14 +35,14 @@
                             <h4 class="font-medium">Iniciar sesión</h4>
                         </div>
                         <!-- BEGIN: Login Form -->
-                        <form class="space-y-4" action="{{ route('index') }}" method="post">
+                        <form class="space-y-4" action="{{ route('login') }}" method="post">
                             @csrf
 
                             <div class="fromGroup">
                                 <label class="block capitalize form-label">Correo electronico</label>
                                 <div class="relative ">
                                     <input type="email" name="email" class="form-control py-2"
-                                    placeholder="Correo electronico"  value="{{old('email')}}">
+                                    placeholder="Correo electronico"  value="correo@prueba.com">
                                     @error('email')
                                         <div>
                                             {{$message}}
@@ -54,7 +54,7 @@
                                 <label class="block capitalize form-label">Contraseña</label>
                                 <div class="relative ">
                                     <input type="password" name="password"
-                                        class="  form-control py-2" placeholder="Contraseña">
+                                        class="  form-control py-2" placeholder="Contraseña" value="123456789">
                                     @error('password')
                                         <div>
                                             {{$message}}
