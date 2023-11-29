@@ -20,10 +20,20 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'addName'=> 'required|string|max:255',
+            'addLastName'=> 'required|string|max:255',
+            'addEmail'=> 'required|email|unique:users,email',
+            'addPassword'=> 'required|string|min:8|max:100',
+            'addRole'=> 'required|in:User,root',
+            'addCurp'=> 'required|string|size:18',
+            'addHotels'=> 'required|exists:hotels,id',
+        ]);
+
         //Crea un nuevo usuario
         $user = new User();
 
-         //insert con los nombres de los inputs del modal agregar
+        //insert con los nombres de los inputs del modal agregar
         $user->name = $request->addName;
         $user->last_name = $request->addLastName;
         $user->email = $request->addEmail;
@@ -47,6 +57,15 @@ class UsersController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'addName'=> 'required|string|max:255',
+            'addLastName'=> 'required|string|max:255',
+            'addEmail'=> 'required|email|unique:users,email',
+            'addRole'=> 'required|in:User,root',
+            'addCurp'=> 'required|string|size:18',
+            'addHotels'=> 'required|exists:hotels,id',
+        ]);
+
         //Busca el usuario por ID
         $user = User::find($id);
 

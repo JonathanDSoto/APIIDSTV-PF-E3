@@ -18,6 +18,14 @@ class HotelsController extends Controller
 
     public function store(Request $request)
     {
+        //validacion de datos
+        $request->validate([
+            'addName'=> 'required|string|max:255',
+            'addAddress'=> 'required|string|max:255',
+            'addDescription'=> 'required|string',
+            'addImage'=> 'required|url',
+        ]);
+
         //busca en la base de datos el id que coincide con el registro seleccionado
         $hotels = new Hotel();
 
@@ -41,6 +49,14 @@ class HotelsController extends Controller
 
     public function update(Request $request, $id)
     {
+        //validacion de datos
+        $request->validate([
+            'addName'=> 'required|string|max:255',
+            'addAddress'=> 'required|string|max:255',
+            'addDescription'=> 'required|string',
+            'addImage'=> 'required|url',
+        ]);
+
         //busca en la base de datos el id que coincide con el registro seleccionado
         $hotel = Hotel::find($id);
 
