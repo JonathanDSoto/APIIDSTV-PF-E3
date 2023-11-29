@@ -74,12 +74,21 @@ class HotelsController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        //busca en la base de datos el id que coincide con el registro seleccionado
         $hotel = Hotel::find($id);
 
-        //borra el registro
+        if ($this->tieneUsuariosAsociados($hotel)) {
+            // Muestra un mensaje de error indicando que hay usuarios asociados
+            return redirect()->route('hotels')->with('error', 'Hay usuarios vinculados a este hotel. No se puede eliminar.');
+        }
+
+        // No hay usuarios asociados, puedes eliminar directamente
         $hotel->delete();
-         //recarga la pagina
+
         return redirect()->route('hotels');
+    }
+
+    private function tieneUsuariosAsociados($hotel)
+    {
+        return $hotel->users()->exists();
     }
 }
