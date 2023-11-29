@@ -27,11 +27,14 @@
                                     </h4>
                                 </header>
                                 <div class="card-body px-6 pb-6">
-                                    <div class="overflow-x-auto -mx-6">
+                                    <div class="overflow-x-auto -mx-6 dashcode-data-table">
+                                        <span class=" col-span-8  hidden"></span>
+                                        <span class="  col-span-4 hidden"></span>
                                         <div class="inline-block min-w-full align-middle">
                                             <div class="overflow-hidden ">
                                                 <table
-                                                    class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700">
+                                                    class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700"
+                                                    id="data-table">
                                                     <thead class=" border-t border-slate-100 dark:border-slate-800">
                                                         <tr>
 

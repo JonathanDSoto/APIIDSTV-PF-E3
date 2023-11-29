@@ -28,11 +28,14 @@
                                     </h4>
                                 </header>
                                 <div class="card-body px-6 pb-6">
-                                    <div class="overflow-x-auto -mx-6">
+                                    <div class="overflow-x-auto -mx-6 dashcode-data-table">
+                                        <span class=" col-span-8  hidden"></span>
+                                        <span class="  col-span-4 hidden"></span>
                                         <div class="inline-block min-w-full align-middle">
                                             <div class="overflow-hidden ">
                                                 <table
-                                                    class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700">
+                                                    class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700"
+                                                    id="data-table">
                                                     <thead class=" border-t border-slate-100 dark:border-slate-800">
                                                         <tr>
 
@@ -133,24 +136,44 @@
                                                                                                                 class="form-label">Nombre del hotel</label>
                                                                                                             <input type="text" class="form-control"
                                                                                                                 placeholder="Nombre hotel" name="editName" value="{{ $hotel->name }}">
+                                                                                                                @error('editName')
+                                                                                                                <div>
+                                                                                                                    {{$message}}
+                                                                                                                </div>
+                                                                                                            @enderror
                                                                                                         </div>
                                                                                                         <div class="input-area relative">
                                                                                                             <label for="largeInput"
                                                                                                                 class="form-label">Dirección</label>
                                                                                                             <input type="text" class="form-control"
                                                                                                                 placeholder="Ingrese dirección" name="editAddress" value="{{ $hotel->address }}">
+                                                                                                                @error('editAddress')
+                                                                                                                <div>
+                                                                                                                    {{$message}}
+                                                                                                                </div>
+                                                                                                            @enderror
                                                                                                         </div>
                                                                                                         <div class="input-area relative">
                                                                                                             <label for="largeInput"
                                                                                                                 class="form-label">Descripción</label>
                                                                                                             <input type="text" class="form-control"
                                                                                                                 placeholder="Ingrese descripción" name="editDescription" value="{{ $hotel->description }}">
+                                                                                                                @error('editDescription')
+                                                                                                                    <div>
+                                                                                                                        {{$message}}
+                                                                                                                    </div>
+                                                                                                                @enderror
                                                                                                         </div>
                                                                                                         <div class="input-area relative">
                                                                                                             <label for="largeInput"
                                                                                                                 class="form-label">Imagen del hotel</label>
                                                                                                             <input type="url" class="form-control"
                                                                                                                 placeholder="Ingrese URL de la imagen" name="editImage" value="{{ $hotel->image }}">
+                                                                                                                @error('editImage')
+                                                                                                                    <div>
+                                                                                                                        {{$message}}
+                                                                                                                    </div>
+                                                                                                                @enderror
                                                                                                         </div>
                                                                                                     </div>
 
@@ -234,24 +257,44 @@
                                                                         class="form-label">Nombre del hotel</label>
                                                                     <input type="text" class="form-control"
                                                                         placeholder="Nombre hotel" name="addName" value="{{old('addName')}}">
+                                                                        @error('addName')
+                                                                        <div>
+                                                                            {{$message}}
+                                                                        </div>
+                                                                    @enderror
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Dirección</label>
                                                                     <input type="text" class="form-control"
                                                                         placeholder="Ingrese dirección" name="addAddress" value="{{old('addAddress')}}">
+                                                                        @error('addAddress')
+                                                                        <div>
+                                                                            {{$message}}
+                                                                        </div>
+                                                                    @enderror
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Descripción</label>
                                                                     <input type="text" class="form-control"
                                                                         placeholder="Ingrese descripción" name="addDescription" value="{{old('addDescription')}}">
+                                                                        @error('addDescription')
+                                                                        <div>
+                                                                            {{$message}}
+                                                                        </div>
+                                                                    @enderror
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Imagen del hotel</label>
                                                                     <input type="text" class="form-control"
                                                                         placeholder="Ingrese URL de la imagen" name="addImage" value="{{old('addImage')}}">
+                                                                        @error('addImage')
+                                                                        <div>
+                                                                            {{$message}}
+                                                                        </div>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
 

@@ -27,11 +27,14 @@
                                     </h4>
                                 </header>
                                 <div class="card-body px-6 pb-6">
-                                    <div class="overflow-x-auto -mx-6">
+                                    <div class="overflow-x-auto -mx-6 dashcode-data-table">
+                                        <span class=" col-span-8  hidden"></span>
+                                        <span class="  col-span-4 hidden"></span>
                                         <div class="inline-block min-w-full align-middle">
                                             <div class="overflow-hidden ">
                                                 <table
-                                                    class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700">
+                                                    class="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700"
+                                                    id="data-table">
                                                     <thead class=" border-t border-slate-100 dark:border-slate-800">
                                                         <tr>
 
@@ -141,12 +144,22 @@
                                                                                                                     class="form-label">Nombre</label>
                                                                                                                 <input type="text" class="form-control"
                                                                                                                     placeholder="Nombre usuario" name="editName" value="{{ $user->name }}">
+                                                                                                                    @error('editName')
+                                                                                                                    <div>
+                                                                                                                        {{$message}}
+                                                                                                                    </div>
+                                                                                                                @enderror
                                                                                                             </div>
                                                                                                             <div class="input-area relative">
                                                                                                                 <label for="largeInput"
                                                                                                                     class="form-label">Apellido</label>
                                                                                                                 <input type="text" class="form-control"
                                                                                                                     placeholder="Apellido" name="editLastName" value="{{ $user->last_name }}">
+                                                                                                                    @error('editLastName')
+                                                                                                                    <div>
+                                                                                                                        {{$message}}
+                                                                                                                    </div>
+                                                                                                                @enderror
                                                                                                             </div>
                                                                                                             <div class="input-area relative">
                                                                                                                 <label for="largeInput"
@@ -164,26 +177,41 @@
                                                                                                                     class="form-label">Password</label>
                                                                                                                 <input type="password" class="form-control"
                                                                                                                     placeholder="Ingrese contraseña" name="editPassword" value="{{ $user->password }}">
+                                                                                                                    @error('editPassword')
+                                                                                                                    <div>
+                                                                                                                        {{$message}}
+                                                                                                                    </div>
+                                                                                                                @enderror
                                                                                                             </div>
                                                                                                             <div class="input-area relative">
                                                                                                                 <label for="largeInput"
                                                                                                                     class="form-label">Rol</label>
                                                                                                                 <select id="select" class="form-control" name="editRole" value="{{ $user->role }}">
                                                                                                                     <option value="User"
-                                                                                                                        class="dark:bg-slate-700">
+                                                                                                                        class="dark:bg-slate-700" {{ $user->role == "User" ? 'selected' : '' }}>
                                                                                                                         User
                                                                                                                     </option>
                                                                                                                     <option value="Root"
-                                                                                                                        class="dark:bg-slate-700">
+                                                                                                                        class="dark:bg-slate-700" {{ $user->role == "Root" ? 'selected' : '' }}>
                                                                                                                         Root
                                                                                                                     </option>
                                                                                                                 </select>
+                                                                                                                @error('editRole')
+                                                                                                                    <div>
+                                                                                                                        {{$message}}
+                                                                                                                    </div>
+                                                                                                                @enderror
                                                                                                             </div>
                                                                                                             <div class="input-area relative">
                                                                                                                 <label for="largeInput"
                                                                                                                     class="form-label">CURP</label>
                                                                                                                 <input type="text" class="form-control"
                                                                                                                     placeholder="Ingrese curp" name="editCurp" value="{{ $user->curp }}">
+                                                                                                                    @error('editCurp')
+                                                                                                                        <div>
+                                                                                                                            {{$message}}
+                                                                                                                        </div>
+                                                                                                                    @enderror
                                                                                                             </div>
                                                                                                             <div class="input-area relative">
                                                                                                                 <label for="largeInput"
@@ -191,11 +219,16 @@
                                                                                                                 <select id="select" class="form-control" name="editHotels" value="{{ $user->hotels }}">
                                                                                                                     @foreach ($hotels as $hotel)
                                                                                                                     <option value="{{$hotel->id}}"
-                                                                                                                        class="dark:bg-slate-700">
+                                                                                                                        class="dark:bg-slate-700" {{ $user->hotels == $hotel->id ? 'selected' : '' }}>
                                                                                                                         {{$hotel->id}}._ {{$hotel->name}}
                                                                                                                     </option> 
                                                                                                                     @endforeach
                                                                                                                 </select>
+                                                                                                                @error('editHotels')
+                                                                                                                    <div>
+                                                                                                                        {{$message}}
+                                                                                                                    </div>
+                                                                                                                @enderror
                                                                                                             </div>
                                                                                                         </div>
                                                                                                         <!-- Modal footer -->
@@ -278,12 +311,22 @@
                                                                         class="form-label">Nombre</label>
                                                                     <input type="text" class="form-control"
                                                                         placeholder="Nombre usuario" name="addName" value="{{old('addName')}}">
+                                                                        @error('addName')
+                                                                        <div>
+                                                                            {{$message}}
+                                                                        </div>
+                                                                    @enderror
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">Apellido</label>
                                                                     <input type="text" class="form-control"
                                                                         placeholder="Apellido" name="addLastName" value="{{old('addLastName')}}">
+                                                                        @error('addLastName')
+                                                                        <div>
+                                                                            {{$message}}
+                                                                        </div>
+                                                                    @enderror
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
@@ -301,6 +344,11 @@
                                                                         class="form-label">Password</label>
                                                                     <input type="password" class="form-control"
                                                                         placeholder="Ingrese contraseña" name="addPassword" value="{{old('addPassword')}}">
+                                                                        @error('addPassword')
+                                                                        <div>
+                                                                            {{$message}}
+                                                                        </div>
+                                                                    @enderror
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
@@ -315,12 +363,22 @@
                                                                             Root
                                                                         </option>
                                                                     </select>
+                                                                    @error('addRole')
+                                                                        <div>
+                                                                            {{$message}}
+                                                                        </div>
+                                                                    @enderror
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
                                                                         class="form-label">CURP</label>
                                                                     <input type="text" class="form-control"
                                                                         placeholder="Ingrese curp" name="addCurp" value="{{old('addCurp')}}">
+                                                                        @error('addCurp')
+                                                                        <div>
+                                                                            {{$message}}
+                                                                        </div>
+                                                                    @enderror
                                                                 </div>
                                                                 <div class="input-area relative">
                                                                     <label for="largeInput"
@@ -333,6 +391,11 @@
                                                                         </option> 
                                                                         @endforeach
                                                                     </select>
+                                                                    @error('addHotels')
+                                                                    <div>
+                                                                        {{$message}}
+                                                                    </div>
+                                                                @enderror
                                                                 </div>
                                                             </div>
                                                             <!-- Modal footer -->
