@@ -20,8 +20,7 @@ class UsersTableSeeder extends Seeder
             'last_name' => 'Meza',
             'email' => 'correo@prueba.com',
             'password' => bcrypt('123456789'),
-            'role' => 'root',
-            'curp' => 'CURPEJEMPLO1234567890',
+            'name_hotel'=> 'Hotel A',
             'hotels' => 1, 
         ]);
     }

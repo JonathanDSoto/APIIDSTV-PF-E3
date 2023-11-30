@@ -21,13 +21,12 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'addName'=> 'required|string|max:255',
-            'addLastName'=> 'required|string|max:255',
+            'addName'=> 'required|string|regex:/^[a-zA-Z\s]+$/|max:255',
+            'addLastName'=> 'required|string|regex:/^[a-zA-Z\s]+$/|max:255',
             'addEmail'=> 'required|email|unique:users,email',
             'addPassword'=> 'required|string|min:8|max:100',
-            'addRole'=> 'required|string',
-            'addCurp'=> 'required|string|size:18',
             'addHotels'=> 'required|exists:hotels,id',
+            'addNameHotel'=> 'required|string|maxx:255'
         ]);
 
         //Crea un nuevo usuario
@@ -38,9 +37,9 @@ class UsersController extends Controller
         $user->last_name = $request->addLastName;
         $user->email = $request->addEmail;
         $user->password = bcrypt($request->addPassword); 
-        $user->role = $request->addRole;
-        $user->curp = $request->addCurp;
+        $user->name_hotel = $request->addNameHotel;
         $user->hotels = $request->addHotels;
+        
 
         $user->save();
 
@@ -58,12 +57,11 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'editName'=> 'required|string|max:255',
-            'editLastName'=> 'required|string|max:255',
+            'editName'=> 'required|string|regex:/^[a-zA-Z\s]+$/|max:255',
+            'editLastName'=> 'required|string|regex:/^[a-zA-Z\s]+$/|max:255',
             'editEmail'=> 'required|email|unique:users,email,' . $id,
-            'editRole'=> 'required|string',
-            'editCurp'=> 'required|string|size:18',
             'editHotels'=> 'required|exists:hotels,id',
+            'editNameHotel'=> 'required|string|maxx:255',
         ]);
 
         //Busca el usuario por ID
@@ -73,8 +71,7 @@ class UsersController extends Controller
         $user->name = $request->editName;
         $user->last_name = $request->editLastName;
         $user->email = $request->editEmail;
-        $user->role = $request->editRole;
-        $user->curp = $request->editCurp;
+        $user->name_hotel = $request->editNameHotel;
         $user->hotels = $request->editHotels;
 
         //Guarda los registros

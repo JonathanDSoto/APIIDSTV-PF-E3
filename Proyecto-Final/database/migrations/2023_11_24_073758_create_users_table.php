@@ -19,8 +19,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('role');
-            $table->string('curp');
+            $table->string('name_hotel');
             $table->unsignedBigInteger('hotels'); 
 
             $table->foreign('hotels')->references('id')->on('hotels');

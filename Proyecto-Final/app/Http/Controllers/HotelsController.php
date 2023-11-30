@@ -77,11 +77,10 @@ class HotelsController extends Controller
         $hotel = Hotel::find($id);
 
         if ($this->tieneUsuariosAsociados($hotel)) {
-            // Muestra un mensaje de error indicando que hay usuarios asociados
             return redirect()->route('hotels')->with('error', 'Hay usuarios vinculados a este hotel. No se puede eliminar.');
         }
 
-        // No hay usuarios asociados, puedes eliminar directamente
+        // No hay usuarios asociados, eliminar directamente
         $hotel->delete();
 
         return redirect()->route('hotels');

@@ -17,12 +17,13 @@ class LoginController extends Controller
     {
         $user = User::where('email', $request->email)->first();
 
-        if ($user) {
+        if ($user && \Hash::check($request->password, $user->password)) {
+            // La autenticación fue exitosa
             return redirect()->route('index');
         }
 
-        // El usuario no existe
-        return redirect()->route('login')->with('error', 'User not found.');
+        // La autenticación falló
+        return redirect()->route('login')->with('error', 'Invalid email or password.');
     }
 }
 
