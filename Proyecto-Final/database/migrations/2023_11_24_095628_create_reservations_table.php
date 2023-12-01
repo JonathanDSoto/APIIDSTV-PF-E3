@@ -24,16 +24,6 @@ return new class extends Migration
             $table->string('status');
             $table->decimal('total_price', 8, 2);
 
-            $table->unsignedBigInteger('room_id')->nullable(); 
-            $table->unsignedBigInteger('client_id')->nullable();
-            $table->unsignedBigInteger('coupon_id')->nullable();
-            $table->unsignedBigInteger('rates_id')->nullable();
-
-            $table->foreign('room_id')->references('id')->on('rooms');
-            $table->foreign('client_id')->references('id')->on('clients');
-            $table->foreign('coupon_id')->references('id')->on('coupons');
-            $table->foreign('rates_id')->references('id')->on('rates');
-
             $table->timestamps();
         });
     }

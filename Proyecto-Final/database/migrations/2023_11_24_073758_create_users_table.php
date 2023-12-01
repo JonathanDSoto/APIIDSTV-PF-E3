@@ -20,11 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('name_hotel');
-            $table->unsignedBigInteger('hotels'); 
-
-            $table->foreign('hotels')->references('id')->on('hotels');
-
-
+            
             $table->timestamps();
         });
     }

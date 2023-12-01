@@ -18,9 +18,6 @@ return new class extends Migration
             $table->date('date');
             $table->integer('available_room');
             $table->decimal('rates', 8, 2); 
-            $table->unsignedBigInteger('hotel_id'); 
-
-            $table->foreign('hotel_id')->references('id')->on('hotels');
 
             $table->timestamps();
         });

@@ -21,9 +21,6 @@ return new class extends Migration
             $table->string('state');
             $table->string('hotel_name');
             $table->double('rate_room');
-            $table->unsignedBigInteger('hotels'); 
-           
-            $table->foreign('hotels')->references('id')->on('hotels');
 
             $table->timestamps();
         });

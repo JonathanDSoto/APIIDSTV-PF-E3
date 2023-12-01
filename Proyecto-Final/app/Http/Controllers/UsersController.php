@@ -12,7 +12,7 @@ class UsersController extends Controller
     {
         //Recoge todos los elementos de la tabla users
         $users = User::all();
-        $hotels =  Hotel::all();
+        $hotels = Hotel::all();
 
         //Los manda al front con el compact('users')
         return view('users', compact('users', 'hotels'));
@@ -21,12 +21,11 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'addName'=> 'required|string|regex:/^[a-zA-Z\s]+$/|max:255',
-            'addLastName'=> 'required|string|regex:/^[a-zA-Z\s]+$/|max:255',
-            'addEmail'=> 'required|email|unique:users,email',
-            'addPassword'=> 'required|string|min:8|max:100',
-            'addHotels'=> 'required|exists:hotels,id',
-            'addNameHotel'=> 'required|string|maxx:255'
+            'addName' => 'required|string|regex:/^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/|max:255',
+            'addLastName' => 'required|string|regex:/^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/|max:255',
+            'addEmail' => 'required|email|unique:users,email',
+            'addPassword' => 'required|string|min:8|max:100',
+            'addNameHotel' => 'required|string|maxx:255'
         ]);
 
         //Crea un nuevo usuario
@@ -36,10 +35,8 @@ class UsersController extends Controller
         $user->name = $request->addName;
         $user->last_name = $request->addLastName;
         $user->email = $request->addEmail;
-        $user->password = bcrypt($request->addPassword); 
+        $user->password = bcrypt($request->addPassword);
         $user->name_hotel = $request->addNameHotel;
-        $user->hotels = $request->addHotels;
-        
 
         $user->save();
 
@@ -57,11 +54,10 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'editName'=> 'required|string|regex:/^[a-zA-Z\s]+$/|max:255',
-            'editLastName'=> 'required|string|regex:/^[a-zA-Z\s]+$/|max:255',
-            'editEmail'=> 'required|email|unique:users,email,' . $id,
-            'editHotels'=> 'required|exists:hotels,id',
-            'editNameHotel'=> 'required|string|maxx:255',
+            'editName' => 'required|string|regex:/^[a-zA-Z\s]+$/|max:255',
+            'editLastName' => 'required|string|regex:/^[a-zA-Z\s]+$/|max:255',
+            'editEmail' => 'required|email|unique:users,email,' . $id,
+            'editNameHotel' => 'required|string|maxx:255',
         ]);
 
         //Busca el usuario por ID
@@ -72,7 +68,6 @@ class UsersController extends Controller
         $user->last_name = $request->editLastName;
         $user->email = $request->editEmail;
         $user->name_hotel = $request->editNameHotel;
-        $user->hotels = $request->editHotels;
 
         //Guarda los registros
         $user->save();
