@@ -7,9 +7,21 @@
                 <div class="content-wrapper transition-all duration-150 xl:ltr:ml-[248px] xl:rtl:mr-[248px]"
                     id="content_wrapper">
                     <div class="page-content">
+
                         @if(session('error'))
-                            <div class="alert alert-danger">
+                            <div class="alert alert-danger mb-3">
                                 {{ session('error') }}
+                            </div>
+                        @endif
+
+                        @if($errors->any())
+                            <div class="alert alert-danger mb-3">
+                                El registro no fue aceptado debido a datos incorrectos:
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                         @endif
 
@@ -97,10 +109,10 @@
                                                                         tabindex="-1"
                                                                         aria-labelledby="blackModalLabel"
                                                                         aria-hidden="true">
-                                                                    <div class="modal-dialog relative w-auto pointer-events-none">
+                                                                    <div class="modal-dialog modal-xl relative w-auto pointer-events-none">
                                                                         <div
                                                                             class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding
-                                                                                    rounded-md outline-none text-current">
+                                                                            rounded-md outline-none text-current">
                                                                             <div class="relative bg-white rounded-lg shadow dark:bg-slate-700">
                                                                                 <!-- Modal header -->
                                                                                 <div
@@ -134,8 +146,8 @@
                                                                                                     <input type="hidden" name="id" value="{{ $hotel->id }}">
 
                                                                                                     <div
-                                                                                                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
-                                                                                                        <div class="input-area relative">
+                                                                                                        class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-7">
+                                                                                                        <div class="input-area relative mb-4">
                                                                                                             <label for="largeInput"
                                                                                                                 class="form-label">Nombre del hotel</label>
                                                                                                             <input type="text" class="form-control"
@@ -146,7 +158,7 @@
                                                                                                                 </div>
                                                                                                             @enderror
                                                                                                         </div>
-                                                                                                        <div class="input-area relative">
+                                                                                                        <div class="input-area relative mb-4">
                                                                                                             <label for="largeInput"
                                                                                                                 class="form-label">Dirección</label>
                                                                                                             <input type="text" class="form-control"
@@ -157,18 +169,17 @@
                                                                                                                 </div>
                                                                                                             @enderror
                                                                                                         </div>
-                                                                                                        <div class="input-area relative">
+                                                                                                        <div class="input-area relative mb-4">
                                                                                                             <label for="largeInput"
                                                                                                                 class="form-label">Descripción</label>
-                                                                                                            <input type="text" class="form-control"
-                                                                                                                placeholder="Ingrese descripción" name="editDescription" value="{{ $hotel->description }}">
+                                                                                                                <textarea class="form-control" placeholder="Ingrese descripción" name="editDescription" id="" cols="30" rows="10">{{ $hotel->description }}</textarea>
                                                                                                                 @error('editDescription')
                                                                                                                     <div>
                                                                                                                         {{$message}}
                                                                                                                     </div>
                                                                                                                 @enderror
                                                                                                         </div>
-                                                                                                        <div class="input-area relative">
+                                                                                                        <div class="input-area relative mb-4">
                                                                                                             <label for="largeInput"
                                                                                                                 class="form-label">Imagen del hotel</label>
                                                                                                             <input type="url" class="form-control"
@@ -197,11 +208,11 @@
                                                                     </div>
                                                                     </div>
 
-                                                                    <form action="{{ route('hotels.destroy', ['hotel' => $hotel->id]) }}" method="POST">
+                                                                    <form action="{{ route('hotels.destroy', ['hotel' => $hotel->id]) }}" method="POST" id="destroy">
                                                                         @csrf
                                                                         @method('DELETE')
                                                                     
-                                                                        <button onclick="return confirm('¿Seguro que deseas eliminar este registro?')" type="submit" class="action-btn">
+                                                                        <button type="submit" class="action-btn">
                                                                             <iconify-icon icon="heroicons:trash"></iconify-icon>
                                                                         </button>
                                                                     </form>
@@ -220,12 +231,15 @@
 
                         <!-- Modal agregar tarifa -->
                         <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-                            id="modalAgregar" tabindex="-1" aria-labelledby="blackModalLabel" aria-hidden="true">
-                            <div class="modal-dialog relative w-auto pointer-events-none">
-                                <div
-                                    class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding
-                                            rounded-md outline-none text-current">
-                                    <div class="relative bg-white rounded-lg shadow dark:bg-slate-700">
+                                                                        id="modalAgregar"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="blackModalLabel"
+                                                                        aria-hidden="true">
+                                                                    <div class="modal-dialog modal-xl relative w-auto pointer-events-none">
+                                                                        <div
+                                                                            class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding
+                                                                            rounded-md outline-none text-current">
+                                                                            <div class="relative bg-white rounded-lg shadow dark:bg-slate-700">
                                         <!-- Modal header -->
                                         <div
                                             class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
@@ -250,13 +264,13 @@
                                         <div class="p-6 space-y-4">
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
-                                                    <div class="card-text h-full ">
+                                                    <div class="card-text h-full">
                                                         <form class="space-y-4" action="{{ route('hotels.store') }}" method="post">
                                                             @csrf
 
                                                             <div
-                                                                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
-                                                                <div class="input-area relative">
+                                                                class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-7">
+                                                                <div class="input-area relative mb-4">
                                                                     <label for="largeInput"
                                                                         class="form-label">Nombre del hotel</label>
                                                                     <input type="text" class="form-control"
@@ -267,7 +281,7 @@
                                                                         </div>
                                                                     @enderror
                                                                 </div>
-                                                                <div class="input-area relative">
+                                                                <div class="input-area relative mb-4">
                                                                     <label for="largeInput"
                                                                         class="form-label">Dirección</label>
                                                                     <input type="text" class="form-control"
@@ -278,18 +292,18 @@
                                                                         </div>
                                                                     @enderror
                                                                 </div>
-                                                                <div class="input-area relative">
+                                                                <div class="input-area relative mb-4">
                                                                     <label for="largeInput"
                                                                         class="form-label">Descripción</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Ingrese descripción" name="addDescription" value="{{old('addDescription')}}">
+                                                                        <textarea name="addDescription" id="" cols="30" rows="10" class="form-control"
+                                                                        placeholder="Ingrese descripción">{{old('addDescription')}}</textarea>
                                                                         @error('addDescription')
                                                                         <div>
                                                                             {{$message}}
                                                                         </div>
                                                                     @enderror
                                                                 </div>
-                                                                <div class="input-area relative">
+                                                                <div class="input-area relative mb-4">
                                                                     <label for="largeInput"
                                                                         class="form-label">Imagen del hotel</label>
                                                                     <input type="text" class="form-control"
@@ -319,5 +333,6 @@
                         </div>
                     </div>
                 </div>
+                
                 <!-- END CONTENT -->
 @endsection

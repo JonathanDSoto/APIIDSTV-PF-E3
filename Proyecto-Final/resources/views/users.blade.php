@@ -8,6 +8,17 @@
                     id="content_wrapper">
                     <div class="page-content">
 
+                    @if($errors->any())
+                        <div class="alert alert-danger mb-3">
+                            El registro no fue aceptado debido a datos incorrectos:
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                         <div class="mb-4">
                             <button data-bs-toggle="modal" data-bs-target="#modalAgregar"
                                 class="btn inline-flex justify-center btn-primary">
@@ -51,18 +62,6 @@
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Contraseña
-                                                            </th>
-
-                                                            <th class=" table-th ">
-                                                                Rol
-                                                            </th>
-
-                                                            <th class=" table-th ">
-                                                                Curp
-                                                            </th>
-
-                                                            <th class=" table-th ">
                                                                 Hotel
                                                             </th>
 
@@ -79,10 +78,7 @@
                                                             <td class="table-td">{{ $user->name }}</td>
                                                             <td class="table-td">{{ $user->last_name }}</td>
                                                             <td class="table-td ">{{ $user->email }}</td>
-                                                            <td class="table-td ">{{ $user->password }}</td>
-                                                            <td class="table-td ">{{ $user->role }}</td>
-                                                            <td class="table-td ">{{ $user->curp }}</td>
-                                                            <td class="table-td ">{{ $user->hotels }}</td>
+                                                            <td class="table-td ">{{ $user->name_hotel }}</td>
                                                             <td class="table-td ">
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                                                                     <button
@@ -101,7 +97,7 @@
                                                                         tabindex="-1"
                                                                         aria-labelledby="blackModalLabel"
                                                                         aria-hidden="true">
-                                                                        <div class="modal-dialog relative w-auto pointer-events-none">
+                                                                        <div class="modal-dialog modal-xl relative w-auto pointer-events-none">
                                                                             <div
                                                                                 class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding
                                                                                         rounded-md outline-none text-current">
@@ -138,8 +134,8 @@
                                                                                                         <input type="hidden" name="id" value="{{ $user->id }}">
 
                                                                                                         <div
-                                                                                                            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
-                                                                                                            <div class="input-area relative">
+                                                                                                            class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-7">
+                                                                                                            <div class="input-area relative mb-4">
                                                                                                                 <label for="largeInput"
                                                                                                                     class="form-label">Nombre</label>
                                                                                                                 <input type="text" class="form-control"
@@ -150,7 +146,7 @@
                                                                                                                     </div>
                                                                                                                 @enderror
                                                                                                             </div>
-                                                                                                            <div class="input-area relative">
+                                                                                                            <div class="input-area relative mb-4">
                                                                                                                 <label for="largeInput"
                                                                                                                     class="form-label">Apellido</label>
                                                                                                                 <input type="text" class="form-control"
@@ -161,7 +157,7 @@
                                                                                                                     </div>
                                                                                                                 @enderror
                                                                                                             </div>
-                                                                                                            <div class="input-area relative">
+                                                                                                            <div class="input-area relative mb-4">
                                                                                                                 <label for="largeInput"
                                                                                                                     class="form-label">Email</label>
                                                                                                                 <input type="email" class="form-control"
@@ -172,9 +168,9 @@
                                                                                                                         </div>
                                                                                                                     @enderror
                                                                                                             </div>
-                                                                                                            <div class="input-area relative">
+                                                                                                            <div class="input-area relative mb-4">
                                                                                                                 <label for="largeInput"
-                                                                                                                    class="form-label">Password</label>
+                                                                                                                    class="form-label">contraseña</label>
                                                                                                                 <input type="password" class="form-control"
                                                                                                                     placeholder="Ingrese contraseña" name="editPassword" value="{{ $user->password }}">
                                                                                                                     @error('editPassword')
@@ -183,48 +179,18 @@
                                                                                                                     </div>
                                                                                                                 @enderror
                                                                                                             </div>
-                                                                                                            <div class="input-area relative">
-                                                                                                                <label for="largeInput"
-                                                                                                                    class="form-label">Rol</label>
-                                                                                                                <select id="select" class="form-control" name="editRole" value="{{ $user->role }}">
-                                                                                                                    <option value="User"
-                                                                                                                        class="dark:bg-slate-700" {{ $user->role == "User" ? 'selected' : '' }}>
-                                                                                                                        User
-                                                                                                                    </option>
-                                                                                                                    <option value="Root"
-                                                                                                                        class="dark:bg-slate-700" {{ $user->role == "Root" ? 'selected' : '' }}>
-                                                                                                                        Root
-                                                                                                                    </option>
-                                                                                                                </select>
-                                                                                                                @error('editRole')
-                                                                                                                    <div>
-                                                                                                                        {{$message}}
-                                                                                                                    </div>
-                                                                                                                @enderror
-                                                                                                            </div>
-                                                                                                            <div class="input-area relative">
-                                                                                                                <label for="largeInput"
-                                                                                                                    class="form-label">CURP</label>
-                                                                                                                <input type="text" class="form-control"
-                                                                                                                    placeholder="Ingrese curp" name="editCurp" value="{{ $user->curp }}">
-                                                                                                                    @error('editCurp')
-                                                                                                                        <div>
-                                                                                                                            {{$message}}
-                                                                                                                        </div>
-                                                                                                                    @enderror
-                                                                                                            </div>
-                                                                                                            <div class="input-area relative">
+                                                                                                            <div class="input-area relative mb-4">
                                                                                                                 <label for="largeInput"
                                                                                                                     class="form-label">Hotel</label>
-                                                                                                                <select id="select" class="form-control" name="editHotels" value="{{ $user->hotels }}">
+                                                                                                                <select class="form-control" name="editNameHotel" value="{{ $user->name_hotel }}">
                                                                                                                     @foreach ($hotels as $hotel)
-                                                                                                                    <option value="{{$hotel->id}}"
+                                                                                                                    <option value="{{$hotel->name}}"
                                                                                                                         class="dark:bg-slate-700" {{ $user->hotels == $hotel->id ? 'selected' : '' }}>
                                                                                                                         {{$hotel->id}}._ {{$hotel->name}}
                                                                                                                     </option> 
                                                                                                                     @endforeach
                                                                                                                 </select>
-                                                                                                                @error('editHotels')
+                                                                                                                @error('editNameHotel')
                                                                                                                     <div>
                                                                                                                         {{$message}}
                                                                                                                     </div>
@@ -247,11 +213,11 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <form action="{{ route('users.destroy', ['user' => $user->id]) }}" method="POST">
+                                                                    <form action="{{ route('users.destroy', ['user' => $user->id]) }}" method="POST" id="destroy">
                                                                         @csrf
                                                                         @method('DELETE')
                                                                     
-                                                                        <button onclick="return confirm('¿Seguro que deseas eliminar este registro?')" type="submit" class="action-btn">
+                                                                        <button type="submit" class="action-btn">
                                                                             <iconify-icon icon="heroicons:trash"></iconify-icon>
                                                                         </button>
                                                                     </form>
@@ -270,12 +236,15 @@
 
                         <!-- Modal agregar tarifa -->
                         <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-                            id="modalAgregar" tabindex="-1" aria-labelledby="blackModalLabel" aria-hidden="true">
-                            <div class="modal-dialog relative w-auto pointer-events-none">
-                                <div
-                                    class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding
-                                            rounded-md outline-none text-current">
-                                    <div class="relative bg-white rounded-lg shadow dark:bg-slate-700">
+                                                                        id="modalAgregar"
+                                                                        tabindex="-1"
+                                                                        aria-labelledby="blackModalLabel"
+                                                                        aria-hidden="true">
+                                                                    <div class="modal-dialog modal-xl relative w-auto pointer-events-none">
+                                                                        <div
+                                                                            class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding
+                                                                            rounded-md outline-none text-current">
+                                                                            <div class="relative bg-white rounded-lg shadow dark:bg-slate-700">
                                         <!-- Modal header -->
                                         <div
                                             class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
@@ -305,8 +274,8 @@
                                                             @csrf
 
                                                             <div
-                                                                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
-                                                                <div class="input-area relative">
+                                                                class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-7">
+                                                                <div class="input-area relative mb-4">
                                                                     <label for="largeInput"
                                                                         class="form-label">Nombre</label>
                                                                     <input type="text" class="form-control"
@@ -317,7 +286,7 @@
                                                                         </div>
                                                                     @enderror
                                                                 </div>
-                                                                <div class="input-area relative">
+                                                                <div class="input-area relative mb-4">
                                                                     <label for="largeInput"
                                                                         class="form-label">Apellido</label>
                                                                     <input type="text" class="form-control"
@@ -328,7 +297,7 @@
                                                                         </div>
                                                                     @enderror
                                                                 </div>
-                                                                <div class="input-area relative">
+                                                                <div class="input-area relative mb-4">
                                                                     <label for="largeInput"
                                                                         class="form-label">Email</label>
                                                                     <input type="email" class="form-control"
@@ -339,9 +308,9 @@
                                                                             </div>
                                                                         @enderror
                                                                 </div>
-                                                                <div class="input-area relative">
+                                                                <div class="input-area relative mb-4">
                                                                     <label for="largeInput"
-                                                                        class="form-label">Password</label>
+                                                                        class="form-label">contraseña</label>
                                                                     <input type="password" class="form-control"
                                                                         placeholder="Ingrese contraseña" name="addPassword" value="{{old('addPassword')}}">
                                                                         @error('addPassword')
@@ -350,48 +319,19 @@
                                                                         </div>
                                                                     @enderror
                                                                 </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">Rol</label>
-                                                                    <select id="select" class="form-control" name="addRole" value="{{old('addRole')}}">
-                                                                        <option value="User"
-                                                                            class="dark:bg-slate-700">
-                                                                            User
-                                                                        </option>
-                                                                        <option value="Root"
-                                                                            class="dark:bg-slate-700">
-                                                                            Root
-                                                                        </option>
-                                                                    </select>
-                                                                    @error('addRole')
-                                                                        <div>
-                                                                            {{$message}}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="input-area relative">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">CURP</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Ingrese curp" name="addCurp" value="{{old('addCurp')}}">
-                                                                        @error('addCurp')
-                                                                        <div>
-                                                                            {{$message}}
-                                                                        </div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="input-area relative">
+                                                                <div class="input-area relative mb-4">
                                                                     <label for="largeInput"
                                                                         class="form-label">Hotel</label>
-                                                                    <select id="select" class="form-control" name="addHotels">
+                                                                    <select class="form-control" name="addNameHotel">
                                                                         @foreach ($hotels as $hotel)
-                                                                        <option value="{{$hotel->id}}"
+                                                                        <option value="{{$hotel->name}}"
                                                                             class="dark:bg-slate-700">
                                                                             {{$hotel->id}}._ {{$hotel->name}}
-                                                                        </option> 
+                                                                        </option>
                                                                         @endforeach
                                                                     </select>
-                                                                    @error('addHotels')
+
+                                                                    @error('addNameHotel')
                                                                     <div>
                                                                         {{$message}}
                                                                     </div>

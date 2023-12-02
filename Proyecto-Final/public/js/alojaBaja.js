@@ -1,16 +1,19 @@
-function getQueryVariable(variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split("&");
-    for (let i = 0; i < vars.length; i++) {
-      let pair = vars[i].split("=");
-      if (pair[0].toUpperCase() == variable.toUpperCase()) {
-        return pair[1];
-      }
-    }
-    return null;
-  }
-      $(document).ready(function() {
-        if (getQueryVariable("addeventModal") == "true") {
-            $('#myModal').modal();
-        }
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelector('#destroy').onsubmit = function (event) {
+      event.preventDefault();
+
+      Swal.fire({
+          title: "¿Quieres eliminar este registro?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Sí, eliminarlo",
+          cancelButtonText: "No, cancelar"
+      }).then((result) => {
+          if (result.isConfirmed) {
+              document.getElementById('destroy').submit();
+          }
       });
+  };
+});

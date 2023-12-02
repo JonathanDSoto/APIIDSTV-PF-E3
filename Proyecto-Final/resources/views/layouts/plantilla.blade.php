@@ -259,6 +259,7 @@
           <script src="{{ asset('/js/jquery-3.6.0.min.js') }}"></script>
           <script src="{{ asset('/js/rt-plugins.js') }}"></script>
           <script src="{{ asset('/js/app.js') }}"></script>
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
           <script src="{{ asset('/js/alojaBaja.js') }}"></script>
 </body>
       
