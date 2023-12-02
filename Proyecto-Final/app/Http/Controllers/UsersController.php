@@ -25,7 +25,7 @@ class UsersController extends Controller
             'addLastName' => 'required|string|regex:/^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/|max:255',
             'addEmail' => 'required|email|unique:users,email',
             'addPassword' => 'required|string|min:8|max:100',
-            'addNameHotel' => 'required|string|maxx:255'
+            'addNameHotel' => 'required|string|max:255'
         ]);
 
         //Crea un nuevo usuario
@@ -54,10 +54,11 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'editName' => 'required|string|regex:/^[a-zA-Z\s]+$/|max:255',
-            'editLastName' => 'required|string|regex:/^[a-zA-Z\s]+$/|max:255',
+            'editName' => 'required|string|regex:/^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/|max:255',
+            'editLastName' => 'required|string|regex:/^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/|max:255',
             'editEmail' => 'required|email|unique:users,email,' . $id,
-            'editNameHotel' => 'required|string|maxx:255',
+            'editPassword' => 'required|string|min:8|max:100',
+            'editNameHotel' => 'required|string|max:255'
         ]);
 
         //Busca el usuario por ID
