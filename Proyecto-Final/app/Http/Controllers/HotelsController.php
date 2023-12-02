@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Hotel;
+use App\Models\User;
 
 class HotelsController extends Controller
 {
@@ -73,21 +74,23 @@ class HotelsController extends Controller
     }
 
     public function destroy(Request $request, $id)
-    {
-        $hotel = Hotel::find($id);
+{
+    // Obtener el hotel por ID
+    $hotel = Hotel::find($id);
 
-        if ($this->tieneUsuariosAsociados($hotel)) {
-            return redirect()->route('hotels')->with('error', 'Hay usuarios vinculados a este hotel. No se puede eliminar.');
-        }
+    // Verificar si hay usuarios asociados al hotel
+    $usuariosAsociados = User::where('name_hotel', $hotel->name)->exists();
 
-        // No hay usuarios asociados, eliminar directamente
-        $hotel->delete();
-
-        return redirect()->route('hotels');
+    if ($usuariosAsociados) {
+        // Si hay usuarios asociados, redirigir con un mensaje de error o hacer lo que sea necesario
+        return redirect()->route('hotels')->with('error', 'No se puede eliminar el hotel porque hay usuarios asociados.');
     }
 
-    private function tieneUsuariosAsociados($hotel)
-    {
-        return $hotel->users()->exists();
-    }
+    // No hay usuarios asociados, eliminar el hotel
+    $hotel->delete();
+
+    // Redirigir con un mensaje de éxito
+    return redirect()->route('hotels')->with('success', 'Hotel eliminado exitosamente.');
+}
+
 }

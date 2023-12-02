@@ -78,7 +78,7 @@
                                                             <td class="table-td">{{ $client->name }}</td>
                                                             <td class="table-td">{{ $client->last_name }}</td>
                                                             <td class="table-td ">{{ $client->email }}</td>
-                                                            <td class="table-td ">{{ $client->hotels }}</td>
+                                                            <td class="table-td ">{{ $client->phone }}</td>
                                                             <td class="table-td ">
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                                                                     <button
@@ -172,7 +172,7 @@
                                                                                                                 <label for="largeInput"
                                                                                                                     class="form-label">Teléfono</label>
                                                                                                                 <input type="text" class="form-control"
-                                                                                                                    placeholder="Ingrese teléfono" name="editPhone" value="{{ $client->editPhone }}">
+                                                                                                                    placeholder="Ingrese teléfono" name="editPhone" value="{{ $client->phone }}">
                                                                                                                     @error('editPhone')
                                                                                                                     <div>
                                                                                                                         {{$message}}
@@ -196,11 +196,11 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <form action="{{ route('clients.destroy', ['client' => $client->id]) }}" method="POST">
+                                                                    <form action="{{ route('clients.destroy', ['client' => $client->id]) }}" method="POST" id="destroy">
                                                                         @csrf
                                                                         @method('DELETE')
                                                                     
-                                                                        <button onclick="return confirm('¿Seguro que deseas eliminar este registro?')" type="submit" class="action-btn">
+                                                                        <button type="submit" class="action-btn">
                                                                             <iconify-icon icon="heroicons:trash"></iconify-icon>
                                                                         </button>
                                                                     </form>

@@ -34,3 +34,11 @@ Route::post('/users', [UsersController::class, 'store'])->name('users.store');
 Route::get('/users/{id}/edit', [UsersController::class, 'edit'])->name('users.edit');
 Route::put('/users/{user}', [UsersController::class, 'update'])->name('users.update');
 Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
+
+//Rutas de ClientsController
+
+Route::get('/clients', [ClientsController::class, 'clients'])->name('clients');
+Route::post('/clients', [ClientsController::class, 'store'])->name('clients.store');
+Route::get('/clients/{id}/edit', [ClientsController::class, 'edit'])->name('clients.edit');
+Route::put('/clients/{client}', [ClientsController::class, 'update'])->name('clients.update');
+Route::delete('/clients/{client}', [ClientsController::class, 'destroy'])->name('clients.destroy');
