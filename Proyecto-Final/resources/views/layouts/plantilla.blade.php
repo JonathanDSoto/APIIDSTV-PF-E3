@@ -77,6 +77,14 @@
                           </span>
                       </a>
                   </li>
+                  <li class="">
+                    <a href="{{ route('coupons') }}" class="navItem">
+                        <span class="flex items-center">
+                            <iconify-icon class=" nav-icon" icon="streamline:discount-percent-coupon"></iconify-icon>
+                            <span>Cupones</span>
+                        </span>
+                    </a>
+                </li>
 
                   <li class="">
                       <a href="javascript:void(0)" class="navItem">

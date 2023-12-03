@@ -60,23 +60,26 @@
                                                             <th class=" table-th ">
                                                                 Fecha de expiración
                                                             </th>
+
+                                                            <th class=" table-th ">
+                                                                Acción
+                                                            </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody
                                                         class="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
 
-                                                        @foreach ($cupons as $cupon)
+                                                        @foreach ($coupons as $coupon)
                                                         <tr>
-                                                            <td class="table-td">{{ $cupon->coupon_code }}</td>
-                                                            <td class="table-td">{{ $cupon->last_name }}</td>
-                                                            <td class="table-td ">{{ $cupon->discount }}</td>
-                                                            <td class="table-td ">{{ $cupon->expiration_date }}</td>
+                                                            <td class="table-td">{{ $coupon->coupon_code }}</td>
+                                                            <td class="table-td ">{{ $coupon->discount }}%</td>
+                                                            <td class="table-td ">{{ $coupon->expiration_date }}</td>
                                                             <td class="table-td ">
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                                                                     <button
-                                                                        data-cupon-id="{{ $cupon->id }}"
+                                                                        data-coupon-id="{{ $coupon->id }}"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#modalEditar{{ $cupon->id }}"
+                                                                        data-bs-target="#modalEditar{{ $coupon->id }}"
                                                                         class="action-btn"
                                                                         type="button"
                                                                     >
@@ -85,7 +88,7 @@
 
                                                                     <!-- Modal editar cupón -->
                                                                     <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-                                                                        id="modalEditar{{ $cupon->id }}"
+                                                                        id="modalEditar{{ $coupon->id }}"
                                                                         tabindex="-1"
                                                                         aria-labelledby="blackModalLabel"
                                                                         aria-hidden="true">
@@ -119,11 +122,11 @@
                                                                                         <div class="card xl:col-span-2">
                                                                                             <div class="card-body flex flex-col p-6">
                                                                                                 <div class="card-text h-full ">
-                                                                                                    <form class="space-y-4" action="{{ route('cupons.update', ['cupon' => $cupon->id]) }}" method="post">
+                                                                                                    <form class="space-y-4" action="{{ route('coupons.update', ['coupon' => $coupon->id]) }}" method="post">
                                                                                                         @csrf
                                                                                                         @method('PUT')
     
-                                                                                                        <input type="hidden" name="id" value="{{ $cupon->id }}">
+                                                                                                        <input type="hidden" name="id" value="{{ $coupon->id }}">
 
                                                                                                         <div
                                                                                                             class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-7">
@@ -131,7 +134,7 @@
                                                                                                                 <label for="largeInput"
                                                                                                                     class="form-label">Codigo del cupón</label>
                                                                                                                 <input type="text" class="form-control"
-                                                                                                                    placeholder="Codigo" name="editCouponCode" value="{{ $cupon->coupon_code }}">
+                                                                                                                    placeholder="Codigo" name="editCouponCode" value="{{ $coupon->coupon_code }}">
                                                                                                                     @error('editCouponCode')
                                                                                                                     <div>
                                                                                                                         {{$message}}
@@ -142,7 +145,7 @@
                                                                                                                 <label for="largeInput"
                                                                                                                     class="form-label">Porcentaje de descuento</label>
                                                                                                                 <input type="number" class="form-control"
-                                                                                                                    placeholder="Descuento" name="editDiscount" value="{{ $cupon->discount }}">
+                                                                                                                    placeholder="Descuento" name="editDiscount" value="{{ $coupon->discount }}">
                                                                                                                     @error('editDiscount')
                                                                                                                     <div>
                                                                                                                         {{$message}}
@@ -153,7 +156,7 @@
                                                                                                                 <label for="largeInput"
                                                                                                                     class="form-label">Fecha de expiración</label>
                                                                                                                 <input type="date" class="form-control"
-                                                                                                                    name="editExpirationDate" value="{{ $cupon->expiration_date }}">
+                                                                                                                    name="editExpirationDate" value="{{ $coupon->expiration_date }}">
                                                                                                                     @error('editExpirationDate')
                                                                                                                         <div>
                                                                                                                             {{$message}}
@@ -177,7 +180,7 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <form action="{{ route('cupons.destroy', ['cupon' => $cupon->id]) }}" method="POST" id="destroy">
+                                                                    <form action="{{ route('coupons.destroy', ['coupon' => $coupon->id]) }}" method="POST" id="destroy">
                                                                         @csrf
                                                                         @method('DELETE')
                                                                     
@@ -234,7 +237,7 @@
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
                                                     <div class="card-text h-full ">
-                                                        <form class="space-y-4" action="{{ route('cupons.store') }}" method="post">
+                                                        <form class="space-y-4" action="{{ route('coupons.store') }}" method="post">
                                                             @csrf
 
                                                             <div
