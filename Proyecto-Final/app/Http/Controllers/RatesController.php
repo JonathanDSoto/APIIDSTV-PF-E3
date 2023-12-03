@@ -17,7 +17,7 @@ class RatesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'addNameRate' => 'required|string|regex:/^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/|max:255',
+            'addNameRate' => 'required|string|max:255',
             'addPrice' => 'decimal:0,2',
         ]);
 
@@ -41,8 +41,8 @@ class RatesController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'addNameRate' => 'required|string|regex:/^[a-zA-ZáéíóúÁÉÍÓÚ\s]+$/|max:255',
-            'addPrice' => 'decimal:0,2',
+            'editNameRate' => 'required|string|max:255',
+            'editPrice' => 'decimal:0,2',
         ]);
 
         $rates = Rates::find($id);

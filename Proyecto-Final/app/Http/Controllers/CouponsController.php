@@ -21,7 +21,7 @@ class CouponsController extends Controller
     {
         $request->validate([
             'addCouponCode' => 'required|string|size:10',
-            'addDiscount' => 'required|numeric|min:0',
+            'addDiscount' => 'required|numeric|min:1',
             'addExpirationDate' => 'required|date|after:today',
         ]);
 
@@ -50,7 +50,7 @@ class CouponsController extends Controller
     {
         $request->validate([
             'editCouponCode' => 'required|string|size:10',
-            'editDiscount' => 'required|numeric|min:0',
+            'editDiscount' => 'required|numeric|min:1',
             'editExpirationDate' => 'required|date|after:today',
         ]);
 
