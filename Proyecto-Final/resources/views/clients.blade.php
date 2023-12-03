@@ -25,7 +25,7 @@
                                 <span class="flex items-center">
                                     <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
                                         icon="heroicons-outline:newspaper"></iconify-icon>
-                                    <span>Agregar usuario</span>
+                                    <span>Agregar cliente</span>
                                 </span>
                             </button>
                         </div>
@@ -34,7 +34,7 @@
                         <div class=" space-y-5">
                             <div class="card">
                                 <header class=" card-header noborder">
-                                    <h4 class="card-title">Usuarios
+                                    <h4 class="card-title">Clientes
                                     </h4>
                                 </header>
                                 <div class="card-body px-6 pb-6">
@@ -91,7 +91,7 @@
                                                                         <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                                                     </button>
 
-                                                                    <!-- Modal editar usuario -->
+                                                                    <!-- Modal editar cliente -->
                                                                     <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
                                                                         id="modalEditar{{ $client->id }}"
                                                                         tabindex="-1"
@@ -106,7 +106,7 @@
                                                                                     <div
                                                                                         class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
                                                                                         <h3 class="text-base font-medium text-white dark:text-white capitalize">
-                                                                                            Editar usuario
+                                                                                            Editar cliente
                                                                                         </h3>
                                                                                         <button type="button"
                                                                                             class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
@@ -139,7 +139,7 @@
                                                                                                                 <label for="largeInput"
                                                                                                                     class="form-label">Nombre</label>
                                                                                                                 <input type="text" class="form-control"
-                                                                                                                    placeholder="Nombre usuario" name="editName" value="{{ $client->name }}">
+                                                                                                                    placeholder="Nombre cliente" name="editName" value="{{ $client->name }}">
                                                                                                                     @error('editName')
                                                                                                                     <div>
                                                                                                                         {{$message}}
@@ -183,7 +183,7 @@
                                                                                                         <!-- Modal footer -->
                                                                                                         <div
                                                                                                             class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                                                                                            <button type="submit" name="editUsers" data-bs-dismiss="modal"
+                                                                                                            <button type="submit" name="editUser" data-bs-dismiss="modal"
                                                                                                                 class="btn inline-flex justify-center text-white bg-black-500">Guardar</button>
                                                                                                         </div>
                                                                                                     </form>
@@ -232,7 +232,7 @@
                                         <div
                                             class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
                                             <h3 class="text-base font-medium text-white dark:text-white capitalize">
-                                                Agregar usuario
+                                                Agregar cliente
                                             </h3>
                                             <button type="button"
                                                 class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
@@ -262,7 +262,7 @@
                                                                     <label for="largeInput"
                                                                         class="form-label">Nombre</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Nombre usuario" name="addName" value="{{old('addName')}}">
+                                                                        placeholder="Nombre cliente" name="addName" value="{{old('addName')}}">
                                                                         @error('addName')
                                                                         <div>
                                                                             {{$message}}
@@ -306,7 +306,7 @@
                                                             <!-- Modal footer -->
                                                             <div
                                                                 class="flex items-center pt-6 space-x-2 border-t border-slate-200 rounded-b dark:border-slate-600">
-                                                                <button type="submit" name="addUsers" data-bs-dismiss="modal"
+                                                                <button type="submit" name="addUser" data-bs-dismiss="modal"
                                                                     class="btn inline-flex justify-center text-white bg-black-500">Agregar</button>
                                                             </div>
                                                         </form>

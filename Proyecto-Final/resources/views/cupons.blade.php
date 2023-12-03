@@ -25,7 +25,7 @@
                                 <span class="flex items-center">
                                     <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
                                         icon="heroicons-outline:newspaper"></iconify-icon>
-                                    <span>Agregar usuario</span>
+                                    <span>Agregar cupón</span>
                                 </span>
                             </button>
                         </div>
@@ -34,7 +34,7 @@
                         <div class=" space-y-5">
                             <div class="card">
                                 <header class=" card-header noborder">
-                                    <h4 class="card-title">Usuarios
+                                    <h4 class="card-title">Cupones
                                     </h4>
                                 </header>
                                 <div class="card-body px-6 pb-6">
@@ -50,23 +50,15 @@
                                                         <tr>
 
                                                             <th class=" table-th ">
-                                                                Nombre del cupone
+                                                                Codigo del cupón
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Apellido del cupone
+                                                                Porcentaje de descuento
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Email
-                                                            </th>
-
-                                                            <th class=" table-th ">
-                                                                Teléfono
-                                                            </th>
-
-                                                            <th class=" table-th ">
-                                                                Acción
+                                                                Fecha de expiración
                                                             </th>
                                                         </tr>
                                                     </thead>
@@ -75,10 +67,10 @@
 
                                                         @foreach ($cupons as $cupon)
                                                         <tr>
-                                                            <td class="table-td">{{ $cupon->name }}</td>
+                                                            <td class="table-td">{{ $cupon->coupon_code }}</td>
                                                             <td class="table-td">{{ $cupon->last_name }}</td>
-                                                            <td class="table-td ">{{ $cupon->email }}</td>
-                                                            <td class="table-td ">{{ $cupon->phone }}</td>
+                                                            <td class="table-td ">{{ $cupon->discount }}</td>
+                                                            <td class="table-td ">{{ $cupon->expiration_date }}</td>
                                                             <td class="table-td ">
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                                                                     <button
@@ -91,7 +83,7 @@
                                                                         <iconify-icon icon="heroicons:pencil-square"></iconify-icon>
                                                                     </button>
 
-                                                                    <!-- Modal editar usuario -->
+                                                                    <!-- Modal editar cupón -->
                                                                     <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
                                                                         id="modalEditar{{ $cupon->id }}"
                                                                         tabindex="-1"
@@ -106,7 +98,7 @@
                                                                                     <div
                                                                                         class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
                                                                                         <h3 class="text-base font-medium text-white dark:text-white capitalize">
-                                                                                            Editar usuario
+                                                                                            Editar cupón
                                                                                         </h3>
                                                                                         <button type="button"
                                                                                             class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
@@ -137,10 +129,10 @@
                                                                                                             class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-7">
                                                                                                             <div class="input-area relative mb-4">
                                                                                                                 <label for="largeInput"
-                                                                                                                    class="form-label">Nombre</label>
+                                                                                                                    class="form-label">Codigo del cupón</label>
                                                                                                                 <input type="text" class="form-control"
-                                                                                                                    placeholder="Nombre usuario" name="editName" value="{{ $cupon->name }}">
-                                                                                                                    @error('editName')
+                                                                                                                    placeholder="Codigo" name="editCouponCode" value="{{ $cupon->coupon_code }}">
+                                                                                                                    @error('editCouponCode')
                                                                                                                     <div>
                                                                                                                         {{$message}}
                                                                                                                     </div>
@@ -148,10 +140,10 @@
                                                                                                             </div>
                                                                                                             <div class="input-area relative mb-4">
                                                                                                                 <label for="largeInput"
-                                                                                                                    class="form-label">Apellido</label>
-                                                                                                                <input type="text" class="form-control"
-                                                                                                                    placeholder="Apellido" name="editLastName" value="{{ $cupon->last_name }}">
-                                                                                                                    @error('editLastName')
+                                                                                                                    class="form-label">Porcentaje de descuento</label>
+                                                                                                                <input type="number" class="form-control"
+                                                                                                                    placeholder="Descuento" name="editDiscount" value="{{ $cupon->discount }}">
+                                                                                                                    @error('editDiscount')
                                                                                                                     <div>
                                                                                                                         {{$message}}
                                                                                                                     </div>
@@ -159,25 +151,14 @@
                                                                                                             </div>
                                                                                                             <div class="input-area relative mb-4">
                                                                                                                 <label for="largeInput"
-                                                                                                                    class="form-label">Email</label>
-                                                                                                                <input type="email" class="form-control"
-                                                                                                                    placeholder="Email" name="editEmail" value="{{ $cupon->email }}">
-                                                                                                                    @error('editEmail')
+                                                                                                                    class="form-label">Fecha de expiración</label>
+                                                                                                                <input type="date" class="form-control"
+                                                                                                                    name="editExpirationDate" value="{{ $cupon->expiration_date }}">
+                                                                                                                    @error('editExpirationDate')
                                                                                                                         <div>
                                                                                                                             {{$message}}
                                                                                                                         </div>
                                                                                                                     @enderror
-                                                                                                            </div>
-                                                                                                            <div class="input-area relative mb-4">
-                                                                                                                <label for="largeInput"
-                                                                                                                    class="form-label">Teléfono</label>
-                                                                                                                <input type="text" class="form-control"
-                                                                                                                    placeholder="Ingrese teléfono" name="editPhone" value="{{ $cupon->phone }}">
-                                                                                                                    @error('editPhone')
-                                                                                                                    <div>
-                                                                                                                        {{$message}}
-                                                                                                                    </div>
-                                                                                                                @enderror
                                                                                                             </div>
                                                                                                         </div>
                                                                                                         <!-- Modal footer -->
@@ -232,7 +213,7 @@
                                         <div
                                             class="flex items-center justify-between p-5 border-b rounded-t dark:border-slate-600 bg-black-500">
                                             <h3 class="text-base font-medium text-white dark:text-white capitalize">
-                                                Agregar usuario
+                                                Agregar cupón
                                             </h3>
                                             <button type="button"
                                                 class="text-slate-400 bg-transparent hover:text-slate-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center
@@ -260,10 +241,10 @@
                                                                 class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-7">
                                                                 <div class="input-area relative mb-4">
                                                                     <label for="largeInput"
-                                                                        class="form-label">Nombre</label>
+                                                                        class="form-label">Codigo del cupón</label>
                                                                     <input type="text" class="form-control"
-                                                                        placeholder="Nombre usuario" name="addName" value="{{old('addName')}}">
-                                                                        @error('addName')
+                                                                        placeholder="Codigo" name="addCouponCode" value="{{old('addCouponCode')}}">
+                                                                        @error('addCouponCode')
                                                                         <div>
                                                                             {{$message}}
                                                                         </div>
@@ -271,10 +252,10 @@
                                                                 </div>
                                                                 <div class="input-area relative mb-4">
                                                                     <label for="largeInput"
-                                                                        class="form-label">Apellido</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Apellido" name="addLastName" value="{{old('addLastName')}}">
-                                                                        @error('addLastName')
+                                                                        class="form-label">Porcentaje de descuento</label>
+                                                                    <input type="number" class="form-control"
+                                                                        placeholder="Descuento" name="addDiscount" value="{{old('addDiscount')}}">
+                                                                        @error('addDiscount')
                                                                         <div>
                                                                             {{$message}}
                                                                         </div>
@@ -282,25 +263,14 @@
                                                                 </div>
                                                                 <div class="input-area relative mb-4">
                                                                     <label for="largeInput"
-                                                                        class="form-label">Email</label>
-                                                                    <input type="email" class="form-control"
-                                                                        placeholder="Email" name="addEmail" value="{{old('addEmail')}}">
-                                                                        @error('addEmail')
+                                                                        class="form-label">Fecha de expiración</label>
+                                                                    <input type="date" class="form-control"
+                                                                        name="addExpirationDate" value="{{old('addExpirationDate')}}">
+                                                                        @error('addExpirationDate')
                                                                             <div>
                                                                                 {{$message}}
                                                                             </div>
                                                                         @enderror
-                                                                </div>
-                                                                <div class="input-area relative mb-4">
-                                                                    <label for="largeInput"
-                                                                        class="form-label">Teléfono</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Ingrese teléfono" name="addPhone" value="{{old('addPhone')}}">
-                                                                        @error('addPhone')
-                                                                        <div>
-                                                                            {{$message}}
-                                                                        </div>
-                                                                    @enderror
                                                                 </div>
                                                             </div>
                                                             <!-- Modal footer -->
