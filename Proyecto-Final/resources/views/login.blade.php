@@ -34,6 +34,11 @@
                         <div class="text-center 2xl:mb-10 mb-4">
                             <h4 class="font-medium">Iniciar sesión</h4>
                         </div>
+                        @if(session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                         <!-- BEGIN: Login Form -->
                         <form class="space-y-4" action="{{ route('login') }}" method="post">
                             @csrf

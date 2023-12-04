@@ -22,6 +22,7 @@ Route::get('/clients', [ClientsController::class, 'clients'])->name('clients');
 Route::get('/reservations', [ReservationsController::class, 'reservations'])->name('reservations');
 Route::get('/users', [UsersController::class, 'users'])->name('users');
 Route::get('/coupons', [CouponsController::class, 'coupons'])->name('coupons');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Rutas de HotelsController
 

@@ -1,3 +1,6 @@
+@if(!session('user_email'))
+<script>window.location = "{{ route('login') }}";</script>
+@endif
 <!DOCTYPE html>
 <!-- Template Name: DashCode - HTML, React, Vue, Tailwind Admin Dashboard Template Author: Codeshaper Website: https://codeshaper.net Contact: support@codeshaperbd.net Like: https://www.facebook.com/Codeshaperbd Purchase: https://themeforest.net/item/dashcode-admin-dashboard-template/42600453 License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project. -->
 <html lang="zxx" dir="ltr" class="light">
@@ -21,9 +24,14 @@
     <!-- End : theme-store js -->
 
     <title>@yield('title')</title>
+    <style>
+        .bgblue{
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url({{ asset('/images/banner.png') }});
+        }
+    </style>
 </head>
-
-
 
 <body class=" font-inter dashcode-app" id="body_class">
   <!-- [if IE]> <p class="browserupgrade"> You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security. </p> <![endif] -->
@@ -137,7 +145,7 @@
           <div>
               <!-- BEGIN: Header -->
               <div class="z-[9]" id="app_header">
-                  <div class="app-header z-[999] bg-white dark:bg-slate-800 shadow-sm dark:shadow-slate-700">
+                  <div class="bgblue app-header z-[999] bg-white dark:bg-slate-800 shadow-sm dark:shadow-slate-700">
                       <div class="flex justify-between items-center h-full">
                           <div class="flex items-center md:space-x-4 space-x-4 rtl:space-x-reverse vertical-box">
                               <a href="index.html" class="mobile-logo xl:hidden inline-block">
@@ -201,8 +209,10 @@
                                       inline-flex items-center"
                                       type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                       <span
-                                          class="flex-none text-slate-600 dark:text-white text-sm font-normal items-center lg:flex hidden overflow-hidden text-ellipsis whitespace-nowrap">Víctor
-                                          Medellín</span>
+                                          class="flex-none text-slate-600 dark:text-white text-sm font-normal items-center lg:flex hidden overflow-hidden text-ellipsis whitespace-nowrap">
+                                          @if(session('user_name'))
+                                          {{ session('user_name') }} {{ session('user_last_name') }}
+                                            @endif</span>
                                       <svg class="w-[16px] h-[16px] dark:text-white hidden lg:inline-block text-base inline-block ml-[10px] rtl:mr-[10px]"
                                           aria-hidden="true" fill="none" stroke="currentColor"
                                           viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -212,17 +222,15 @@
                                   </button>
                                   <!-- Dropdown menu -->
                                   <div
-                                      class="dropdown-menu z-10 hidden bg-white divide-y divide-slate-100 shadow w-44 dark:bg-slate-800 border dark:border-slate-700 !top-[23px] rounded-md
+                                      class="dropdown-menu z-10 hidden bg-white divide-y divide-slate-100 shadow dark:bg-slate-800 border dark:border-slate-700 !top-[23px] rounded-md
                                       overflow-hidden">
                                       <ul class="py-1 text-sm text-slate-800 dark:text-slate-200">
                                           <li>
-                                              <a href="#"
-                                                  class="block px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-600 dark:hover:text-white font-inter text-sm text-slate-600
-                                                  dark:text-white font-normal">
-                                                  <iconify-icon icon="heroicons-outline:login"
-                                                      class="relative top-[2px] text-lg ltr:mr-1 rtl:ml-1"></iconify-icon>
-                                                  <span class="font-Inter">Cerrar sesión</span>
-                                              </a>
+                                            <form action="{{ route('logout') }}" method="post">
+                                                @csrf
+                                                <button class="px-4 py-2 hover:bg-slate-100
+                                            dark:text-white" type="submit">Cerrar sesión</button>
+                                            </form>
                                           </li>
                                       </ul>
                                   </div>
