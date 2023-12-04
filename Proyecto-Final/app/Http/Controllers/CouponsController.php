@@ -25,7 +25,7 @@ class CouponsController extends Controller
             'addExpirationDate' => 'required|date|after:today',
         ]);
 
-        //Crea un nuevo usuario
+        //Crea un nuevo cupon
         $coupons = new Coupon();
 
         //insert con los nombres de los inputs del modal agregar
@@ -54,10 +54,10 @@ class CouponsController extends Controller
             'editExpirationDate' => 'required|date|after:today',
         ]);
 
-        //Busca el usuario por ID
+        //Busca el cupon por ID
         $coupons = coupon::find($id);
 
-        //Actualiza los dataos del usuario
+        //Actualiza los datos del cupon
         $coupons->coupon_code = $request->editCouponCode;
         $coupons->discount = $request->editDiscount;
         $coupons->expiration_date = $request->editExpirationDate;
@@ -71,10 +71,10 @@ class CouponsController extends Controller
 
     public function destroy($id)
     {
-        //Busca el usuario por ID
+        //Busca el cupon por ID
         $coupons = coupon::find($id);
 
-        //Borra el usuario
+        //Borra el cupon
         $coupons->delete();
 
         return redirect()->route('coupons');

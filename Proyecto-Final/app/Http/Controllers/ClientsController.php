@@ -23,7 +23,7 @@ class ClientsController extends Controller
             'addPhone' => 'required|digits:10',
         ]);
 
-        //Crea un nuevo usuario
+        //Crea un nuevo cliente
         $clients = new Client();
 
         //insert con los nombres de los inputs del modal agregar
@@ -57,7 +57,7 @@ class ClientsController extends Controller
         //Busca el usuario por ID
         $clients = Client::find($id);
 
-        //Actualiza los dataos del usuario
+        //Actualiza los datos del cliente
         $clients->name = $request->editName;
         $clients->last_name = $request->editLastName;
         $clients->email = $request->editEmail;
@@ -71,10 +71,10 @@ class ClientsController extends Controller
 
     public function destroy($id)
     {
-        //Busca el usuario por ID
+        //Busca el cliente por ID
         $clients = Client::find($id);
 
-        //Borra el usuario
+        //Borra el cliente
         $clients->delete();
 
         return redirect()->route('clients');
