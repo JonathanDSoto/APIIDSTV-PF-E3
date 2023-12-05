@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('rates', function (Blueprint $table) {
             $table->id();
             $table->string('name_rate');
-            $table->double('price_day', 8, 2);
+            $table->double('price', 8, 2);
             $table->timestamps();
         });
     }

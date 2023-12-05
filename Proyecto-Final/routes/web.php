@@ -28,7 +28,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/hotels', [HotelsController::class, 'hotels'])->name('hotels');
 Route::post('/hotels', [HotelsController::class, 'store'])->name('hotels.store');
-Route::get('/hotels/{id}/edit', [HotelsController::class, 'store'])->name('hotels.edit');
+Route::get('/hotels/{id}/edit', [HotelsController::class, 'edit'])->name('hotels.edit');
 Route::put('/hotels/{hotel}', [HotelsController::class, 'update'])->name('hotels.update');
 Route::delete('/hotels/{hotel}', [HotelsController::class, 'destroy'])->name('hotels.destroy');
 
@@ -63,3 +63,11 @@ Route::post('/rates', [RatesController::class, 'store'])->name('rates.store');
 Route::get('/rates/{id}/edit', [RatesController::class, 'edit'])->name('rates.edit');
 Route::put('/rates/{rate}', [RatesController::class, 'update'])->name('rates.update');
 Route::delete('/rates/{rate}', [RatesController::class, 'destroy'])->name('rates.destroy');
+
+//Rutas de RoomsController
+
+Route::get('/rooms', [RoomsController::class, 'rooms'])->name('rooms');
+Route::post('/rooms', [RoomsController::class, 'store'])->name('rooms.store');
+Route::get('/rooms/{id}/edit', [RoomsController::class, 'edit'])->name('rooms.edit');
+Route::put('/rooms/{room}', [RoomsController::class, 'update'])->name('rooms.update');
+Route::delete('/rooms/{room}', [RoomsController::class, 'destroy'])->name('rooms.destroy');
