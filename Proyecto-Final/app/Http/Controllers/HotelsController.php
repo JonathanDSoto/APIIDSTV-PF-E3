@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Hotel;
 use App\Models\User;
+use App\Models\Room;
 
 class HotelsController extends Controller
 {
@@ -78,8 +79,10 @@ class HotelsController extends Controller
     // Obtener el hotel por ID
     $hotel = Hotel::find($id);
 
-    // Buscar y eliminar solo el usuario vinculado con ese hotel
+    // Buscar y eliminar solo el usuario y habitacion vinculada con ese hotel
     User::where('name_hotel', $hotel->name)->delete();
+
+    Room::where('hotel_name', $hotel->name)->delete();
 
     // Eliminar el hotel
     $hotel->delete();
