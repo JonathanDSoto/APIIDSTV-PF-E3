@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\Hotel;
+use App\Models\Rates;
 
 class RoomsController extends Controller
 {
@@ -13,10 +14,11 @@ class RoomsController extends Controller
         //Recoge todos los elementos de la tabla rooms
         $rooms = Room::all();
         $hotels = Hotel::all();
+        $rates = Rates::all();
 
 
         //Los manda al front con el compact('rooms')
-        return view('rooms', compact('rooms', 'hotel'));
+        return view('rooms', compact('rooms', 'hotels', 'rates'));
     }
 
     public function store(Request $request)
@@ -25,9 +27,9 @@ class RoomsController extends Controller
             'addImage' => 'required|url',
             'addNameRoom' => 'required|string|max:255',
             'addDescription' => 'required|string|',
-            'addState'=> 'required|boolean',
+            'addState'=> 'required|string',
             'addHotelName'=> 'required|string|max:255',
-            'addRateRoom'=> 'required|numeric|between:1,5',
+            'addRateRoom'=> 'decimal:0,2',
         ]);
 
         //Crea una nueva habitacion
@@ -60,9 +62,9 @@ class RoomsController extends Controller
             'editImage' => 'required|url',
             'editNameRoom' => 'required|string|max:255',
             'editDescription' => 'required|string|',
-            'editState'=> 'required|boolean',
+            'editState'=> 'required|string',
             'editHotelName'=> 'required|string|max:255',
-            'editRateRoom'=> 'required|numeric|between:1,5',
+            'editRateRoom'=> 'decimal:0,2',
         ]);
 
         //Busca la habitacion por ID
