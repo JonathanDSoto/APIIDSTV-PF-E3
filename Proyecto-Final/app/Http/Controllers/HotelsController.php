@@ -78,15 +78,10 @@ class HotelsController extends Controller
     // Obtener el hotel por ID
     $hotel = Hotel::find($id);
 
-    // Verificar si hay usuarios asociados al hotel
-    $usuariosAsociados = User::where('name_hotel', $hotel->name)->exists();
+    // Buscar y eliminar solo el usuario vinculado con ese hotel
+    User::where('name_hotel', $hotel->name)->delete();
 
-    if ($usuariosAsociados) {
-        // Si hay usuarios asociados, redirigir con un mensaje de error o hacer lo que sea necesario
-        return redirect()->route('hotels')->with('error', 'No se puede eliminar el hotel porque hay usuarios asociados.');
-    }
-
-    // No hay usuarios asociados, eliminar el hotel
+    // Eliminar el hotel
     $hotel->delete();
 
     // Redirigir con un mensaje de éxito

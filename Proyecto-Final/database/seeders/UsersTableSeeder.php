@@ -22,5 +22,13 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123456789'),
             'name_hotel'=> 'Hotel A'
         ]);
+
+        User::create([
+            'name' => 'Victor',
+            'last_name' => 'Meza',
+            'email' => 'correo1@prueba.com',
+            'password' => bcrypt('123456789'),
+            'name_hotel'=> 'Hotel B'
+        ]);
     }
 }
