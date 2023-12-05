@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+       /* User::create([
             'name' => 'Victor',
             'last_name' => 'Meza',
             'email' => 'correo@prueba.com',
@@ -29,6 +29,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'correo1@prueba.com',
             'password' => bcrypt('123456789'),
             'name_hotel'=> 'Hotel B'
-        ]);
+        ]);*/
     }
 }
