@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use App\Models\Hotel;
 
@@ -10,11 +11,9 @@ class UsersController extends Controller
 {
     public function users()
     {
-        //Recoge todos los elementos de la tabla users
         $users = User::all();
         $hotels = Hotel::all();
 
-        //Los manda al front con el compact('users')
         return view('users', compact('users', 'hotels'));
     }
 
@@ -72,6 +71,11 @@ class UsersController extends Controller
 
         //Guarda los registros
         $user->save();
+
+        Session::put('user_name', $user->name);
+        Session::put('user_last_name', $user->last_name);
+        Session::put('user_email', $user->email);
+        Session::put('user_name_hotel', $user->name_hotel);
 
         return redirect()->route('users');
     }
