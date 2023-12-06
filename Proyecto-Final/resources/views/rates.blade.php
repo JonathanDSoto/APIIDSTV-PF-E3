@@ -67,7 +67,7 @@
                                                         @foreach ($rates as $rate)
                                                         <tr>
                                                             <td class="table-td">{{ $rate->name_rate }}</td>
-                                                            <td class="table-td">{{ $rate->price }}</td>
+                                                            <td class="table-td">{{ $rate->price }} Pesos MXN</td>
                                                             <td class="table-td ">
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                                                                     <button

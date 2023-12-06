@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       Swal.fire({
           title: "¿Quieres eliminar este registro?",
+          text: "¡Hacer esto puede generar la eliminación de registros asociados en otros modulos!",
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#3085d6",

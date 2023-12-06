@@ -185,8 +185,8 @@
                                                                                                                 <select class="form-control" name="editNameHotel" value="{{ $user->name_hotel }}">
                                                                                                                     @foreach ($hotels as $hotel)
                                                                                                                     <option value="{{$hotel->name}}"
-                                                                                                                        class="dark:bg-slate-700" {{ $user->hotels == $hotel->id ? 'selected' : '' }}>
-                                                                                                                        {{$hotel->id}}._ {{$hotel->name}}
+                                                                                                                        class="dark:bg-slate-700" {{ $user->name_hotel == $hotel->name ? 'selected' : '' }}>
+                                                                                                                        {{$hotel->name}}
                                                                                                                     </option> 
                                                                                                                     @endforeach
                                                                                                                 </select>
@@ -326,7 +326,7 @@
                                                                         @foreach ($hotels as $hotel)
                                                                         <option value="{{$hotel->name}}"
                                                                             class="dark:bg-slate-700">
-                                                                            {{$hotel->id}}._ {{$hotel->name}}
+                                                                            {{$hotel->name}}
                                                                         </option>
                                                                         @endforeach
                                                                     </select>

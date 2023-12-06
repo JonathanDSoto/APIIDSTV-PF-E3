@@ -25,7 +25,7 @@
                                 <span class="flex items-center">
                                     <iconify-icon class="text-xl ltr:mr-2 rtl:ml-2"
                                         icon="heroicons-outline:newspaper"></iconify-icon>
-                                    <span>Agregar tarifa</span>
+                                    <span>Agregar habitación</span>
                                 </span>
                             </button>
                         </div>
@@ -214,7 +214,7 @@
                                                                                                                     @foreach ($hotels as $hotel)
                                                                                                                     <option value="{{$hotel->name}}"
                                                                                                                         class="dark:bg-slate-700">
-                                                                                                                        {{$hotel->id}}._ {{$hotel->name}}
+                                                                                                                        {{$hotel->name}}
                                                                                                                     </option>
                                                                                                                     @endforeach
                                                                                                                 </select>
@@ -231,8 +231,8 @@
                                                                                                                 <select class="form-control" name="editRateRoom">
                                                                                                                     @foreach ($rates as $rate)
                                                                                                                     <option value="{{$rate->price}}"
-                                                                                                                        class="dark:bg-slate-700">
-                                                                                                                        {{$rate->id}}._ {{$rate->name_rate}}: {{$rate->price}} Pesos MXN
+                                                                                                                        class="dark:bg-slate-700" {{ $room->rate_room == $rate->price ? 'selected' : '' }}>
+                                                                                                                        {{$rate->name_rate}}: {{$rate->price}} Pesos MXN
                                                                                                                     </option>
                                                                                                                     @endforeach
                                                                                                                 </select>
@@ -385,7 +385,7 @@
                                                                                                                     @foreach ($hotels as $hotel)
                                                                                                                     <option value="{{$hotel->name}}"
                                                                                                                         class="dark:bg-slate-700">
-                                                                                                                        {{$hotel->id}}._ {{$hotel->name}}
+                                                                                                                        {{$hotel->name}}
                                                                                                                     </option>
                                                                                                                     @endforeach
                                                                                                                 </select>
@@ -403,7 +403,7 @@
                                                                                                                     @foreach ($rates as $rate)
                                                                                                                     <option value="{{$rate->price}}"
                                                                                                                         class="dark:bg-slate-700">
-                                                                                                                        {{$rate->id}}._ {{$rate->name_rate}}: {{$rate->price}} Pesos MXN
+                                                                                                                        {{$rate->name_rate}}: {{$rate->price}} Pesos MXN
                                                                                                                     </option>
                                                                                                                     @endforeach
                                                                                                                 </select>

@@ -212,7 +212,7 @@
                                                                         @csrf
                                                                         @method('DELETE')
                                                                     
-                                                                        <button type="submit" class="action-btn">
+                                                                        <button type="submit"  class="action-btn">
                                                                             <iconify-icon icon="heroicons:trash"></iconify-icon>
                                                                         </button>
                                                                     </form>
