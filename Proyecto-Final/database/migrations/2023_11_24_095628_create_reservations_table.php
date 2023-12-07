@@ -16,12 +16,11 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->string('name_client');
-            $table->string('rate');
-            $table->string('room');
-            $table->integer('coupon');
+            $table->string('name_room');
+            $table->decimal('rate', 8,2);
             $table->date('check_in');
             $table->date('check_out');
-            $table->string('status');
+            $table->integer('coupon')->nullable();
             $table->decimal('total_price', 8, 2);
 
             $table->timestamps();

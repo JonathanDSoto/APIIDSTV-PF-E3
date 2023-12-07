@@ -20,7 +20,6 @@ return new class extends Migration
             $table->text('description');
             $table->string('state');
             $table->string('hotel_name');
-            $table->double('rate_room');
 
             $table->timestamps();
         });
