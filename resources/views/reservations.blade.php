@@ -429,23 +429,29 @@
                                                                                                                     const rateInput = document.querySelector('[name="addRate"]');
                                                                                                                     const couponInput = document.querySelector('[name="addCoupon"]');
                                                                                                                     const totalPriceInput = document.getElementById('totalPrice');
+                                                                                                                    const checkInInput = document.querySelector('[name="addCheckIn"]');
+                                                                                                                    const checkOutInput = document.querySelector('[name="addCheckOut"]');
                                                                                                             
-                                                                                                                    [rateInput, couponInput].forEach(input => {
+                                                                                                                    [rateInput, couponInput, checkInInput, checkOutInput].forEach(input => {
                                                                                                                         input.addEventListener('change', calculateTotalPrice);
                                                                                                                     });
                                                                                                             
                                                                                                                     calculateTotalPrice();
                                                                                                             
                                                                                                                     function calculateTotalPrice() {
-                                                                                                                        const rateRoom = rateInput.value;
-                                                                                                                        const couponPercentage = couponInput.value;
+                                                                                                                        const rateRoom = parseFloat(rateInput.value);
+                                                                                                                        const couponPercentage = parseFloat(couponInput.value);
+                                                                                                                        const checkInDate = new Date(checkInInput.value);
+                                                                                                                        const checkOutDate = new Date(checkOutInput.value);
+                                                                                                                        const differenceInDays = Math.floor((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24));
                                                                                                             
-                                                                                                                        let totalPrice = rateRoom - (rateRoom * couponPercentage / 100);
+                                                                                                                        let totalPrice = rateRoom * differenceInDays - (rateRoom * differenceInDays * couponPercentage / 100);
                                                                                                             
                                                                                                                         totalPriceInput.value = totalPrice.toFixed(2);
                                                                                                                     }
                                                                                                                 });
                                                                                                             </script>
+                                                                                                            
                                                                                                             
                                                                                                         </div>
                                                             <!-- Modal footer -->
