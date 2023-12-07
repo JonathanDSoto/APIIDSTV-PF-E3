@@ -83,7 +83,7 @@
                                                             <td class="table-td">
                                                                 <span class="flex">
                                                                     <span class="custom-image-container">
-                                                                        <img src="{{ $hotel->image }}"
+                                                                        <img src="{{ asset($hotel->image) }}"
                                                                             alt="1" class="custom-image">
                                                                     </span>
                                                                 </span>
@@ -139,7 +139,7 @@
                                                                                     <div class="card xl:col-span-2">
                                                                                         <div class="card-body flex flex-col p-6">
                                                                                             <div class="card-text h-full ">
-                                                                                                <form class="space-y-4" action="{{ route('hotels.update', ['hotel' => $hotel->id]) }}" method="post">
+                                                                                                <form class="space-y-4" action="{{ route('hotels.update', ['hotel' => $hotel->id]) }}" method="post" enctype="multipart/form-data">
                                                                                                     @csrf
                                                                                                     @method('PUT')
 
@@ -182,8 +182,8 @@
                                                                                                         <div class="input-area relative mb-4">
                                                                                                             <label for="largeInput"
                                                                                                                 class="form-label">Imagen del hotel</label>
-                                                                                                            <input type="url" class="form-control"
-                                                                                                                placeholder="Ingrese URL de la imagen" name="editImage" value="{{ $hotel->image }}">
+                                                                                                            <input type="file" class="form-control"
+                                                                                                                placeholder="Ingrese URL de la imagen" name="editImage" value="{{ $hotel->image }}" accept="image/*">
                                                                                                                 @error('editImage')
                                                                                                                     <div>
                                                                                                                         {{$message}}
@@ -212,7 +212,7 @@
                                                                         @csrf
                                                                         @method('DELETE')
                                                                     
-                                                                        <button type="submit"  class="action-btn">
+                                                                        <button type="submit" class="action-btn">
                                                                             <iconify-icon icon="heroicons:trash"></iconify-icon>
                                                                         </button>
                                                                     </form>
@@ -265,7 +265,7 @@
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
                                                     <div class="card-text h-full">
-                                                        <form class="space-y-4" action="{{ route('hotels.store') }}" method="post">
+                                                        <form class="space-y-4" action="{{ route('hotels.store') }}" method="post" enctype="multipart/form-data">
                                                             @csrf
 
                                                             <div
@@ -306,8 +306,8 @@
                                                                 <div class="input-area relative mb-4">
                                                                     <label for="largeInput"
                                                                         class="form-label">Imagen del hotel</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Ingrese URL de la imagen" name="addImage" value="{{old('addImage')}}">
+                                                                    <input type="file" class="form-control"
+                                                                        placeholder="Ingrese URL de la imagen" name="addImage" value="{{old('addImage')}}" accept="image/*">
                                                                         @error('addImage')
                                                                         <div>
                                                                             {{$message}}
