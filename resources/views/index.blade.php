@@ -7,6 +7,9 @@
                 <div class="content-wrapper transition-all duration-150 xl:ltr:ml-[248px] xl:rtl:mr-[248px]"
                     id="content_wrapper">
                     <div class="page-content">
+                        <div class="text-center">
+                            <h4 class="font-bold text-slate-700 dark:text-white">Disponibilidad de Habitaciones</h4>
+                        </div>
                         <div class="dropdown relative">
                             <button class="btn inline-flex justify-center btn-outline-light items-center cursor-default relative !pr-14"
                                     type="button" id="lightsplitOutlineDropdownMenuButton" data-bs-toggle="dropdown"

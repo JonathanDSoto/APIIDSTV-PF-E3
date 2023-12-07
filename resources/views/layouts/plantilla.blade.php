@@ -26,7 +26,7 @@
     <title>@yield('title')</title>
     <style>
         .sidebar-menus li:hover{
-            background-color: rgba(70, 105, 250, 0.39)
+            background-color: rgba(70, 105, 250, 0.2)
         }
 
         .sidebar-menu-title{
@@ -50,11 +50,11 @@
               class="w-screen h-screen fixed top-0 bg-slate-900 bg-opacity-50 backdrop-blur-sm z-10 hidden"></div>
           <div class="logo-segment">
               <a class="flex items-center" href="{{ route('index') }}">
-                  <img src="{{ asset('/images/logo/logo-c.svg') }}" class="black_logo" alt="logo">
-                  <img src="{{ asset('/images/logo/logo-c-white.svg') }}" class="white_logo" alt="logo">
+                  <img src="{{ asset('/images/logo/aloja.png') }}" width="52px" class="black_logo" alt="logo">
+                  <img src="{{ asset('/images/logo/aloja.png') }}" width="52px" class="white_logo" alt="logo">
                   <span
                       class="ltr:ml-3 rtl:mr-3 text-xl font-Inter font-bold text-slate-900 dark:text-white">AlojaBaja
-                      Store</span>
+                      Gestor</span>
               </a>
               <!-- Sidebar Type Button -->
               <div id="sidebar_type" class="cursor-pointer text-slate-900 dark:text-white text-lg">
@@ -80,10 +80,18 @@
                       <a href="{{ route('index') }}" class="navItem">
                           <span class="flex items-center">
                               <iconify-icon class="nav-icon" icon="heroicons-outline:computer-desktop"></iconify-icon>
-                              <span>Venta</span>
+                              <span>Inicio</span>
                           </span>
                       </a>
                   </li>
+                  <li class="">
+                    <a href="{{ route('reservations') }}" class="navItem">
+                        <span class="flex items-center">
+                            <iconify-icon class=" nav-icon" icon="heroicons-outline:calendar"></iconify-icon>
+                            <span>Reservaciones</span>
+                        </span>
+                    </a>
+                </li>
                   <li class="">
                       <a href="{{ route('clients') }}" class="navItem">
                           <span class="flex items-center">
@@ -93,6 +101,23 @@
                       </a>
                   </li>
                   <li class="">
+                    <a href="javascript:void(0)" class="navItem">
+                        <span class="flex items-center">
+                            <iconify-icon class=" nav-icon" icon="heroicons-outline:key"></iconify-icon>
+                            <span>Habitaciones</span>
+                        </span>
+                        <iconify-icon class="icon-arrow" icon="heroicons-outline:chevron-right"></iconify-icon>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a href="{{ route('rooms') }}">Habitaciones</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('rates') }}">Tarifas</a>
+                        </li>
+                    </ul>
+                </li>
+                  <li class="">
                     <a href="{{ route('coupons') }}" class="navItem">
                         <span class="flex items-center">
                             <iconify-icon class=" nav-icon" icon="streamline:discount-percent-coupon"></iconify-icon>
@@ -101,33 +126,7 @@
                     </a>
                 </li>
 
-                  <li class="">
-                      <a href="javascript:void(0)" class="navItem">
-                          <span class="flex items-center">
-                              <iconify-icon class=" nav-icon" icon="heroicons-outline:key"></iconify-icon>
-                              <span>Habitaciones</span>
-                          </span>
-                          <iconify-icon class="icon-arrow" icon="heroicons-outline:chevron-right"></iconify-icon>
-                      </a>
-                      <ul class="sidebar-submenu">
-                          <li>
-                              <a href="{{ route('rooms') }}">Habitaciones</a>
-                          </li>
-                          <li>
-                              <a href="{{ route('rates') }}">Tarifas</a>
-                          </li>
-                      </ul>
-                  </li>
-
-
-                  <li class="">
-                      <a href="{{ route('reservations') }}" class="navItem">
-                          <span class="flex items-center">
-                              <iconify-icon class=" nav-icon" icon="heroicons-outline:calendar"></iconify-icon>
-                              <span>Reservaciones</span>
-                          </span>
-                      </a>
-                  </li>
+                  
                   <li class="">
                       <a href="{{ route('users') }}" class="navItem">
                           <span class="flex items-center">
