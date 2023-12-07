@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\Hotel;
+use Illuminate\Support\Facades\Storage;
 
 class RoomsController extends Controller
 {
@@ -22,18 +23,21 @@ class RoomsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'addImage' => 'required|url',
+            'addImage' => 'required|image|max:2048',
             'addNameRoom' => 'required|string|max:255',
             'addDescription' => 'required|string|',
             'addState'=> 'required|string',
             'addHotelName'=> 'required|string|max:255'
         ]);
 
+        $imagePath = $request->file('addImage')->store('public/rooms');
+        $url = Storage::url($imagePath);
+
         //Crea una nueva habitacion
         $rooms = new Room();
 
         //insert con los nombres de los inputs del modal agregar
-        $rooms->image = $request->addImage;
+        $rooms->image = $url;
         $rooms->name_room = $request->addNameRoom;
         $rooms->description = $request->addDescription;
         $rooms->state = $request->addState;
@@ -55,18 +59,20 @@ class RoomsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'editImage' => 'required|url',
+            'editImage'=> 'required|image|max:2048',
             'editNameRoom' => 'required|string|max:255',
             'editDescription' => 'required|string|',
             'editState'=> 'required|string',
             'editHotelName'=> 'required|string|max:255'
         ]);
 
+        $imagePath = $request->file('editImage')->store('public/uploads');
+        $url = Storage::url($imagePath);
         //Busca la habitacion por ID
         $rooms = Room::find($id);
 
         //Actualiza los datos de la habitacion
-        $rooms->image = $request->editImage;
+        $rooms->image = $url;
         $rooms->name_room = $request->editNameRoom;
         $rooms->description = $request->editDescription;
         $rooms->state = $request->editState;

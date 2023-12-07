@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Hotel;
 use App\Models\User;
 use App\Models\Room;
+use Illuminate\Support\Facades\Storage;
 
 class HotelsController extends Controller
 {
@@ -20,26 +21,33 @@ class HotelsController extends Controller
 
     public function store(Request $request)
     {
-        //validacion de datos
+        // Validación de datos
         $request->validate([
-            'addName'=> 'required|string|max:255',
-            'addAddress'=> 'required|string|max:255',
-            'addDescription'=> 'required|string',
-            'addImage'=> 'required|url',
+            'addName' => 'required|string|max:255',
+            'addAddress' => 'required|string|max:255',
+            'addDescription' => 'required|string',
+            'addImage' => 'required|image|max:2048',
         ]);
 
-        //busca en la base de datos el id que coincide con el registro seleccionado
+        // Subir la imagen al servidor
+        $imagePath = $request->file('addImage')->store('public/uploads');
+        $url = Storage::url($imagePath);
+
+        // Crear una nueva instancia del modelo Hotel
         $hotels = new Hotel();
 
-         //insert con los nombres de los inputs del modal agregar
+        // Insertar datos en la instancia del modelo
         $hotels->name = $request->addName;
         $hotels->address = $request->addAddress;
         $hotels->description = $request->addDescription;
-        $hotels->image = $request->addImage;
+        $hotels->image = $url;
 
         $hotels->save();
+
+        // Redireccionar a la página de hoteles
         return redirect()->route('hotels');
     }
+
 
     //comunica id con el front
     public function edit($id)
@@ -56,8 +64,11 @@ class HotelsController extends Controller
             'editName'=> 'required|string|max:255',
             'editAddress'=> 'required|string|max:255',
             'editDescription'=> 'required|string',
-            'editImage'=> 'required|url',
+            'editImage'=> 'required|image|max:2048',
         ]);
+
+        $imagePath = $request->file('editImage')->store('public/uploads');
+        $url = Storage::url($imagePath);
 
         //busca en la base de datos el id que coincide con el registro seleccionado
         $hotel = Hotel::find($id);
@@ -66,7 +77,7 @@ class HotelsController extends Controller
         $hotel->name = $request->editName;
         $hotel->address = $request->editAddress;
         $hotel->description = $request->editDescription;
-        $hotel->image = $request->editImage;
+        $hotel->image = $url;
         
         //guarda los registros
         $hotel->save();
@@ -76,19 +87,21 @@ class HotelsController extends Controller
 
     public function destroy(Request $request, $id)
 {
-    // Obtener el hotel por ID
     $hotel = Hotel::find($id);
 
-    // Buscar y eliminar solo el usuario y habitacion vinculada con ese hotel
-    User::where('name_hotel', $hotel->name)->delete();
+    if ($hotel) {
+        if ($hotel->delete()) {
+            User::where('name_hotel', $hotel->name)->delete();
+            Room::where('hotel_name', $hotel->name)->delete();
 
-    Room::where('hotel_name', $hotel->name)->delete();
-
-    // Eliminar el hotel
-    $hotel->delete();
-
-    // Redirigir con un mensaje de éxito
-    return redirect()->route('hotels')->with('success', 'Hotel eliminado exitosamente.');
+            return redirect()->route('hotels')->with('success', 'Hotel eliminado exitosamente.');
+        } else {
+            return redirect()->route('hotels')->with('error', 'No se pudo eliminar el hotel.');
+        }
+    } else {
+        return redirect()->route('hotels')->with('error', 'Hotel no encontrado.');
+    }
 }
+
 
 }
