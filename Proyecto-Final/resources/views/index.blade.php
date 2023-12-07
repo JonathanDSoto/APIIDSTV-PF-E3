@@ -36,13 +36,18 @@
                             @foreach ($rooms as $room)
                                 <div class="room-container bg-slate-900 dark:bg-slate-800 mb-10 mt-7 p-4 relative text-center rounded-2xl text-white"
                                      data-hotel="{{ $room->hotel_name }}">
+                                     <form class="space-y-4" action="{{ route('index.update', ['room' => $room->id]) }}" method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        <input type="hidden" name="id" value="{{ $room->id }}">
+
                                     <img src="{{ $room->image }}"
                                          class="mx-auto mb-4 rounded-full">
                                      <div class="max-w-[160px] mx-auto mt-6">
                                          <div class="widget-title">{{ $room->name_room }}</div>
                                      </div>
                                      <div class="input-area">
-                                         <select id="select" class="form-control">
+                                         <select id="select" class="form-control" name="editState">
                                              <option value="Libre" class="dark:bg-slate-700" {{ $room->state == 'Libre' ? 'selected' : '' }}>
                                                  Libre
                                              </option>
@@ -55,9 +60,11 @@
                                          </select>
                                      </div>
                                      <div class="mt-1">
-                                         <button class="btn btn-lg btn-block btn-primary" style="width: 100%">Cambiar</button>
+                                         <button type="submit" class="btn btn-lg btn-block btn-primary" style="width: 100%">Cambiar</button>
                                      </div>
+                                    </form> 
                                 </div>
+                                
                             @endforeach
                         </div>
                     

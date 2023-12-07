@@ -71,3 +71,14 @@ Route::post('/rooms', [RoomsController::class, 'store'])->name('rooms.store');
 Route::get('/rooms/{id}/edit', [RoomsController::class, 'edit'])->name('rooms.edit');
 Route::put('/rooms/{room}', [RoomsController::class, 'update'])->name('rooms.update');
 Route::delete('/rooms/{room}', [RoomsController::class, 'destroy'])->name('rooms.destroy');
+
+//Rutas de ReservationsController
+
+Route::get('/reservations', [ReservationsController::class, 'reservations'])->name('reservations');
+Route::post('/reservations', [ReservationsController::class, 'store'])->name('reservations.store');
+Route::get('/reservations/{id}/edit', [ReservationsController::class, 'edit'])->name('reservations.edit');
+Route::put('/reservations/{reservation}', [ReservationsController::class, 'update'])->name('reservations.update');
+Route::delete('/reservations/{reservation}', [ReservationsController::class, 'destroy'])->name('reservations.destroy');
+
+Route::get('/index/{id}/edit', [IndexController::class, 'edit'])->name('index.edit');
+Route::put('/index/{room}', [IndexController::class, 'update'])->name('index.update');

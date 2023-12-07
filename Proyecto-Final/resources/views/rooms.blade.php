@@ -69,10 +69,6 @@
                                                             </th>
 
                                                             <th class=" table-th ">
-                                                                Tarifa
-                                                            </th>
-
-                                                            <th class=" table-th ">
                                                                 Acción
                                                             </th>
                                                         </tr>
@@ -94,7 +90,6 @@
                                                             <td class="table-td">{{ $room->description }}</td>
                                                             <td class="table-td">{{ $room->state }}</td>
                                                             <td class="table-td">{{ $room->hotel_name }}</td>
-                                                            <td class="table-td">{{ $room->rate_room }} Pesos MXN</td>
                                                             <td class="table-td ">
                                                                 <div class="flex space-x-3 rtl:space-x-reverse">
                                                                     <button
@@ -188,15 +183,15 @@
                                                                                                                     class="form-label">Estado</label>
                                                                                                                 <select class="form-control" name="editState">
                                                                                                                     <option value="Libre"
-                                                                                                                        class="dark:bg-slate-700">
+                                                                                                                        class="dark:bg-slate-700" {{ $room->state == "Libre" ? 'selected' : '' }}>
                                                                                                                             Libre
                                                                                                                     </option>
                                                                                                                     <option value="Mantenimiento"
-                                                                                                                        class="dark:bg-slate-700">
+                                                                                                                        class="dark:bg-slate-700" {{ $room->state == "Mantenimiento" ? 'selected' : '' }}>
                                                                                                                             Mantenimiento
                                                                                                                     </option>
                                                                                                                     <option value="Limpieza"
-                                                                                                                        class="dark:bg-slate-700">
+                                                                                                                        class="dark:bg-slate-700" {{ $room->state == "Limpieza" ? 'selected' : '' }}>
                                                                                                                             Limpieza
                                                                                                                     </option>
                                                                                                                 </select>
@@ -213,31 +208,13 @@
                                                                                                                 <select class="form-control" name="editHotelName">
                                                                                                                     @foreach ($hotels as $hotel)
                                                                                                                     <option value="{{$hotel->name}}"
-                                                                                                                        class="dark:bg-slate-700">
+                                                                                                                        class="dark:bg-slate-700" {{ $room->hotel_name == $hotel->name ? 'selected' : '' }}>
                                                                                                                         {{$hotel->name}}
                                                                                                                     </option>
                                                                                                                     @endforeach
                                                                                                                 </select>
                                             
                                                                                                                 @error('editHotelName')
-                                                                                                                <div>
-                                                                                                                    {{$message}}
-                                                                                                                </div>
-                                                                                                            @enderror
-                                                                                                            </div>
-                                                                                                            <div class="input-area relative mb-4">
-                                                                                                                <label for="largeInput"
-                                                                                                                    class="form-label">Tarifa</label>
-                                                                                                                <select class="form-control" name="editRateRoom">
-                                                                                                                    @foreach ($rates as $rate)
-                                                                                                                    <option value="{{$rate->price}}"
-                                                                                                                        class="dark:bg-slate-700" {{ $room->rate_room == $rate->price ? 'selected' : '' }}>
-                                                                                                                        {{$rate->name_rate}}: {{$rate->price}} Pesos MXN
-                                                                                                                    </option>
-                                                                                                                    @endforeach
-                                                                                                                </select>
-                                            
-                                                                                                                @error('editRateRoom')
                                                                                                                 <div>
                                                                                                                     {{$message}}
                                                                                                                 </div>
@@ -391,24 +368,6 @@
                                                                                                                 </select>
                                             
                                                                                                                 @error('addHotelName')
-                                                                                                                <div>
-                                                                                                                    {{$message}}
-                                                                                                                </div>
-                                                                                                            @enderror
-                                                                                                            </div>
-                                                                                                            <div class="input-area relative mb-4">
-                                                                                                                <label for="largeInput"
-                                                                                                                    class="form-label">Tarifa</label>
-                                                                                                                <select class="form-control" name="addRateRoom">
-                                                                                                                    @foreach ($rates as $rate)
-                                                                                                                    <option value="{{$rate->price}}"
-                                                                                                                        class="dark:bg-slate-700">
-                                                                                                                        {{$rate->name_rate}}: {{$rate->price}} Pesos MXN
-                                                                                                                    </option>
-                                                                                                                    @endforeach
-                                                                                                                </select>
-                                            
-                                                                                                                @error('addRateRoom')
                                                                                                                 <div>
                                                                                                                     {{$message}}
                                                                                                                 </div>
