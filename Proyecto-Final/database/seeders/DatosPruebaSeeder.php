@@ -41,47 +41,6 @@ class DatosPruebaSeeder extends Seeder {
             'name_hotel' => 'Hotel B'
         ]);
 
-        Rates::create([
-            'name_rate' => 'Habitación Sencilla',
-            'price' => '399.99',
-        ]);
-
-        Rates::create([
-            'name_rate' => 'Habitación Deluxe',
-            'price' => '899.99',
-        ]);
-
-        Rates::create([
-            'name_rate' => 'Habitación Premium',
-            'price' => '1499.99',
-        ]);
-
-        Room::create([
-            'image'=> 'https://images.hola.com/imagenes/decoracion/20230425230358/dormitorios-inspirados-en-habitaciones-hoteles-am/1-237-28/habitaciones-hotel-5a-a.jpg',
-            'name_room'=> 'Habitación Sencilla',
-            'description'=> '1 Cama',
-            'state'=> 'Libre',
-            'hotel_name'=> 'Hotel A',
-            'rate_room'=> '399.99',
-        ]);
-
-        Room::create([
-            'image'=> 'https://blog.lobbyroomhotel.com/wp-content/uploads/2019/02/unnamed-1.jpg',
-            'name_room'=> 'Habitación Deluxe',
-            'description'=> '1 Cama Familiar',
-            'state'=> 'Libre',
-            'hotel_name'=> 'Hotel A',
-            'rate_room'=> '899.99',
-        ]);
-
-        Room::create([
-            'image'=> 'https://blacktowerhotel.com/wp-content/uploads/2019/03/habitacion_deluxe.jpeg',
-            'name_room'=> 'Habitación Premium',
-            'description'=> '1 Cama Familiar',
-            'state'=> 'Libre',
-            'hotel_name'=> 'Hotel A',
-            'rate_room'=> '1499.99',
-        ]);
     }
 }
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Room;
 use App\Models\Hotel;
-use App\Models\Rates;
 
 class RoomsController extends Controller
 {
@@ -14,11 +13,10 @@ class RoomsController extends Controller
         //Recoge todos los elementos de la tabla rooms
         $rooms = Room::all();
         $hotels = Hotel::all();
-        $rates = Rates::all();
 
 
         //Los manda al front con el compact('rooms')
-        return view('rooms', compact('rooms', 'hotels', 'rates'));
+        return view('rooms', compact('rooms', 'hotels'));
     }
 
     public function store(Request $request)
@@ -28,8 +26,7 @@ class RoomsController extends Controller
             'addNameRoom' => 'required|string|max:255',
             'addDescription' => 'required|string|',
             'addState'=> 'required|string',
-            'addHotelName'=> 'required|string|max:255',
-            'addRateRoom'=> 'decimal:0,2',
+            'addHotelName'=> 'required|string|max:255'
         ]);
 
         //Crea una nueva habitacion
@@ -41,7 +38,6 @@ class RoomsController extends Controller
         $rooms->description = $request->addDescription;
         $rooms->state = $request->addState;
         $rooms->hotel_name = $request->addHotelName;
-        $rooms->rate_room = $request->addRateRoom;
 
         $rooms->save();
 
@@ -63,8 +59,7 @@ class RoomsController extends Controller
             'editNameRoom' => 'required|string|max:255',
             'editDescription' => 'required|string|',
             'editState'=> 'required|string',
-            'editHotelName'=> 'required|string|max:255',
-            'editRateRoom'=> 'decimal:0,2',
+            'editHotelName'=> 'required|string|max:255'
         ]);
 
         //Busca la habitacion por ID
@@ -76,7 +71,6 @@ class RoomsController extends Controller
         $rooms->description = $request->editDescription;
         $rooms->state = $request->editState;
         $rooms->hotel_name = $request->editHotelName;
-        $rooms->rate_room = $request->editRateRoom;
 
 
         //Guarda los registros

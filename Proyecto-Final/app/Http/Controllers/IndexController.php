@@ -15,4 +15,22 @@ class IndexController extends Controller
 
         return view('index', compact('hotels', 'rooms'));
     }
+
+    public function edit($id)
+    {
+        $room = Room::find($id);
+        return view('index', compact('rooms'));
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $room = Room::find($id);
+        $room->state = $request->editState;
+
+        $room->save();
+
+        return redirect()->route('index');
+    }
+
 }
