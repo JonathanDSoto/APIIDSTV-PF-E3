@@ -83,7 +83,7 @@
                                                             <td class="table-td">
                                                                 <span class="flex">
                                                                     <span class="custom-image-container">
-                                                                        <img src="{{ asset($hotel->image) }}"
+                                                                        <img src="{{ $hotel->image }}"
                                                                             alt="1" class="custom-image">
                                                                     </span>
                                                                 </span>

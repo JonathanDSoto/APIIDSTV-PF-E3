@@ -164,6 +164,7 @@
                                                                                                                 <label for="largeInput" class="form-label">Habitación</label>
                                                                                                                 <select class="form-control" name="editNameRoom" value="{{ old('editNameRoom') }}">
                                                                                                                     @foreach ($rooms as $room)
+                                                                                                                    @if ($room->hotel_name == session('user_name_hotel'))
                                                                                                                             <option value="{{ $room->name_room }}" class="dark:bg-slate-700" {{ $room->name_room == $reservation->name_room ? 'selected' : '' }}>
                                                                                                                                 {{ $room->name_room }}
                                                                                                                             </option>
