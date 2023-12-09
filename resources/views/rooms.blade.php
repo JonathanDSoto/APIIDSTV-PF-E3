@@ -138,7 +138,7 @@
                                                                                         <div class="card xl:col-span-2">
                                                                                             <div class="card-body flex flex-col p-6">
                                                                                                 <div class="card-text h-full ">
-                                                                                                    <form class="space-y-4" action="{{ route('rooms.update', ['room' => $room->id]) }}" method="post" enctype="multipart/form-data">
+                                                                                                    <form class="space-y-4" action="{{ route('rooms.update', ['room' => $room->id]) }}" method="post">
                                                                                                         @csrf
                                                                                                         @method('PUT')
     
@@ -212,8 +212,8 @@
                                                                                                             <div class="input-area relative mb-4">
                                                                                                                 <label for="largeInput"
                                                                                                                     class="form-label">Imagen de la habitación</label>
-                                                                                                                <input type="file" class="form-control"
-                                                                                                                    placeholder="Ingrese URL de la imagen" name="editImage" value="{{ $room->image }}" accept="image/*">
+                                                                                                                <input type="url" class="form-control"
+                                                                                                                    placeholder="Ingrese URL de la imagen" name="editImage" value="{{ $room->image }}">
                                                                                                                     @error('editImage')
                                                                                                                         <div>
                                                                                                                             {{$message}}
@@ -294,7 +294,7 @@
                                             <div class="card xl:col-span-2">
                                                 <div class="card-body flex flex-col p-6">
                                                     <div class="card-text h-full ">
-                                                        <form class="space-y-4" action="{{ route('rooms.store') }}" method="post" enctype="multipart/form-data">
+                                                        <form class="space-y-4" action="{{ route('rooms.store') }}" method="post">
                                                             @csrf
 
                                                             <div
@@ -366,8 +366,8 @@
                                                                                                             <div class="input-area relative mb-4">
                                                                                                                 <label for="largeInput"
                                                                                                                     class="form-label">Imagen de la habitación</label>
-                                                                                                                <input type="file" class="form-control"
-                                                                                                                    placeholder="Ingrese URL de la imagen" name="addImage" value="{{old('addImage')}}" accept="image/*">
+                                                                                                                <input type="url" class="form-control"
+                                                                                                                    placeholder="Ingrese URL de la imagen" name="addImage" value="{{old('addImage')}}">
                                                                                                                     @error('addImage')
                                                                                                                         <div>
                                                                                                                             {{$message}}
