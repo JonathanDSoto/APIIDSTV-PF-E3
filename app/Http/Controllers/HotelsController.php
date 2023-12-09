@@ -26,12 +26,12 @@ class HotelsController extends Controller
             'addName' => 'required|string|max:255',
             'addAddress' => 'required|string|max:255',
             'addDescription' => 'required|string',
-            'addImage' => 'required|image|max:2048',
+            'addImage' => 'required|url',
         ]);
 
         // Subir la imagen al servidor
-        $imagePath = $request->file('addImage')->store('public/uploads');
-        $url = Storage::url($imagePath);
+        // $imagePath = $request->file('addImage')->store('public/uploads');
+        // $url = Storage::url($imagePath);
 
         // Crear una nueva instancia del modelo Hotel
         $hotels = new Hotel();
@@ -40,7 +40,7 @@ class HotelsController extends Controller
         $hotels->name = $request->addName;
         $hotels->address = $request->addAddress;
         $hotels->description = $request->addDescription;
-        $hotels->image = $url;
+        $hotels->image = $request->addImage;
 
         $hotels->save();
 
@@ -64,11 +64,11 @@ class HotelsController extends Controller
             'editName'=> 'required|string|max:255',
             'editAddress'=> 'required|string|max:255',
             'editDescription'=> 'required|string',
-            'editImage'=> 'required|image|max:2048',
+            'editImage'=> 'required|url',
         ]);
 
-        $imagePath = $request->file('editImage')->store('public/uploads');
-        $url = Storage::url($imagePath);
+        // $imagePath = $request->file('editImage')->store('public/uploads');
+        // $url = Storage::url($imagePath);
 
         //busca en la base de datos el id que coincide con el registro seleccionado
         $hotel = Hotel::find($id);
@@ -77,7 +77,7 @@ class HotelsController extends Controller
         $hotel->name = $request->editName;
         $hotel->address = $request->editAddress;
         $hotel->description = $request->editDescription;
-        $hotel->image = $url;
+        $hotel->image = $request->editImage;
         
         //guarda los registros
         $hotel->save();
