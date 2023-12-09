@@ -168,6 +168,7 @@
                                                                                                                             <option value="{{ $room->name_room }}" class="dark:bg-slate-700" {{ $room->name_room == $reservation->name_room ? 'selected' : '' }}>
                                                                                                                                 {{ $room->name_room }}
                                                                                                                             </option>
+                                                                                                                    @endif
                                                                                                                     @endforeach
                                                                                                                 </select>
                                                                                                                 @error('editNameRoom')
