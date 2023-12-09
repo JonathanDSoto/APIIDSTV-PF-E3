@@ -58,7 +58,15 @@ class ReservationsController extends Controller {
                     }),
             ],
             'addCheckIn' => 'required|date',
-            'addCheckOut' => 'required|date|after:yesterday',
+            'addCheckOut' => [
+                'required',
+                'date',
+                'after:addCheckIn',
+                function ($attribute, $value, $fail) use ($request) {
+                    $checkIn = strtotime($request->input('addCheckIn'));
+                    $checkOut = strtotime($value);
+                },
+            ],
             'addCoupon' => 'nullable|string|max:255',
             'addTotalPrice' => 'decimal:0,2',
         ], [
